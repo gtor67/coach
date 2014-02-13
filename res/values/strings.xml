@@ -3,7 +3,10 @@
 
     <string name="app_name">coachme</string>
     <string name="action_settings">Settings</string>
-	<string name="button_baseball">Baseball</string>
-	<string name="home_instruction">Select sport to learn about:</string>
-	<string name="home_note">Note:Baseball is the only sport available for now.</string>
+    <string name="button_baseball">Baseball</string>
+    <string name="home_instruction">Select sport to learn about:</string>
+    <string name="home_note">Note:Baseball is the only sport available for now.</string>
+    <string name="title_activity_training_filter">Exercise Selection</string>
+    <string name="hello_world">Hello world!</string>
+
 </resources>
