@@ -8,5 +8,8 @@
     <string name="home_note">Note:Baseball is the only sport available for now.</string>
     <string name="title_activity_training_filter">Exercise Selection</string>
     <string name="hello_world">Hello world!</string>
+    <string name="beginner">Beginner</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="advanced">Advanced</string>
 
 </resources>

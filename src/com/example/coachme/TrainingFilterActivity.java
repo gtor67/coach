@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 
 public class TrainingFilterActivity extends Activity {
@@ -16,6 +17,10 @@ public class TrainingFilterActivity extends Activity {
 		setContentView(R.layout.activity_training_filter);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		//get intent
+		Intent intent = getIntent();
+		setContentView(R.layout.activity_training_filter);
 	}
 
 	/**
