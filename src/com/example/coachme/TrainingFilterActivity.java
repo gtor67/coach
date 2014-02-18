@@ -4,13 +4,17 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
 
 public class TrainingFilterActivity extends Activity {
-
+	TabHost tabH;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -21,6 +25,26 @@ public class TrainingFilterActivity extends Activity {
 		//get intent
 		Intent intent = getIntent();
 		setContentView(R.layout.activity_training_filter);
+		
+		///////////////////TABS////////////////////////
+		
+		tabH = (TabHost) findViewById (R.id.tabhost);
+		tabH.setup();
+		
+		 TabSpec spec1Beginner=tabH.newTabSpec("TAB 1");
+	        spec1Beginner.setContent(R.id.tab1);
+	        spec1Beginner.setIndicator("Beginner");
+	        tabH.addTab(spec1Beginner);
+	      
+	        TabSpec spec2Intermediate=tabH.newTabSpec("TAB 2");
+	        spec2Intermediate.setIndicator("Intermediate");
+	        spec2Intermediate.setContent(R.id.tab2);
+	        tabH.addTab(spec2Intermediate);
+	      
+	        TabSpec spec3Advance=tabH.newTabSpec("TAB 3");
+	        spec3Advance.setContent(R.id.tab3);
+	        spec3Advance.setIndicator("Advance"); 
+	        tabH.addTab(spec3Advance);
 	}
 
 	/**
