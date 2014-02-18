@@ -4,15 +4,31 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
 public class TrainingFilterActivity extends Activity {
 	TabHost tabH;
+	Spinner exerciseFilter;
+	
+	/////ARRAY for SPINNER FILTER
+	String[] exrcises = {
+            "catching",
+            "bunting",
+            "field",
+            "pitching"
+    };
 	
 	
 	@Override
@@ -45,8 +61,39 @@ public class TrainingFilterActivity extends Activity {
 	        spec3Advance.setContent(R.id.tab3);
 	        spec3Advance.setIndicator("Advance"); 
 	        tabH.addTab(spec3Advance);
+	     
+	     ///////// END TAB CODE  //////////////////////////////////   
+	        
+	        ///////////SPINNER FILTER/////////////
+	        exerciseFilter = (Spinner) findViewById(R.id.spinner1Filter);  
+
+
+	        
+	        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+	                this, android.R.layout.simple_spinner_item, exrcises);
+	        exerciseFilter.setAdapter(adapter);
+	        exerciseFilter.setOnItemSelectedListener(
+	                new AdapterView.OnItemSelectedListener() {
+	                    @Override
+	                    public void onItemSelected(AdapterView<?> arg0, View arg1,
+	                            int arg2, long arg3) {
+	                        int position = exerciseFilter.getSelectedItemPosition();
+	                        Toast.makeText(getApplicationContext(),"You have selected "+exrcises[+position],Toast.LENGTH_LONG).show();
+	                        // TODO Auto-generated method stub
+	                    }
+	                    @Override
+	                    public void onNothingSelected(AdapterView<?> arg0) {
+	                        // TODO Auto-generated method stub
+	                    }
+	                }
+	            );
+	        /////////////END SPINNER FILTER CODE  /////////////////
+	      
 	}
 
+	
+//////////////////////////////////////////////////////////
+	
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
 	 */

@@ -12,12 +12,5 @@
     <string name="intermediate">Intermediate</string>
     <string name="advanced">Advanced</string>
     
-    
-    <string-array name="filter_array">  
-     <item>Catching</item>   
-     <item>Pitching</item>    
-     <item>Bunting</item>  
-     <item>Field</item>       
-   </string-array>  
 
 </resources>
