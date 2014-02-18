@@ -7,7 +7,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
@@ -21,6 +24,9 @@ import android.os.Build;
 public class TrainingFilterActivity extends Activity {
 	TabHost tabH;
 	Spinner exerciseFilter;
+	ListView listViewBeginner ;
+	ListView listViewIntermediate;
+	ListView listViewAdvance;
 	
 	/////ARRAY for SPINNER FILTER
 	String[] exrcises = {
@@ -30,6 +36,50 @@ public class TrainingFilterActivity extends Activity {
             "pitching"
     };
 	
+	//////ARRAY for LIST VIEW BEGINNER ///////
+	
+	String[] beginnerList = new String[] { "Beginner 1", 
+            "Beginner 2",
+            "Beginner 3",
+            "Beginner 4", 
+            "Beginner 5",
+            "Beginner 6",
+            "Beginner 7",
+            "Beginner 8", 
+            "Beginner 9",
+            "Beginner 10",
+            "Beginner 11" 
+           };
+	
+//////ARRAY for LIST VIEW INTERMEDIATE ///////
+	
+	String[] intermediateList = new String[] { "Intermediate 1", 
+			"Intermediate 2",
+	        "Intermediate 3",
+	        "Intermediate 4", 
+	        "Intermediate 5",
+	        "Intermediate 6",
+	        "Intermediate 7", 
+	        "Intermediate 8",
+	        "Intermediate 9",
+	        "Intermediate 10", 
+	        "Intermediate 11" 
+         };
+	
+//////ARRAY for LIST VIEW BEGINNER ///////
+	
+	String[] advanceList = new String[] { "Advance 1", 
+          "Advance 2",
+          "Advance 3",
+          "Advance 4", 
+          "Advance 5",
+          "Advance 6",
+          "Advance 7", 
+          "Advance 8",
+          "Advance 9",
+          "Advance 10", 
+          "Advance 11"
+         };
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,35 +93,34 @@ public class TrainingFilterActivity extends Activity {
 		setContentView(R.layout.activity_training_filter);
 		
 		///////////////////TABS////////////////////////
-		
+		//// youtube vids from user "TheNewBoston " android vids 84-87?
 		tabH = (TabHost) findViewById (R.id.tabhost);
 		tabH.setup();
 		
 		 TabSpec spec1Beginner=tabH.newTabSpec("TAB 1");
 	        spec1Beginner.setContent(R.id.tab1);
-	        spec1Beginner.setIndicator("Beginner");
+	        spec1Beginner.setIndicator("Beginner");//text on tab
 	        tabH.addTab(spec1Beginner);
 	      
 	        TabSpec spec2Intermediate=tabH.newTabSpec("TAB 2");
-	        spec2Intermediate.setIndicator("Intermediate");
+	        spec2Intermediate.setIndicator("Intermediate"); //text on tab
 	        spec2Intermediate.setContent(R.id.tab2);
 	        tabH.addTab(spec2Intermediate);
 	      
 	        TabSpec spec3Advance=tabH.newTabSpec("TAB 3");
 	        spec3Advance.setContent(R.id.tab3);
-	        spec3Advance.setIndicator("Advance"); 
+	        spec3Advance.setIndicator("Advance"); //text on tab
 	        tabH.addTab(spec3Advance);
 	     
 	     ///////// END TAB CODE  //////////////////////////////////   
 	        
 	        ///////////SPINNER FILTER/////////////
+	        ///// http://www.learn2crack.com/2013/12/android-spinner-dropdown-example.html   //////
 	        exerciseFilter = (Spinner) findViewById(R.id.spinner1Filter);  
 
-
-	        
-	        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+	        ArrayAdapter<String> adapterTabs = new ArrayAdapter<String>(
 	                this, android.R.layout.simple_spinner_item, exrcises);
-	        exerciseFilter.setAdapter(adapter);
+	        exerciseFilter.setAdapter(adapterTabs);
 	        exerciseFilter.setOnItemSelectedListener(
 	                new AdapterView.OnItemSelectedListener() {
 	                    @Override
@@ -88,7 +137,80 @@ public class TrainingFilterActivity extends Activity {
 	                }
 	            );
 	        /////////////END SPINNER FILTER CODE  /////////////////
+	        
+	        ////////////////LIST VIEW BEGINNER  /////////////////////
+	        ////// http://www.vogella.com/tutorials/AndroidListView/article.html /////
+	        listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
+	        
+	        ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
+	                android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
 	      
+	      
+	              // Assign adapter to ListView
+	              listViewBeginner.setAdapter(adapterBeginnerList); 
+	              
+	              // ListView Item Click Listener
+	              listViewBeginner.setOnItemClickListener(new OnItemClickListener() {
+	            	  @Override
+	            	  public void onItemClick(AdapterView<?> parent, View view,
+	            	    int position, long id) {
+	            	    Toast.makeText(getApplicationContext(),
+	            	      "Click Beginner ListItem Number " + position, Toast.LENGTH_LONG)
+	            	      .show();
+	            	  }
+	            	}); 
+	        
+	        //////////////END LIST VIEW BEGINNER  ////////////////////////
+	              
+	        ////////////////LIST VIEW INTERMEDIATE  /////////////////////
+	  	        
+	  	     listViewIntermediate = (ListView) findViewById(R.id.listView2Intermediate);
+	  	        
+	  	     ArrayAdapter<String> adapterIntermediateList = new ArrayAdapter<String>(this,
+	  	                android.R.layout.simple_list_item_1, android.R.id.text1, intermediateList);
+	  	      
+	  	      
+	  	              // Assign adapter to ListView
+	  	        	listViewIntermediate.setAdapter(adapterIntermediateList); 
+	  	              
+	  	              // ListView Item Click Listener
+	  	            listViewIntermediate.setOnItemClickListener(new OnItemClickListener() {
+	  	            	@Override
+	  	            	public void onItemClick(AdapterView<?> parent, View view,
+	  	            	  int position, long id) {
+	  	            	  Toast.makeText(getApplicationContext(),
+	  	            	    "Click Intermediate ListItem Number " + position, Toast.LENGTH_LONG)
+	  	            	    .show();
+	  	            	  }
+	  	            	}); 
+	  	        
+	  	        //////////////END LIST VIEW INTERMEDIATE  ////////////////////////
+	      
+	  	            
+	  	     ////////////////LIST VIEW ADVANCE  /////////////////////
+		  	        
+	  		  listViewAdvance = (ListView) findViewById(R.id.listView3Advance);
+	  		  	        
+	  		  ArrayAdapter<String> adapterAdvanceList = new ArrayAdapter<String>(this,
+	  		  	         android.R.layout.simple_list_item_1, android.R.id.text1, advanceList);
+	  		  	      
+	  		  	      
+	  		  	              // Assign adapter to ListView
+	  		  	    listViewAdvance.setAdapter(adapterAdvanceList); 
+	  		  	              
+	  		  	              // ListView Item Click Listener
+	  		  	    listViewAdvance.setOnItemClickListener(new OnItemClickListener() {
+	  		  	        @Override
+	  		  	        public void onItemClick(AdapterView<?> parent, View view,
+	  		  	          int position, long id) {
+	  		  	          Toast.makeText(getApplicationContext(),
+	  		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
+	  		  	            .show();
+	  		  	          }
+	  		  	        }); 
+	  		  	        
+	  		  	        //////////////END LIST VIEW ADVANCE  ////////////////////////
+	  		      
 	}
 
 	
