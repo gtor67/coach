@@ -3,7 +3,9 @@ package com.example.coachme;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
+import com.parse.*;
+import com.parse.ParseAnalytics;
+import com.parse.ParseObject;
 public class Splash extends Activity
 {
 
@@ -33,6 +35,17 @@ public class Splash extends Activity
 			}
 		};
 		timer.start();
+		
+		
+		////////////PARSE.COM TESTING ////////////
+		Parse.initialize(this, "eT6q3q5rgzDUgTAjRuTPAzyHSzvo7sbilbu9jqvU", "4TrzrKp78gLmGH0IcEB2pE4BtyIDz8siPrGszV6i");		
+		ParseObject testObject = new ParseObject("TestObject");
+		testObject.put("foo", "bar");
+		testObject.saveInBackground();
+		
+
+
 	}
 
+	
 }
