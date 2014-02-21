@@ -12,5 +12,6 @@
     <string name="intermediate">Intermediate</string>
     <string name="advanced">Advanced</string>
     <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_content">Content</string>
 
 </resources>

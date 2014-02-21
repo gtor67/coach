@@ -101,7 +101,7 @@ public class TrainingFilterActivity extends Activity {
 	        spec1Beginner.setContent(R.id.tab1);
 	        spec1Beginner.setIndicator("Beginner");//text on tab
 	        tabH.addTab(spec1Beginner);
-	      
+	        //don't need to make new tabspec object?
 	        TabSpec spec2Intermediate=tabH.newTabSpec("TAB 2");
 	        spec2Intermediate.setIndicator("Intermediate"); //text on tab
 	        spec2Intermediate.setContent(R.id.tab2);
@@ -154,6 +154,8 @@ public class TrainingFilterActivity extends Activity {
 	            	  @Override
 	            	  public void onItemClick(AdapterView<?> parent, View view,
 	            	    int position, long id) {
+	            		Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
+	  	            	startActivity(intent);
 	            	    Toast.makeText(getApplicationContext(),
 	            	      "Click Beginner ListItem Number " + position, Toast.LENGTH_LONG)
 	            	      .show();
@@ -178,9 +180,12 @@ public class TrainingFilterActivity extends Activity {
 	  	            	@Override
 	  	            	public void onItemClick(AdapterView<?> parent, View view,
 	  	            	  int position, long id) {
+	  	             	  Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
+	  	            	  startActivity(intent);
 	  	            	  Toast.makeText(getApplicationContext(),
 	  	            	    "Click Intermediate ListItem Number " + position, Toast.LENGTH_LONG)
 	  	            	    .show();
+	  	   
 	  	            	  }
 	  	            	}); 
 	  	        
@@ -203,6 +208,8 @@ public class TrainingFilterActivity extends Activity {
 	  		  	        @Override
 	  		  	        public void onItemClick(AdapterView<?> parent, View view,
 	  		  	          int position, long id) {
+	  		  	        Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
+	  	            	startActivity(intent);
 	  		  	          Toast.makeText(getApplicationContext(),
 	  		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
 	  		  	            .show();

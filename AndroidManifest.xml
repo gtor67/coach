@@ -51,6 +51,14 @@
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
+        <activity
+            android:name="com.example.coachme.Content"
+            android:label="@string/title_activity_content"
+            android:parentActivityName="com.example.coachme.TrainingFilterActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.coachme.TrainingFilterActivity" />
+        </activity>
     </application>
 
 </manifest>
