@@ -25,56 +25,86 @@ public final class R {
         public static final int splash=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000f;
-        public static final int buttonAdvanced=0x7f090005;
-        public static final int buttonBeginner=0x7f090003;
-        public static final int buttonIntermediate=0x7f090004;
-        public static final int experienceContainer=0x7f090002;
-        public static final int filterContainer=0x7f090007;
-        public static final int listView1Beginner=0x7f09000a;
-        public static final int listView2Intermediate=0x7f09000c;
-        public static final int listView3Advance=0x7f09000e;
-        public static final int spinner1Filter=0x7f090008;
-        public static final int tab1=0x7f090009;
-        public static final int tab2=0x7f09000b;
-        public static final int tab3=0x7f09000d;
-        public static final int tabhost=0x7f090006;
-        public static final int textView1=0x7f090000;
-        public static final int textView2=0x7f090001;
+        public static final int action_forgot_password=0x7f090018;
+        public static final int action_settings=0x7f090019;
+        public static final int button1Login=0x7f09000a;
+        public static final int buttonAdvanced=0x7f09000e;
+        public static final int buttonBeginner=0x7f09000c;
+        public static final int buttonIntermediate=0x7f09000d;
+        public static final int email=0x7f090003;
+        public static final int experienceContainer=0x7f09000b;
+        public static final int filterContainer=0x7f090010;
+        public static final int listView1Beginner=0x7f090013;
+        public static final int listView2Intermediate=0x7f090015;
+        public static final int listView3Advance=0x7f090017;
+        public static final int login=0x7f090005;
+        public static final int login_form=0x7f090002;
+        public static final int login_status=0x7f090000;
+        public static final int login_status_message=0x7f090001;
+        public static final int password=0x7f090004;
+        public static final int sign_in_button=0x7f090006;
+        public static final int spinner1Filter=0x7f090011;
+        public static final int sportContainer=0x7f090007;
+        public static final int tab1=0x7f090012;
+        public static final int tab2=0x7f090014;
+        public static final int tab3=0x7f090016;
+        public static final int tabhost=0x7f09000f;
+        public static final int textView1=0x7f090008;
+        public static final int textView2=0x7f090009;
     }
     public static final class layout {
-        public static final int activity_main=0x7f030000;
-        public static final int activity_training_filter=0x7f030001;
-        public static final int splash=0x7f030002;
+        public static final int activity_login=0x7f030000;
+        public static final int activity_main=0x7f030001;
+        public static final int activity_register=0x7f030002;
+        public static final int activity_training_filter=0x7f030003;
+        public static final int splash=0x7f030004;
     }
     public static final class menu {
-        public static final int main=0x7f080000;
-        public static final int training_filter=0x7f080001;
+        public static final int login=0x7f080000;
+        public static final int main=0x7f080001;
+        public static final int register=0x7f080002;
+        public static final int training_filter=0x7f080003;
     }
     public static final class raw {
         public static final int splashsound=0x7f040000;
     }
     public static final class string {
+        public static final int action_forgot_password=0x7f060010;
         public static final int action_settings=0x7f060001;
+        public static final int action_sign_in_register=0x7f06000e;
+        public static final int action_sign_in_short=0x7f06000f;
         public static final int advanced=0x7f060009;
         public static final int app_name=0x7f060000;
         public static final int beginner=0x7f060007;
         public static final int button_baseball=0x7f060002;
+        public static final int error_field_required=0x7f060015;
+        public static final int error_incorrect_password=0x7f060014;
+        public static final int error_invalid_email=0x7f060012;
+        public static final int error_invalid_password=0x7f060013;
         public static final int hello_world=0x7f060006;
         public static final int home_instruction=0x7f060003;
         public static final int home_note=0x7f060004;
         public static final int intermediate=0x7f060008;
+        public static final int login_progress_signing_in=0x7f060011;
+        /**  Strings related to login 
+         */
+        public static final int prompt_email=0x7f06000c;
+        public static final int prompt_password=0x7f06000d;
+        public static final int title_activity_login=0x7f06000b;
+        public static final int title_activity_register=0x7f06000a;
         public static final int title_activity_training_filter=0x7f060005;
     }
     public static final class style {
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
@@ -94,5 +124,6 @@ public final class R {
          */
         public static final int AppTheme=0x7f070001;
         public static final int LevelButtonFont=0x7f070002;
+        public static final int LoginFormContainer=0x7f070003;
     }
 }

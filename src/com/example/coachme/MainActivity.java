@@ -27,4 +27,9 @@ public class MainActivity extends Activity {
     	Intent intent = new Intent(this, TrainingFilterActivity.class);
     	startActivity(intent);
     }
+    
+    public void chooseLogin(View view) {
+    	Intent intent = new Intent(this, LoginActivity.class);
+    	startActivity(intent);
+    }
 }
