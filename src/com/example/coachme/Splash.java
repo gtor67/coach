@@ -2,10 +2,10 @@ package com.example.coachme;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import com.parse.*;
-import com.parse.ParseAnalytics;
-import com.parse.ParseObject;
 public class Splash extends Activity
 {
 
@@ -21,8 +21,17 @@ public class Splash extends Activity
 			{
 				try
 				{
-					sleep(5000);
-				}
+					
+					SoundPool sp = new SoundPool(1,3,0);
+					int id = sp.load(Splash.this,R.raw.splashsound,1);
+				
+					sp.play(id, 0.5f, 0.5f, 0, 0, 1.0f);
+					MediaPlayer mPlayer = MediaPlayer.create(Splash.this, R.raw.splashsound);
+					
+					sleep(2000);
+					mPlayer.start();
+					sp.release();
+				} 
 				catch (InterruptedException e)
 				{
 					e.printStackTrace();
