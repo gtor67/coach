@@ -80,6 +80,8 @@ public class TrainingFilterActivity extends Activity {
           "Advance 10", 
           "Advance 11"
          };
+	//Testing to see if I can pass list item text to next screen
+	public final static String EXTRA_MESSAGE = "com.example.coach.RName";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -209,6 +211,9 @@ public class TrainingFilterActivity extends Activity {
 	  		  	        public void onItemClick(AdapterView<?> parent, View view,
 	  		  	          int position, long id) {
 	  		  	        Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
+	  		  	        //String selRoutine = TrainingFilterActivity.advancedList[position]; //Get text of item
+	  		  	        String selRoutine = (String)parent.getAdapter().getItem(position);
+	  		  	        intent.putExtra(EXTRA_MESSAGE, selRoutine);
 	  	            	startActivity(intent);
 	  		  	          Toast.makeText(getApplicationContext(),
 	  		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)

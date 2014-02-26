@@ -44,4 +44,12 @@
         android:onClick="chooseLogin"
         android:text="login" />
 
+    <Button
+        android:id="@+id/createAccButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_account"
+        android:onClick="createAccount"
+         />
+
 </LinearLayout>
