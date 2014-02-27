@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 import android.widget.Toast;
 import android.support.v4.app.NavUtils;
@@ -21,7 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
-public class TrainingFilterActivity extends Activity {
+public class TrainingFilterActivity extends Activity implements OnTabChangeListener {
 	TabHost tabH;
 	Spinner exerciseFilter;
 	ListView listViewBeginner ;
@@ -100,20 +101,23 @@ public class TrainingFilterActivity extends Activity {
 		tabH.setup();
 		
 		 TabSpec spec1Beginner=tabH.newTabSpec("TAB 1");
-	        spec1Beginner.setContent(R.id.tab1);
+	        spec1Beginner.setContent(R.id.listView1Beginner);
 	        spec1Beginner.setIndicator("Beginner");//text on tab
 	        tabH.addTab(spec1Beginner);
 	        //don't need to make new tabspec object?
 	        TabSpec spec2Intermediate=tabH.newTabSpec("TAB 2");
 	        spec2Intermediate.setIndicator("Intermediate"); //text on tab
-	        spec2Intermediate.setContent(R.id.tab2);
+	        spec2Intermediate.setContent(R.id.listView1Beginner);
 	        tabH.addTab(spec2Intermediate);
 	      
 	        TabSpec spec3Advance=tabH.newTabSpec("TAB 3");
-	        spec3Advance.setContent(R.id.tab3);
+	        spec3Advance.setContent(R.id.listView1Beginner);
 	        spec3Advance.setIndicator("Advance"); //text on tab
 	        tabH.addTab(spec3Advance);
-	     
+	        
+	        tabH.setCurrentTab(1);
+	        tabH.setCurrentTab(0);
+	
 	     ///////// END TAB CODE  //////////////////////////////////   
 	        
 	        ///////////SPINNER FILTER/////////////
@@ -148,7 +152,8 @@ public class TrainingFilterActivity extends Activity {
 	        //check to see which list to get
 	        int selTab = tabH.getCurrentTab();
 	        ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
-		            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);;
+		            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
+	        /*
 	        switch (selTab)
 	        {
 	        case 0:
@@ -167,6 +172,7 @@ public class TrainingFilterActivity extends Activity {
 	        		break;
 	        	
 	        }
+	        */
 	        /*ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
 	                android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList); */
 	      
@@ -189,7 +195,8 @@ public class TrainingFilterActivity extends Activity {
 		  		  	            .show();
 	            	  }
 	            	}); 
-	        
+	             
+	             tabH.setOnTabChangedListener(this);
 	        //////////////END LIST VIEW BEGINNER  ////////////////////////
 	       
 	        /*
@@ -257,7 +264,7 @@ public class TrainingFilterActivity extends Activity {
 
 	
 //////////////////////////////////////////////////////////
-	
+
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
 	 */
@@ -290,6 +297,36 @@ public class TrainingFilterActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+
+	@Override
+	public void onTabChanged(String tabId)
+	{
+		// TODO Auto-generated method stub
+		int selTab = tabH.getCurrentTab();
+        switch (selTab)
+        {
+        case 0:
+            	ArrayAdapter<String >adapterBeginnerList = new ArrayAdapter<String>(this,
+	            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
+            	listViewBeginner.setAdapter(adapterBeginnerList); 
+        		break;
+        case 1:
+            	adapterBeginnerList = new ArrayAdapter<String>(this,
+	            android.R.layout.simple_list_item_1, android.R.id.text1, intermediateList);
+            	listViewBeginner.setAdapter(adapterBeginnerList); 
+        		break;
+        case 2:
+            	adapterBeginnerList = new ArrayAdapter<String>(this,
+	            android.R.layout.simple_list_item_1, android.R.id.text1, advanceList);
+            	listViewBeginner.setAdapter(adapterBeginnerList); 
+        		break;
+        default:
+        		break;
+        	
+        }
+        
 	}
 
 }
