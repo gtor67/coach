@@ -28,7 +28,7 @@
                 android:gravity="center" >
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/textViewTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Select Filter: "
@@ -67,10 +67,11 @@
                     android:layout_height="match_parent" >
 
                     <ListView
-                        android:id="@+id/listView2Intermediate"
+                        android:id="@id/listView1Beginner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" >
+                        android:layout_weight="1"
+                    >
                     </ListView>
 
                 </LinearLayout>
@@ -81,10 +82,11 @@
                     android:layout_height="match_parent" >
 
                     <ListView
-                        android:id="@+id/listView3Advance"
+                        android:id="@id/listView1Beginner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" >
+                        android:layout_weight="1"
+                    >
                     </ListView>
 
                 </LinearLayout>

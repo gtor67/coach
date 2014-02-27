@@ -144,8 +144,31 @@ public class TrainingFilterActivity extends Activity {
 	        ////// http://www.vogella.com/tutorials/AndroidListView/article.html /////
 	        listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
 	        
+	        
+	        //check to see which list to get
+	        int selTab = tabH.getCurrentTab();
 	        ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
-	                android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
+		            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);;
+	        switch (selTab)
+	        {
+	        case 0:
+	            	adapterBeginnerList = new ArrayAdapter<String>(this,
+		            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
+	        		break;
+	        case 1:
+	            	adapterBeginnerList = new ArrayAdapter<String>(this,
+		            android.R.layout.simple_list_item_1, android.R.id.text1, intermediateList);
+	        		break;
+	        case 2:
+	            	adapterBeginnerList = new ArrayAdapter<String>(this,
+		            android.R.layout.simple_list_item_1, android.R.id.text1, advanceList);
+	        		break;
+	        default:
+	        		break;
+	        	
+	        }
+	        /*ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
+	                android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList); */
 	      
 	      
 	              // Assign adapter to ListView
@@ -156,16 +179,20 @@ public class TrainingFilterActivity extends Activity {
 	            	  @Override
 	            	  public void onItemClick(AdapterView<?> parent, View view,
 	            	    int position, long id) {
-	            		Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
-	  	            	startActivity(intent);
-	            	    Toast.makeText(getApplicationContext(),
-	            	      "Click Beginner ListItem Number " + position, Toast.LENGTH_LONG)
-	            	      .show();
+	            		  Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
+		  		  	        //String selRoutine = TrainingFilterActivity.advancedList[position]; //Get text of item
+		  		  	        String selRoutine = (String)parent.getAdapter().getItem(position);
+		  		  	        intent.putExtra(EXTRA_MESSAGE, selRoutine);
+		  	            	startActivity(intent);
+		  		  	          Toast.makeText(getApplicationContext(),
+		  		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
+		  		  	            .show();
 	            	  }
 	            	}); 
 	        
 	        //////////////END LIST VIEW BEGINNER  ////////////////////////
-	              
+	       
+	        /*
 	        ////////////////LIST VIEW INTERMEDIATE  /////////////////////
 	  	        
 	  	     listViewIntermediate = (ListView) findViewById(R.id.listView2Intermediate);
@@ -193,9 +220,12 @@ public class TrainingFilterActivity extends Activity {
 	  	        
 	  	        //////////////END LIST VIEW INTERMEDIATE  ////////////////////////
 	      
-	  	            
+	  	       */
+	              
+	              /*
 	  	     ////////////////LIST VIEW ADVANCE  /////////////////////
-		  	        
+		  	
+	         
 	  		  listViewAdvance = (ListView) findViewById(R.id.listView3Advance);
 	  		  	        
 	  		  ArrayAdapter<String> adapterAdvanceList = new ArrayAdapter<String>(this,
@@ -222,7 +252,7 @@ public class TrainingFilterActivity extends Activity {
 	  		  	        }); 
 	  		  	        
 	  		  	        //////////////END LIST VIEW ADVANCE  ////////////////////////
-	  		      
+	  		      */
 	}
 
 	

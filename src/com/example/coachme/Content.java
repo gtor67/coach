@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TabHost;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
@@ -21,11 +22,15 @@ public class Content extends Activity {
 		
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(TrainingFilterActivity.EXTRA_MESSAGE);
+		/*
 		TextView textView = new TextView(this);
 		textView.setTextSize(40);
 		textView.setText(title);
 		
 		setContentView(textView);
+		*/
+		TextView titleTV = (TextView) findViewById (R.id.textViewTitle);
+		titleTV.setText(title);
 	}
 
 	/**
