@@ -1,9 +1,11 @@
 package com.example.coachme;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
@@ -31,6 +33,15 @@ public class Content extends Activity {
 		*/
 		TextView titleTV = (TextView) findViewById (R.id.textViewTitle);
 		titleTV.setText(title);
+		
+		ImageView image = (ImageView) findViewById (R.id.imageView1);
+		String imageLoc = "splash";
+		int resourceId = this.getResources().getIdentifier("splash", "drawable", "com.example.coachme");
+		image.setImageResource(resourceId);
+		//String imageLoc = "android.resource://your.pack.name" + "";
+		//Uri myUri = Uri.parse(imageLoc);
+		//image.setImageURI("" + "");
+		
 	}
 
 	/**
