@@ -1,9 +1,15 @@
 package com.example.coachme;
 
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
+
+import android.net.ParseException;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -50,6 +56,37 @@ public class CreateAccount extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	public void createAccount(View view) 
+	{
+		EditText emailView = (EditText) findViewById(R.id.emailEditText);
+		EditText passView = (EditText) findViewById(R.id.passEditText);
+		String email = emailView.getText().toString();
+		String pass = passView.getText().toString();
+		
+		ParseUser user = new ParseUser();
+		user.setUsername(email);
+		user.setPassword(pass);
+		user.setEmail(email);
+		 
+		// other fields can be set just like with ParseObject
+		//user.put("phone", "650-253-0000");
+		user.signUpInBackground(new SignUpCallback() 
+		{
+			@Override
+			public void done(com.parse.ParseException e) 
+			{
+				if (e == null) {
+				      // Hooray! Let them use the app now.
+				    } else {
+				      // Sign up didn't succeed. Look at the ParseException
+				      // to figure out what went wrong
+				    }
+			}
+		});
+		
+		
 	}
 
 }

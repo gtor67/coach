@@ -15,5 +15,10 @@
     <string name="title_activity_content">Content</string>
     <string name="create_account">Create an Account</string>
     <string name="title_activity_create_account">CreateAccount</string>
+    <string name ="account_reg_descript">Sign up by entering your email address and password.</string>
+    <string name ="account_reg_head">Account Registration</string>
+    <string name ="enter_Email">Enter your email address below:</string>
+    <string name ="enter_Pass">Enter the password you will use below:</string>
+    <string name ="submit">Submit</string>
 
 </resources>

@@ -26,29 +26,34 @@ public final class R {
         public static final int splash2=0x7f020002;
     }
     public static final class id {
-        public static final int action_forgot_password=0x7f090017;
-        public static final int action_settings=0x7f090016;
-        public static final int button1Login=0x7f09000c;
-        public static final int createAccButton=0x7f09000d;
-        public static final int email=0x7f090005;
-        public static final int experienceContainer=0x7f09000e;
-        public static final int filterContainer=0x7f090010;
+        public static final int action_forgot_password=0x7f09001c;
+        public static final int action_settings=0x7f09001b;
+        public static final int button1=0x7f090006;
+        public static final int button1Login=0x7f090011;
+        public static final int createAccButton=0x7f090012;
+        public static final int email=0x7f09000a;
+        public static final int emailEditText=0x7f090003;
+        public static final int emailTextView=0x7f090002;
+        public static final int experienceContainer=0x7f090013;
+        public static final int filterContainer=0x7f090015;
         public static final int imageView1=0x7f090001;
-        public static final int listView1Beginner=0x7f090013;
-        public static final int listdb=0x7f09000b;
-        public static final int login=0x7f090007;
-        public static final int login_form=0x7f090004;
-        public static final int login_status=0x7f090002;
-        public static final int login_status_message=0x7f090003;
-        public static final int password=0x7f090006;
-        public static final int sign_in_button=0x7f090008;
-        public static final int spinner1Filter=0x7f090011;
-        public static final int sportContainer=0x7f090009;
-        public static final int tab1=0x7f090012;
-        public static final int tab2=0x7f090014;
-        public static final int tab3=0x7f090015;
-        public static final int tabhost=0x7f09000f;
-        public static final int textView2=0x7f09000a;
+        public static final int listView1Beginner=0x7f090018;
+        public static final int listdb=0x7f090010;
+        public static final int login=0x7f09000c;
+        public static final int login_form=0x7f090009;
+        public static final int login_status=0x7f090007;
+        public static final int login_status_message=0x7f090008;
+        public static final int passEditText=0x7f090005;
+        public static final int passTextView=0x7f090004;
+        public static final int password=0x7f09000b;
+        public static final int sign_in_button=0x7f09000d;
+        public static final int spinner1Filter=0x7f090016;
+        public static final int sportContainer=0x7f09000e;
+        public static final int tab1=0x7f090017;
+        public static final int tab2=0x7f090019;
+        public static final int tab3=0x7f09001a;
+        public static final int tabhost=0x7f090014;
+        public static final int textView2=0x7f09000f;
         public static final int textViewTitle=0x7f090000;
     }
     public static final class layout {
@@ -56,9 +61,8 @@ public final class R {
         public static final int activity_create_account=0x7f030001;
         public static final int activity_login=0x7f030002;
         public static final int activity_main=0x7f030003;
-        public static final int activity_register=0x7f030004;
-        public static final int activity_training_filter=0x7f030005;
-        public static final int splash=0x7f030006;
+        public static final int activity_training_filter=0x7f030004;
+        public static final int splash=0x7f030005;
     }
     public static final class menu {
         public static final int content=0x7f080000;
@@ -72,31 +76,36 @@ public final class R {
         public static final int splashsound=0x7f040000;
     }
     public static final class string {
-        public static final int action_forgot_password=0x7f060013;
+        public static final int account_reg_descript=0x7f06000e;
+        public static final int account_reg_head=0x7f06000f;
+        public static final int action_forgot_password=0x7f060018;
         public static final int action_settings=0x7f060001;
-        public static final int action_sign_in_register=0x7f060011;
-        public static final int action_sign_in_short=0x7f060012;
+        public static final int action_sign_in_register=0x7f060016;
+        public static final int action_sign_in_short=0x7f060017;
         public static final int advanced=0x7f060009;
         public static final int app_name=0x7f060000;
         public static final int beginner=0x7f060007;
         public static final int button_baseball=0x7f060002;
         public static final int create_account=0x7f06000c;
-        public static final int error_field_required=0x7f060018;
-        public static final int error_incorrect_password=0x7f060017;
-        public static final int error_invalid_email=0x7f060015;
-        public static final int error_invalid_password=0x7f060016;
+        public static final int enter_Email=0x7f060010;
+        public static final int enter_Pass=0x7f060011;
+        public static final int error_field_required=0x7f06001d;
+        public static final int error_incorrect_password=0x7f06001c;
+        public static final int error_invalid_email=0x7f06001a;
+        public static final int error_invalid_password=0x7f06001b;
         public static final int hello_world=0x7f060006;
         public static final int home_instruction=0x7f060003;
         public static final int home_note=0x7f060004;
         public static final int intermediate=0x7f060008;
-        public static final int login_progress_signing_in=0x7f060014;
+        public static final int login_progress_signing_in=0x7f060019;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f06000f;
-        public static final int prompt_password=0x7f060010;
+        public static final int prompt_email=0x7f060014;
+        public static final int prompt_password=0x7f060015;
+        public static final int submit=0x7f060012;
         public static final int title_activity_content=0x7f06000b;
         public static final int title_activity_create_account=0x7f06000d;
-        public static final int title_activity_login=0x7f06000e;
+        public static final int title_activity_login=0x7f060013;
         public static final int title_activity_register=0x7f06000a;
         public static final int title_activity_training_filter=0x7f060005;
     }
