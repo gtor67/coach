@@ -28,7 +28,7 @@ public class Splash extends Activity
 					sp.play(id, 0.5f, 0.5f, 0, 0, 1.0f);
 					MediaPlayer mPlayer = MediaPlayer.create(Splash.this, R.raw.splashsound);
 					
-					sleep(2000);
+					sleep(1000);
 					mPlayer.start();
 					sp.release();
 				} 
