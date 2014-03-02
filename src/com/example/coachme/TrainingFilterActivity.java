@@ -30,6 +30,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	ListView listViewBeginner ;
 	ListView listViewIntermediate;
 	ListView listViewAdvance;
+
 	private DBAdapter myDb;
 	/////ARRAY for SPINNER FILTER
 	String[] exrcises = {
@@ -155,9 +156,9 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	        
 	        
 	        //check to see which list to get. don't need right now
-	        int selTab = tabH.getCurrentTab();
-	        ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
-		            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
+	        //int selTab = tabH.getCurrentTab();
+	        //ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
+		      //      android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
 	        
 	        
 	        /*
@@ -312,6 +313,8 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	public void onTabChanged(String tabId)
 	{
 		// TODO Auto-generated method stub
+		//Need to reopen database since it closes everytime the myDb.list is called
+		myDb.open();
 		int selTab = tabH.getCurrentTab();
 		//replaced beginnerList, intermediateList, advancedList with mydb.___
         switch (selTab)
@@ -323,12 +326,12 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
         		break;
         case 1:
             	adapterBeginnerList = new ArrayAdapter<String>(this,
-	            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
+	            android.R.layout.simple_list_item_1, android.R.id.text1, myDb.listBeginner("intermedite"));
             	listViewBeginner.setAdapter(adapterBeginnerList); 
         		break;
         case 2:
             	adapterBeginnerList = new ArrayAdapter<String>(this,
-	            android.R.layout.simple_list_item_1, android.R.id.text1, advanceList);
+	            android.R.layout.simple_list_item_1, android.R.id.text1, myDb.listBeginner("Advanted"));
             	listViewBeginner.setAdapter(adapterBeginnerList); 
         		break;
         default:

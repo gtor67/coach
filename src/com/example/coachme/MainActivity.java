@@ -18,9 +18,11 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myDb = new DBAdapter(this);
         openDB();
         filldb();
         loadMylist();
+        //this.deleteDatabase("Mydb");
     }
     private void loadMylist() {
   		// TODO Auto-generated method stub
@@ -70,7 +72,7 @@ public class MainActivity extends Activity {
     }
 
     private void openDB() {
-     myDb = new DBAdapter(this);
+     //myDb = new DBAdapter(this);
      myDb.open();
     }
     private void closeDB() {

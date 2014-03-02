@@ -87,6 +87,8 @@ public class DBAdapter {
    + KEY_FOCUS + " string not null ,"
    + KEY_PROCEDURE + " string not null,"
    + KEY_TITLE + " string not null unique,"
+   + KEY_FOCUS + " string not null, "
+   + KEY_PROCEDURE + " string not null, "
    + KEY_URL + " string not null"
    
    // Rest  of creation:
@@ -204,13 +206,14 @@ public class DBAdapter {
 	 while (c.moveToNext())
 	 {  
 		   //int is the column number from table
-		 if( (c.getString(1)).equals("Beginner") )
+		 if( (c.getString(1)).equals(level) )
 		   data.add(c.getString(0)+" "+ c.getString(1) + " " + c.getString(2));  
 	 }  
 		  c.close();  
 		  db.close();  	  
 	return data; 
  }
+ 
  
  
  // Get a specific row (by rowId)
@@ -283,4 +286,3 @@ public class DBAdapter {
   }
  }
 }
-
