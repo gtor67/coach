@@ -33,9 +33,23 @@ public class Content extends Activity {
 		*/
 		TextView titleTV = (TextView) findViewById (R.id.textViewTitle);
 		titleTV.setText(title);
-		
+		//StringBuffer fileName = new StringBuffer ("p");
+	    /*
+		boolean done = false;
+		while(!done)
+		{
+			int i = 0;
+			char temp = title.charAt(i);
+			if(Character.isDigit(temp))
+				fileName.append(temp);
+			else
+				done = true;
+			i++;	
+		}
+		*/
 		ImageView image = (ImageView) findViewById (R.id.imageView1);
 		String imageLoc = "splash";
+		//System.out.println(fileName.toString());
 		int resourceId = this.getResources().getIdentifier("splash", "drawable", "com.example.coachme");
 		image.setImageResource(resourceId);
 		//String imageLoc = "android.resource://your.pack.name" + "";
