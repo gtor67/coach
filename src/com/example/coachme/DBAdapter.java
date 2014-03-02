@@ -38,6 +38,7 @@ public class DBAdapter {
  public static final String KEY_TYPE = "type";
  public static final String KEY_FOCUS = "focus";
  public static final String KEY_PROCEDURE = "procedure";
+ public static final String KEY_TITLE ="title";
  public static final String KEY_URL = "url";
  
  
@@ -51,7 +52,8 @@ public class DBAdapter {
  public static final int COL_TYPE = 2;
  public static final int COL_FOCUS = 3;
  public static final int COL_PROCEDURE = 4;
- public static final int COL_URL = 5;
+ public static final int COL_TITLE = 5;
+ public static final int COL_URL = 6;
  
  //public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_NAME, KEY_STUDENTNUM, KEY_FAVCOLOUR};
   public static final String[] ALL_KEYS = new String[] {KEY_ROWID, KEY_LEVEL, KEY_TYPE, KEY_URL};
@@ -82,8 +84,9 @@ public class DBAdapter {
 //   
    + KEY_LEVEL + " string not null, "
    + KEY_TYPE + " string not null, "
-   + KEY_FOCUS + " string not null"
-   + KEY_PROCEDURE + " string not null"
+   + KEY_FOCUS + " string not null ,"
+   + KEY_PROCEDURE + " string not null,"
+   + KEY_TITLE + " string not null unique,"
    + KEY_URL + " string not null"
    
    // Rest  of creation:
@@ -116,7 +119,7 @@ public class DBAdapter {
  }
  
  // Add a new set of values to the database.
- public long insertRow(String level, String type,String focus, String procedure, String url) {
+ public long insertRow(String level, String type,String focus, String procedure,String title ,String url) {
   /*
    * CHANGE 3:
    */  
@@ -133,6 +136,7 @@ public class DBAdapter {
   initialValues.put(KEY_TYPE, type);
   initialValues.put(KEY_FOCUS, focus);
   initialValues.put(KEY_PROCEDURE, procedure);
+  initialValues.put(KEY_TITLE, title);
   initialValues.put(KEY_URL, url);
   
   // Insert it into the database.
@@ -223,7 +227,7 @@ public class DBAdapter {
  // Change an existing row to be equal to new data.
 // public boolean updateRow(long rowId, String name, int studentNum, String favColour) {
    
-  public boolean updateRow(long rowId, String level, String type, String focus,String procedure,String url) {
+  public boolean updateRow(long rowId, String level, String type, String focus,String procedure,String title,String url) {
   String where = KEY_ROWID + "=" + rowId;
 
   /*
@@ -237,6 +241,7 @@ public class DBAdapter {
   newValues.put(KEY_TYPE, type);
   newValues.put(KEY_FOCUS, focus);
   newValues.put(KEY_PROCEDURE, procedure);
+  newValues.put(KEY_TITLE, title);
   newValues.put(KEY_URL, url);
   
   // Insert it into the database.
