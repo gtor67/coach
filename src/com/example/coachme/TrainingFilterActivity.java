@@ -313,16 +313,17 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	{
 		// TODO Auto-generated method stub
 		int selTab = tabH.getCurrentTab();
+		//replaced beginnerList, intermediateList, advancedList with mydb.___
         switch (selTab)
         {
         case 0:
             	ArrayAdapter<String >adapterBeginnerList = new ArrayAdapter<String>(this,
-	            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
+	            android.R.layout.simple_list_item_1, android.R.id.text1, myDb.listBeginner("Beginner"));
             	listViewBeginner.setAdapter(adapterBeginnerList); 
         		break;
         case 1:
             	adapterBeginnerList = new ArrayAdapter<String>(this,
-	            android.R.layout.simple_list_item_1, android.R.id.text1, intermediateList);
+	            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
             	listViewBeginner.setAdapter(adapterBeginnerList); 
         		break;
         case 2:
@@ -339,7 +340,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
     
 	private void loadMylist() {
   		// TODO Auto-generated method stub
-  		List<String> list = myDb.listdata();
+  		List<String> list = myDb.listBeginner("Beginner");
   		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
   				android.R.layout.simple_list_item_1, list);
   				

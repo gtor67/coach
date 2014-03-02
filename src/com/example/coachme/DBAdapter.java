@@ -176,7 +176,7 @@ public class DBAdapter {
 					 
 	 
 	 
-	 
+	 //0 is id, 2 is the title
 	 while (c.moveToNext()) {  
 		   //int is the column number from table
 		   data.add(c.getString(0)+" "+c.getString(2));  
@@ -186,6 +186,29 @@ public class DBAdapter {
 	return data; 
  }
 
+ public List<String> listBeginner(String level){
+	 List<String> data = new ArrayList<String>();
+	 String where = KEY_ROWID + "=" + KEY_TYPE;
+	//
+	 Cursor c = db.rawQuery("SELECT * FROM mainTable",null);
+//	 Cursor c = db.query(DATABASE_TABLE, new String[]{KEY_LEVEL,KEY_TYPE,KEY_URL}, KEY_ROWID + "=?",
+	//		 new String[]{String.valueOf(KEY_LEVEL)},null,null,null,null);
+					 
+	 
+	 
+	 
+	 while (c.moveToNext())
+	 {  
+		   //int is the column number from table
+		 if( (c.getString(1)).equals("Beginner") )
+		   data.add(c.getString(0)+" "+ c.getString(1) + " " + c.getString(2));  
+	 }  
+		  c.close();  
+		  db.close();  	  
+	return data; 
+ }
+ 
+ 
  // Get a specific row (by rowId)
  public Cursor getRow(long rowId) {
   String where = KEY_ROWID + "=" + rowId;

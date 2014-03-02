@@ -64,8 +64,9 @@ public final class R {
         public static final int activity_create_account=0x7f030001;
         public static final int activity_login=0x7f030002;
         public static final int activity_main=0x7f030003;
-        public static final int activity_training_filter=0x7f030004;
-        public static final int splash=0x7f030005;
+        public static final int activity_register=0x7f030004;
+        public static final int activity_training_filter=0x7f030005;
+        public static final int splash=0x7f030006;
     }
     public static final class menu {
         public static final int content=0x7f080000;
