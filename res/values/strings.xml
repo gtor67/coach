@@ -20,5 +20,6 @@
     <string name ="enter_Email">Enter your email address below:</string>
     <string name ="enter_Pass">Enter the password you will use below:</string>
     <string name ="submit">Submit</string>
+    <string name="train">trainingpic</string>
 
 </resources>
