@@ -1,5 +1,7 @@
 package com.example.coachme;
 
+import java.util.List;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -28,7 +30,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	ListView listViewBeginner ;
 	ListView listViewIntermediate;
 	ListView listViewAdvance;
-	
+	private DBAdapter myDb;
 	/////ARRAY for SPINNER FILTER
 	String[] exrcises = {
             "catching",
@@ -95,6 +97,9 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		Intent intent = getIntent();
 		setContentView(R.layout.activity_training_filter);
 		
+		//open database
+		 myDb = new DBAdapter(this);
+	     myDb.open();
 		///////////////////TABS////////////////////////
 		//// youtube vids from user "TheNewBoston " android vids 84-87?
 		tabH = (TabHost) findViewById (R.id.tabhost);
@@ -149,10 +154,12 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	        listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
 	        
 	        
-	        //check to see which list to get
+	        //check to see which list to get. don't need right now
 	        int selTab = tabH.getCurrentTab();
 	        ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
 		            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
+	        
+	        
 	        /*
 	        switch (selTab)
 	        {
@@ -178,8 +185,9 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	      
 	      
 	              // Assign adapter to ListView
-	              listViewBeginner.setAdapter(adapterBeginnerList); 
-	              
+	              //listViewBeginner.setAdapter(adapterBeginnerList);
+	        		//use this isntead of above
+	              this.loadMylist();
 	              // ListView Item Click Listener
 	              listViewBeginner.setOnItemClickListener(new OnItemClickListener() {
 	            	  @Override
@@ -328,5 +336,22 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
         }
         
 	}
+    
+	private void loadMylist() {
+  		// TODO Auto-generated method stub
+  		List<String> list = myDb.listdata();
+  		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+  				android.R.layout.simple_list_item_1, list);
+  				
+  		listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
+  		listViewBeginner.setAdapter(adapter);
+  		
+  	}
+	
+	@Override
+    protected void onDestroy() {
+     super.onDestroy(); 
+     myDb.close();
+    }
 
 }
