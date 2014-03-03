@@ -48,7 +48,7 @@ public class DBAdapter {
 // public static final int COL_STUDENTNUM = 2;
 // public static final int COL_FAVCOLOUR = 3;
  
-  public static final int COL_LEVEL = 1;
+ public static final int COL_LEVEL = 1;
  public static final int COL_TYPE = 2;
  public static final int COL_FOCUS = 3;
  public static final int COL_PROCEDURE = 4;
