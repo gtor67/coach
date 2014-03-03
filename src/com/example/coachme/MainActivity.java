@@ -18,10 +18,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        myDb = new DBAdapter(this);
-        openDB();
+        //myDb = new DBAdapter(this);
+        //openDB();
         //filldb();
-        loadMylist();
+        //loadMylist();
         //this.deleteDatabase("Mydb");
     }
     private void loadMylist() {
