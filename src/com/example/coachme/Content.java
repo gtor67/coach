@@ -11,10 +11,11 @@ import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 
 public class Content extends Activity {
-
+	private DBAdapter myDb;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,6 +25,8 @@ public class Content extends Activity {
 		
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(TrainingFilterActivity.EXTRA_MESSAGE);
+		myDb = new DBAdapter(this);
+	    myDb.open();
 		/*
 		TextView textView = new TextView(this);
 		textView.setTextSize(40);
@@ -34,18 +37,24 @@ public class Content extends Activity {
 		TextView titleTV = (TextView) findViewById (R.id.textViewTitle);
 		titleTV.setText(title);
 		StringBuffer fileName = new StringBuffer ("p");
-	    
+	    //StringBuffer id = new StringBuffer ("");
 		boolean done = false;
 		int i = 0;
 		while(!done)
 		{
 			char temp = title.charAt(i);
 			if(Character.isDigit(temp))
-				fileName.append(temp);
+				{
+					fileName.append(temp);
+					//id.append(temp);
+				}
 			else
 				done = true;
 			i++;	
 		}
+		//String idS = id.toString();
+		//long idL = Long.valueOf(idS).longValue();
+		//Cursor curs = myDb.getRow(idL);
 		
 		ImageView image = (ImageView) findViewById (R.id.imageView1);
 		//String imageLoc = "p1";

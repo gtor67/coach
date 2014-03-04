@@ -84,10 +84,9 @@ public class DBAdapter {
 //   
    + KEY_LEVEL + " string not null, "
    + KEY_TYPE + " string not null, "
-   + KEY_FOCUS + " string not null ,"
-   + KEY_PROCEDURE + " string not null,"
    + KEY_FOCUS + " string not null, "
    + KEY_PROCEDURE + " string not null, "
+   + KEY_TITLE + " string not null, string not null UNIQUE, "
    + KEY_URL + " string not null"
    
    // Rest  of creation:
@@ -213,7 +212,20 @@ public class DBAdapter {
 	return data; 
  }
  
- 
+ /*
+ public String getColumns(long id)
+ {
+	 Cursor c = db.rawQuery("SELECT * FROM mainTable",null);
+	 while (c.moveToNext())
+	 {  
+		   //int is the column number from table
+		 if( (c.getString(1)).equals(level) )
+		   data.add(c.getString(0)+" "+ c.getString(1) + " " + c.getString(2));  
+	 }  
+		  c.close();  
+		  db.close(); 
+ }
+ */
  
  // Get a specific row (by rowId)
  public Cursor getRow(long rowId) {
