@@ -86,7 +86,7 @@ public class DBAdapter {
    + KEY_TYPE + " string not null, "
    + KEY_FOCUS + " string not null, "
    + KEY_PROCEDURE + " string not null, "
-   + KEY_TITLE + " string not null, string not null UNIQUE, "
+   + KEY_TITLE + " string not null UNIQUE, "
    + KEY_URL + " string not null"
    
    // Rest  of creation:
