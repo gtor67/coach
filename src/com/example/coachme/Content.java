@@ -3,6 +3,7 @@ package com.example.coachme;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ public class Content extends Activity {
 		
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(TrainingFilterActivity.EXTRA_MESSAGE);
+		Log.d("test",title);
 		myDb = new DBAdapter(this);
 	    myDb.open();
 		/*

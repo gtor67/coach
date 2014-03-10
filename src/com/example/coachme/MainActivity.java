@@ -19,17 +19,15 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDb = new DBAdapter(this);
-        
         openDB();
         filldb();
-        loadMylist();
+        myDb.getAllRows();
+       // loadMylist();
         
-        
-        //this.deleteDatabase("Mydb");
     }
     private void loadMylist() {
   		// TODO Auto-generated method stub
-  		List<String> list = myDb.listdata();
+  		List<String> list = myDb.listdata("Beginner","All");
   		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
   				android.R.layout.simple_list_item_1, list);
   				
@@ -50,22 +48,22 @@ public class MainActivity extends Activity {
 		myDb.insertRow("Beginner","Catching",focus1 , procedure1 , "Fingers up thumbs down" ,"www.bc2.com");
 		myDb.insertRow("Beginner","Batting"," " , " " , " " ,"www.bc3.com");
 		myDb.insertRow("Beginner","Fielding"," " , " " , " " ,"www.bc4.com");
-		myDb.insertRow("Beginner","bunting"," " , " " , " " ,"www.bc5.com");
-		myDb.insertRow("Beginner","better Catching"," " , " " , " " ,"www.bc6.com");
-		myDb.insertRow("Beginner","improve Bating"," " , " " , " " ,"www.ib7.com");		    	
+		myDb.insertRow("Beginner","Bunting"," " , " " , " " ,"www.bc5.com");
+		myDb.insertRow("Beginner","Catching"," " , " " , " " ,"www.bc6.com");
+		myDb.insertRow("Beginner","Batting"," " , " " , " " ,"www.ib7.com");		    	
 			
-		myDb.insertRow("intermedite","Bating"," " , " " , " " ,"www.ib1.com");		
-		myDb.insertRow("intermedite","Catching"," " , " " , " " ,"www.ib3.com");		    	
-		myDb.insertRow("intermedite","Running"," " , " " , " " ,"www.ib2.com");		    	
-		myDb.insertRow("intermedite","Fielding",focus2 , procedure2 , "infield drill" ,"www.ib4.com");		    	
-		myDb.insertRow("intermedite","better Catching"," " , " " , " " ,"www.ib5.com");		    	
-		myDb.insertRow("intermedite","improve batting"," " , " " , " " ,"www.ib6.com");		    	
+		myDb.insertRow("Intermedite","BatTing"," " , " " , " " ,"www.ib1.com");		
+		myDb.insertRow("Intermedite","Catching"," " , " " , " " ,"www.ib3.com");		    	
+		myDb.insertRow("Intermedite","Running"," " , " " , " " ,"www.ib2.com");		    	
+		myDb.insertRow("Intermedite","Fielding",focus2 , procedure2 , "infield drill" ,"www.ib4.com");		    	
+		myDb.insertRow("Intermedite","Catching"," " , " " , " " ,"www.ib5.com");		    	
+		myDb.insertRow("Intermedite","Batting"," " , " " , " " ,"www.ib6.com");		    	
 			
-		myDb.insertRow("Advanted"," slideing",focus3 , procedure3 , "Rub Pull" ,"www.ar1.com");
-		myDb.insertRow("Advanted"," batting"," " , " " , " " ,"www.ar2.com");
-		myDb.insertRow("Advanted"," catching"," " , " " , " " ,"www.ar3.com");
-		myDb.insertRow("Advanted"," fielding"," " , " " , " " ,"www.ar4.com");
-		myDb.insertRow("Advanted"," batting"," " , " " , " " ,"www.ar5.com");
+		myDb.insertRow("Advanced"," Sliding",focus3 , procedure3 , "Rub Pull" ,"www.ar1.com");
+		myDb.insertRow("Advanced"," Batting"," " , " " , " " ,"www.ar2.com");
+		myDb.insertRow("Advanced"," Catching"," " , " " , " " ,"www.ar3.com");
+		myDb.insertRow("Advanced"," Fielding"," " , " " , " " ,"www.ar4.com");
+		myDb.insertRow("Advanced"," Batting"," " , " " , " " ,"www.ar5.com");
 		  
 	}
 	@Override
@@ -82,57 +80,6 @@ public class MainActivity extends Activity {
      myDb.close();
     }
     
-    /*
-    private String getData(){
-    	Cursor cursor = myDb.getAllRows();
-    	 String[] fromFieldNames = new String[] 
-    	    {DBAdapter.KEY_LEVEL, DBAdapter.KEY_TYPE, DBAdapter.KEY_URL};
-    	 int[] toViewIDs = new int[]
-    	   {R.id.level, R.id.type, R.id.url};
-    	 @SuppressWarnings("deprecation")
-		SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,  // Context
-    	    	      R.layout.itemlayout, // Row layout template
-    	    	      cursor,     // cursor (set of DB records to map)
-    	    	      fromFieldNames,   // DB Column names
-    	    	      toViewIDs    // View IDs to put information in
-    	    	      );
-    	 adapter.notifyDataSetChanged();
-    	 lv.setAdapter(adapter);
-	return null;
-   }
-   */
-    
-    
-    
-    
-//    @SuppressWarnings("deprecation")
-//	private void populateList() {
-//    	  Cursor cursor = myDb.getAllRows();
-//    	  
-//    	  // Allow activity to manage lifetime of the cursor.
-//    	  // DEPRECATED! Runs on the UI thread, OK for small/short queries.
-//    	  startManagingCursor(cursor);
-//    	  
-//    	  // Setup mapping from cursor to view fields:
-//    	  String[] fromFieldNames = new String[] 
-//    	    {DBAdapter.KEY_LEVEL, DBAdapter.KEY_TYPE, DBAdapter.KEY_URL};
-//    	  int[] toViewIDs = new int[]
-//    	    {R.id.level,     R.id.type,           R.id.url};
-//    	  
-//    	  // Create adapter to may columns of the DB onto elemesnt in the UI.
-//    	  SimpleCursorAdapter myCursorAdapter = 
-//    	    new SimpleCursorAdapter(
-//    	      this,  // Context
-//    	      R.layout.itemlayout, // Row layout template
-//    	      cursor,     // cursor (set of DB records to map)
-//    	      fromFieldNames,   // DB Column names
-//    	      toViewIDs    // View IDs to put information in
-//    	      );
-//    	  
-//    	  // Set the adapter for the list view
-//    	  ListView myList = (ListView) findViewById(R.id.listdb);
-//    	  myList.setAdapter(myCursorAdapter);
-//    	 }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

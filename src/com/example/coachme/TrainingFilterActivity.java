@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,65 +29,25 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	TabHost tabH;
 	Spinner exerciseFilter;
 	ListView listViewBeginner ;
-	ListView listViewIntermediate;
-	ListView listViewAdvance;
-
+	String type ="All";
+	String level="Beginner";
 	private DBAdapter myDb;
 	/////ARRAY for SPINNER FILTER
 	String[] exrcises = {
-            "catching",
-            "bunting",
-            "field",
-            "pitching"
+			"All",
+            "Catching",
+            "Bunting",
+            "Fielding",
+            "Pitching",
+            "Sliding",
+            "Running",
+            "Batting"
     };
 	
-	//////ARRAY for LIST VIEW BEGINNER ///////
-	
-	String[] beginnerList = new String[] { "Beginner 1", 
-            "Beginner 2",
-            "Beginner 3",
-            "Beginner 4", 
-            "Beginner 5",
-            "Beginner 6",
-            "Beginner 7",
-            "Beginner 8", 
-            "Beginner 9",
-            "Beginner 10",
-            "Beginner 11" 
-           };
-	
-//////ARRAY for LIST VIEW INTERMEDIATE ///////
-	
-	String[] intermediateList = new String[] { "Intermediate 1", 
-			"Intermediate 2",
-	        "Intermediate 3",
-	        "Intermediate 4", 
-	        "Intermediate 5",
-	        "Intermediate 6",
-	        "Intermediate 7", 
-	        "Intermediate 8",
-	        "Intermediate 9",
-	        "Intermediate 10", 
-	        "Intermediate 11" 
-         };
-	
-//////ARRAY for LIST VIEW BEGINNER ///////
-	
-	String[] advanceList = new String[] { "Advance 1", 
-          "Advance 2",
-          "Advance 3",
-          "Advance 4", 
-          "Advance 5",
-          "Advance 6",
-          "Advance 7", 
-          "Advance 8",
-          "Advance 9",
-          "Advance 10", 
-          "Advance 11"
-         };
+
 	//Testing to see if I can pass list item text to next screen
 	public final static String EXTRA_MESSAGE = "com.example.coach.RName";
-	
+	public final static int routine=0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -138,9 +99,16 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	                    @Override
 	                    public void onItemSelected(AdapterView<?> arg0, View arg1,
 	                            int arg2, long arg3) {
+	                    	 myDb.open();
 	                        int position = exerciseFilter.getSelectedItemPosition();
 	                        Toast.makeText(getApplicationContext(),"You have selected "+exrcises[+position],Toast.LENGTH_LONG).show();
 	                        // TODO Auto-generated method stub
+//	                        Log.d("***Selected Tab", "Im currently in tab with index::" + tabH.getCurrentTab());
+//	            	        Log.d("level",level);
+//	            	        Log.d("type",type);
+	                        type=exrcises[+position];
+//	                        Log.d("type",type);
+	                        loadMylist(level,type);
 	                    }
 	                    @Override
 	                    public void onNothingSelected(AdapterView<?> arg0) {
@@ -152,123 +120,28 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	        
 	        ////////////////LIST VIEW BEGINNER  /////////////////////
 	        ////// http://www.vogella.com/tutorials/AndroidListView/article.html /////
-	        listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
+        listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
+        listViewBeginner.setOnItemClickListener(new OnItemClickListener() {
+      	  @Override
+      	  public void onItemClick(AdapterView<?> parent, View view,
+      	    int position, long id) {
+      		  Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
+		  	        //String selRoutine = TrainingFilterActivity.advancedList[position]; //Get text of item
+		  	        String selRoutine = (String)parent.getAdapter().getItem(position);
+		  	        intent.putExtra(EXTRA_MESSAGE, selRoutine);
+		  	        //intent.putExtra("routine",position);
+		  	        Log.d("Position","my postion"+position);
+	            	startActivity(intent);
+		  	          Toast.makeText(getApplicationContext(),
+		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
+		  	            .show();
+      	  }
+      	}); 
+        
 	        
-	        
-	        //check to see which list to get. don't need right now
-	        //int selTab = tabH.getCurrentTab();
-	        //ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
-		      //      android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
-	        
-	        
-	        /*
-	        switch (selTab)
-	        {
-	        case 0:
-	            	adapterBeginnerList = new ArrayAdapter<String>(this,
-		            android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList);
-	        		break;
-	        case 1:
-	            	adapterBeginnerList = new ArrayAdapter<String>(this,
-		            android.R.layout.simple_list_item_1, android.R.id.text1, intermediateList);
-	        		break;
-	        case 2:
-	            	adapterBeginnerList = new ArrayAdapter<String>(this,
-		            android.R.layout.simple_list_item_1, android.R.id.text1, advanceList);
-	        		break;
-	        default:
-	        		break;
-	        	
-	        }
-	        */
-	        /*ArrayAdapter<String> adapterBeginnerList = new ArrayAdapter<String>(this,
-	                android.R.layout.simple_list_item_1, android.R.id.text1, beginnerList); */
-	      
-	      
-	              // Assign adapter to ListView
-	              //listViewBeginner.setAdapter(adapterBeginnerList);
-	        		//use this isntead of above
-	              this.loadMylist();
-	              // ListView Item Click Listener
-	              listViewBeginner.setOnItemClickListener(new OnItemClickListener() {
-	            	  @Override
-	            	  public void onItemClick(AdapterView<?> parent, View view,
-	            	    int position, long id) {
-	            		  Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
-		  		  	        //String selRoutine = TrainingFilterActivity.advancedList[position]; //Get text of item
-		  		  	        String selRoutine = (String)parent.getAdapter().getItem(position);
-		  		  	        intent.putExtra(EXTRA_MESSAGE, selRoutine);
-		  	            	startActivity(intent);
-		  		  	          Toast.makeText(getApplicationContext(),
-		  		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
-		  		  	            .show();
-	            	  }
-	            	}); 
-	             
-	             tabH.setOnTabChangedListener(this);
-	        //////////////END LIST VIEW BEGINNER  ////////////////////////
-	       
-	        /*
-	        ////////////////LIST VIEW INTERMEDIATE  /////////////////////
-	  	        
-	  	     listViewIntermediate = (ListView) findViewById(R.id.listView2Intermediate);
-	  	        
-	  	     ArrayAdapter<String> adapterIntermediateList = new ArrayAdapter<String>(this,
-	  	                android.R.layout.simple_list_item_1, android.R.id.text1, intermediateList);
-	  	      
-	  	      
-	  	              // Assign adapter to ListView
-	  	        	listViewIntermediate.setAdapter(adapterIntermediateList); 
-	  	              
-	  	              // ListView Item Click Listener
-	  	            listViewIntermediate.setOnItemClickListener(new OnItemClickListener() {
-	  	            	@Override
-	  	            	public void onItemClick(AdapterView<?> parent, View view,
-	  	            	  int position, long id) {
-	  	             	  Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
-	  	            	  startActivity(intent);
-	  	            	  Toast.makeText(getApplicationContext(),
-	  	            	    "Click Intermediate ListItem Number " + position, Toast.LENGTH_LONG)
-	  	            	    .show();
-	  	   
-	  	            	  }
-	  	            	}); 
-	  	        
-	  	        //////////////END LIST VIEW INTERMEDIATE  ////////////////////////
-	      
-	  	       */
-	              
-	              /*
-	  	     ////////////////LIST VIEW ADVANCE  /////////////////////
-		  	
-	         
-	  		  listViewAdvance = (ListView) findViewById(R.id.listView3Advance);
-	  		  	        
-	  		  ArrayAdapter<String> adapterAdvanceList = new ArrayAdapter<String>(this,
-	  		  	         android.R.layout.simple_list_item_1, android.R.id.text1, advanceList);
-	  		  	      
-	  		  	      
-	  		  	              // Assign adapter to ListView
-	  		  	    listViewAdvance.setAdapter(adapterAdvanceList); 
-	  		  	              
-	  		  	              // ListView Item Click Listener
-	  		  	    listViewAdvance.setOnItemClickListener(new OnItemClickListener() {
-	  		  	        @Override
-	  		  	        public void onItemClick(AdapterView<?> parent, View view,
-	  		  	          int position, long id) {
-	  		  	        Intent intent = new Intent(TrainingFilterActivity.this,Content.class);
-	  		  	        //String selRoutine = TrainingFilterActivity.advancedList[position]; //Get text of item
-	  		  	        String selRoutine = (String)parent.getAdapter().getItem(position);
-	  		  	        intent.putExtra(EXTRA_MESSAGE, selRoutine);
-	  	            	startActivity(intent);
-	  		  	          Toast.makeText(getApplicationContext(),
-	  		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
-	  		  	            .show();
-	  		  	          }
-	  		  	        }); 
-	  		  	        
-	  		  	        //////////////END LIST VIEW ADVANCE  ////////////////////////
-	  		      */
+	   // this.loadMylist("level","All");
+	    tabH.setOnTabChangedListener(this);
+
 	}
 
 	
@@ -320,19 +193,13 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
         switch (selTab)
         {
         case 0:
-            	ArrayAdapter<String >adapterBeginnerList = new ArrayAdapter<String>(this,
-	            android.R.layout.simple_list_item_1, android.R.id.text1, myDb.listBeginner("Beginner"));
-            	listViewBeginner.setAdapter(adapterBeginnerList); 
+        		loadMylist("Beginner",type);
         		break;
         case 1:
-            	adapterBeginnerList = new ArrayAdapter<String>(this,
-	            android.R.layout.simple_list_item_1, android.R.id.text1, myDb.listBeginner("intermedite"));
-            	listViewBeginner.setAdapter(adapterBeginnerList); 
+        		loadMylist("Intermedite",type);
         		break;
         case 2:
-            	adapterBeginnerList = new ArrayAdapter<String>(this,
-	            android.R.layout.simple_list_item_1, android.R.id.text1, myDb.listBeginner("Advanted"));
-            	listViewBeginner.setAdapter(adapterBeginnerList); 
+        		loadMylist("Advanced",type);
         		break;
         default:
         		break;
@@ -340,17 +207,14 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
         }
         
 	}
-    
-	private void loadMylist() {
-  		// TODO Auto-generated method stub
-  		List<String> list = myDb.listBeginner("Beginner");
-  		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-  				android.R.layout.simple_list_item_1, list);
-  				
-  		listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
-  		listViewBeginner.setAdapter(adapter);
-  		
-  	}
+	 public void loadMylist(String level, String type) {
+		  // TODO Auto-generated method stub
+		  List<String> list = myDb.listdata(level,type);
+		  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		    android.R.layout.simple_list_item_1, list);
+		  	listViewBeginner.setAdapter(adapter);
+		  
+		 }
 	
 	@Override
     protected void onDestroy() {
