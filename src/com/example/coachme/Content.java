@@ -1,5 +1,8 @@
 package com.example.coachme;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -38,6 +41,16 @@ public class Content extends Activity {
 		*/
 		TextView titleTV = (TextView) findViewById (R.id.textViewTitle);
 		titleTV.setText(title);
+		//Obtain title only
+		
+		Pattern stopWords = Pattern.compile("\\b(?:Beginner|Intermedite|Advanced|Catching|Bunting|Fielding|Pitching|Sliding|Running|Batting)\\b\\s*");
+		Matcher matcher = stopWords.matcher(title);
+		String clean = matcher.replaceAll("");
+		Log.d("Is this the title?", clean);
+		
+		
+		
+		
 		StringBuffer fileName = new StringBuffer ("p");
 	    //StringBuffer id = new StringBuffer ("");
 		boolean done = false;
@@ -57,6 +70,7 @@ public class Content extends Activity {
 		//String idS = id.toString();
 		//long idL = Long.valueOf(idS).longValue();
 		//Cursor curs = myDb.getRow(idL);
+		
 		
 		ImageView image = (ImageView) findViewById (R.id.imageView1);
 		//String imageLoc = "p1";
