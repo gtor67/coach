@@ -238,10 +238,16 @@ public class DBAdapter {
  */
  
  // Get a specific row (by rowId)
- public Cursor getRow(long rowId) {
-  String where = KEY_ROWID + "=" + rowId;
-  Cursor c =  db.query(true, DATABASE_TABLE, ALL_KEYS, 
-      where, null, null, null, null, null);
+ public Cursor getRow(String title) {
+//  String where = KEY_TITLE + "=" + title;
+//  Cursor c =  db.query(true, DATABASE_TABLE, ALL_KEYS, 
+//      where, null, null, null, null, null);
+//  
+	 String s;
+	
+		  s="SELECT * FROM mainTable  WHERE title='"+title+"' ";
+	 Cursor c =db.rawQuery(s, null);
+	
   if (c != null) {
    c.moveToFirst();
   }

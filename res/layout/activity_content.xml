@@ -44,5 +44,5 @@
         android:layout_alignRight="@+id/TextView02"
         android:layout_below="@+id/textViewTitle"
         android:src="@drawable/p1" />
-
+	
 </RelativeLayout>
