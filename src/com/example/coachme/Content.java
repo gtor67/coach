@@ -44,7 +44,7 @@ public class Content extends Activity {
 		
 		//Obtain title only
 		
-		Pattern stopWords = Pattern.compile("\\b(?:Beginner|Intermedite|Advanced|Catching|Bunting|Fielding|Pitching|Sliding|Running|Batting)\\b\\s*");
+		Pattern stopWords = Pattern.compile("\\b(?:1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|Beginner|Intermediate|Advanced|Catching|Bunting|Fielding|Pitching|Sliding|Running|Batting)\\b\\s*");
 		Matcher matcher = stopWords.matcher(title);
 		String clean = matcher.replaceAll("");
 		Log.d("Is this the title?", clean);

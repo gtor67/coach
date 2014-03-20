@@ -3,12 +3,15 @@ package com.example.coachme;
 import java.util.List;
 
 import com.parse.FindCallback;
+import com.parse.GetCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseException;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
@@ -25,8 +28,19 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         myDb = new DBAdapter(this);
         openDB();
-        filldb();
-        String title = "Fingers up thumbs down";
+      //  filldb();
+        
+        
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        if(!prefs.getBoolean("firstTime", false)) {
+        filldb();// makes it only run once
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstTime", true);
+        editor.commit();
+        }
+        
+        
+        //String title = "Fingers up thumbs down";
         //Cursor exercise = myDb.getRow(title);
         //String word = exercise.getString(1);
         check();
@@ -61,12 +75,12 @@ public class MainActivity extends Activity {
 		myDb.insertRow("Beginner","Catching"," " , " " , " " ,"www.bc6.com");
 		myDb.insertRow("Beginner","Batting"," " , " " , " " ,"www.ib7.com");		    	
 			
-		myDb.insertRow("Intermedite","BatTing"," " , " " , " 66" ,"www.ib1.com");		
-		myDb.insertRow("Intermedite","Catching"," " , " " , " " ,"www.ib3.com");		    	
-		myDb.insertRow("Intermedite","Running"," " , " " , " " ,"www.ib2.com");		    	
-		myDb.insertRow("Intermedite","Fielding",focus2 , procedure2 , "infield drill" ,"www.ib4.com");		    	
-		myDb.insertRow("Intermedite","Catching"," " , " " , " " ,"www.ib5.com");		    	
-		myDb.insertRow("Intermedite","Batting"," " , " " , " " ,"www.ib6.com");		    	
+		myDb.insertRow("Intermediate","BatTing"," " , " " , " 66" ,"www.ib1.com");		
+		myDb.insertRow("Intermediate","Catching"," " , " " , " " ,"www.ib3.com");		    	
+		myDb.insertRow("Intermediate","Running"," " , " " , " " ,"www.ib2.com");		    	
+		myDb.insertRow("Intermediate","Fielding",focus2 , procedure2 , "infield drill" ,"www.ib4.com");		    	
+		myDb.insertRow("Intermediate","Catching"," " , " " , " " ,"www.ib5.com");		    	
+		myDb.insertRow("Intermediate","Batting"," " , " " , " " ,"www.ib6.com");		    	
 			
 		myDb.insertRow("Advanced"," Sliding",focus3 , procedure3 , "Rub Pull" ,"www.ar1.com");
 		myDb.insertRow("Advanced"," Batting"," " , " " , " " ,"www.ar2.com");
@@ -86,7 +100,7 @@ public class MainActivity extends Activity {
 			    	//tableSize = 4; //we only have 4 rows to update
 			    	//Cursor c = myDb.getAllRows();
 			    	boolean test = true;
-			    	String title = "Fingers up thumbs down";
+			    	//String title = "Fingers up thumbs down";
 			       
 			    	for(int i= 0; i < tableSize; i++){
 			    		int c=i+1;
@@ -96,6 +110,19 @@ public class MainActivity extends Activity {
 			    		Log.d("TEST mydb","variable I " +i);
 			    		Log.d("TEST mydb","" +exercise.getString(5));
 			    		Log.d("TEST parse","" +Beginner1.get(i).getString("Title"));
+			    		
+			    ////////////TO REFRESH WITH PARSE		
+			    		Beginner1.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
+			    			  public void done(ParseObject object, ParseException e) {
+			    			    if (e == null) {
+			    			      // Success!
+			    			    } else {
+			    			      // Failure!
+			    			    }
+			    			  }
+			    			});
+			    /////////////END REFRESH		
+			    		
 			    		
 			    		if( Beginner1.get(i).getString("Level").equals(exercise.getString(1))==false){
 			    		test=false;	
@@ -126,6 +153,7 @@ public class MainActivity extends Activity {
 			    		Log.d("TEST V","" + test);
 			    		Log.d("TEST end mydb","" +exercise.getString(5));
 			    		Log.d("TEST end parse","" +Beginner1.get(i).getString("Title"));
+			    		
 			    		}//for loop
 			    		
 			    		//Log.d("TEST PARSE",  " " +row.getString("Type"));
