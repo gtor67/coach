@@ -8,7 +8,18 @@ import android.os.Bundle;
 import com.parse.*;
 public class Splash extends Activity
 {
+	String level;
+	String type;
+	String focus;
+	String procedure;
+	String title;
+	String URL;
 
+	///Array of strings corresponds to rows in table. they are Unique keys
+	String[] BeginnerRows ={"74JzuMovnV", "qgIW87yP9F"};
+
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -57,6 +68,30 @@ public class Splash extends Activity
 
 
 	}
+	
+	
+	
+	public void getBeginner1(int row) {
+
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
+		query.findInBackground(new FindCallback<ParseObject>() {
+		  public void done(List<ParseObject> Beginner1, ParseException e) {
+		    if (e == null) {
+			level= Beginner1.getString("Level");// column names
+			type= Beginner1.getString("Type");
+			focus= Beginner1.getString("Focus");
+			procedure= Beginner1.getString("Procedure");
+			title= Beginner1.getString("Title");
+			URL= Beginner1.getString("VideoURL");
+
+		      
+		    } else {
+		      // something went wrong
+		    		}
+		  	}
+			});
+
+		}//end getBeginner1
 
 	
 }
