@@ -1,5 +1,7 @@
 package com.example.coachme;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -77,12 +79,12 @@ public class Splash extends Activity
 		query.findInBackground(new FindCallback<ParseObject>() {
 		  public void done(List<ParseObject> Beginner1, ParseException e) {
 		    if (e == null) {
-			level= Beginner1.getString("Level");// column names
-			type= Beginner1.getString("Type");
-			focus= Beginner1.getString("Focus");
-			procedure= Beginner1.getString("Procedure");
-			title= Beginner1.getString("Title");
-			URL= Beginner1.getString("VideoURL");
+//			level= Beginner1.getString("Level");// column names
+//			type= Beginner1.getString("Type");
+//			focus= Beginner1.getString("Focus");
+//			procedure= Beginner1.getString("Procedure");
+//			title= Beginner1.getString("Title");
+//			URL= Beginner1.getString("VideoURL");
 
 		      
 		    } else {

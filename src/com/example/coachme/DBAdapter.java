@@ -189,9 +189,9 @@ public class DBAdapter {
 	  while (c.moveToNext()) {  
 	     //int is the column number from table
 	   if(typeb=="All"){
-	    data.add(c.getString(1)+" "+ c.getString(2)+" "+c.getString(5));   
+	    data.add(c.getString(0)+" "+ c.getString(2)+" "+c.getString(5));   
 	   }else{
-	    data.add(c.getString(5));  
+	    data.add(c.getString(0)+" "+c.getString(5));  
 	   }
 	    
 	    }  
@@ -255,13 +255,15 @@ public class DBAdapter {
  }
 
  public Cursor getRow(long id) {
-	 String where = KEY_ROWID + "=" + id;
-	  Cursor c =  db.query(true, DATABASE_TABLE, ALL_KEYS, 
-	      where, null, null, null, null, null);
-	  if (c != null) {
-	   c.moveToFirst();
-	  }
-	  return c;
+	 String s;
+		
+	  s="SELECT * FROM mainTable  WHERE _id='"+id+"' ";
+Cursor c =db.rawQuery(s, null);
+
+if (c != null) {
+c.moveToFirst();
+}
+return c;
 	 }
  // Change an existing row to be equal to new data.
 // public boolean updateRow(long rowId, String name, int studentNum, String favColour) {
