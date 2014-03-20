@@ -197,7 +197,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
         		loadMylist("Beginner",type);
         		break;
         case 1:
-        		loadMylist("Intermedite",type);
+        		loadMylist("Intermediate",type);
         		break;
         case 2:
         		loadMylist("Advanced",type);
