@@ -7,13 +7,11 @@ import java.util.regex.Pattern;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
-import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TabHost;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
@@ -76,9 +74,6 @@ public class Content extends Activity {
 		focusTV.setText(exersice.getString(3));
 		TextView proTV = (TextView) findViewById (R.id.TextView02);
 		proTV.setText(exersice.getString(4));
-		proTV.setMovementMethod(new ScrollingMovementMethod());
-		ScrollView proSV = (ScrollView) findViewById (R.id.scrollView1);
-		
 		
 		ImageView image = (ImageView) findViewById (R.id.imageView1);
 		int resourceId = this.getResources().getIdentifier(fileName.toString(), "drawable", "com.example.coachme");
