@@ -7,6 +7,8 @@ import com.parse.GetCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseException;
+import com.parse.ParseUser;
+
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
@@ -46,6 +48,31 @@ public class MainActivity extends Activity {
         check();
         myDb.getAllRows();
        // loadMylist();
+        
+        
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+        	Log.d("User logged in ", ""+currentUser.getUsername());
+        	View lOut =findViewById(R.id.buttonLogout);
+        	lOut.setVisibility(View.VISIBLE);
+        	View lIn =findViewById(R.id.button1Login);
+        	lIn.setVisibility(View.INVISIBLE);
+        	View crAcc =findViewById(R.id.createAccButton);
+        	crAcc.setVisibility(View.INVISIBLE);
+        	
+        } else {
+        	Log.d("User  is logged out ", ""+currentUser);
+        	View lOut = findViewById(R.id.buttonLogout);
+        	lOut.setVisibility(View.INVISIBLE);
+        	View lIn = findViewById(R.id.button1Login);
+        	lIn.setVisibility(View.VISIBLE);
+        	View crAcc = findViewById(R.id.createAccButton);
+        	crAcc.setVisibility(View.VISIBLE);
+        	
+        }
+        
+        
+        
         
     }
     private void loadMylist() {
@@ -206,5 +233,12 @@ public class MainActivity extends Activity {
     public void createAccount(View view){
     	Intent intent = new Intent(this, CreateAccount.class);
     	startActivity(intent);
+    }
+    
+    public void logOut(View view){
+    	ParseUser.logOut();
+    	finish();
+    	startActivity(getIntent());
+    	
     }
 }

@@ -43,16 +43,34 @@ public class Content extends Activity {
 		*/
 		
 		//Obtain title only
-		
-		Pattern stopWords = Pattern.compile("\\b(?:1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|Beginner|Intermediate|Advanced|Catching|Bunting|Fielding|Pitching|Sliding|Running|Batting)\\b\\s*");
+/*		
+		Pattern stopWords = Pattern.compile("\\b(?:Beginner|Intermedite|Advanced|Catching|Bunting|Fielding|Pitching|Sliding|Running|Batting)\\b\\s*");
 		Matcher matcher = stopWords.matcher(title);
 		String clean = matcher.replaceAll("");
 		Log.d("Is this the title?", clean);
 		
-		//String idS = id.toString();
-		//long idL = Long.valueOf(idS).longValue();
+	*/	
+		StringBuffer fileName = new StringBuffer ("p");
+	    StringBuffer id = new StringBuffer ("");
+		boolean done = false;
+		int i = 0;
+		while(!done)
+		{
+			char temp = title.charAt(i);
+			if(Character.isDigit(temp))
+				{
+					fileName.append(temp);
+					id.append(temp);
+				}
+			else
+				done = true;
+			i++;	
+		}
+		String idS = id.toString();
+		long idL = Long.valueOf(idS).longValue();
 		//Cursor curs = myDb.getRow(idL);
-		Cursor exersice = myDb.getRow(clean);
+		//Cursor exersice = myDb.getRow(clean);
+		Cursor exersice = myDb.getRow(idL);
 		Log.d("exersice 0", exersice.getString(0));
 		Log.d("exersice 1", exersice.getString(1));
 		Log.d("exersice 2", exersice.getString(2));
@@ -60,9 +78,7 @@ public class Content extends Activity {
 		Log.d("exersice 4", exersice.getString(4));
 		Log.d("exersice 5", exersice.getString(5));
 		
-		StringBuffer fileName = new StringBuffer ("p");
-	    //StringBuffer id = new StringBuffer ("");
-		boolean done = false;
+	
 		fileName.append(exersice.getString(0));
 		Log.d("pic id",""+fileName);
 		
@@ -79,19 +95,7 @@ public class Content extends Activity {
 		int resourceId = this.getResources().getIdentifier(fileName.toString(), "drawable", "com.example.coachme");
 		image.setImageResource(resourceId);
 		
-//		int i = 0;
-//		while(!done)
-//		{
-//			char temp = title.charAt(i);
-//			if(Character.isDigit(temp))
-//				{
-//					fileName.append(temp);
-//					//id.append(temp);
-//				}
-//			else
-//				done = true;
-//			i++;	
-//		}
+
 		
 		
 		
@@ -140,3 +144,4 @@ public class Content extends Activity {
 
 
 }
+
