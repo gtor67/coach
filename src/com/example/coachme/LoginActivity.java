@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
@@ -205,6 +206,20 @@ public class LoginActivity extends Activity {
 			// TODO: attempt authentication against a network service.
 
 			try {
+				ParseUser.logInInBackground(mEmail,mPassword, new LogInCallback() {
+					  public void done(ParseUser user, ParseException e) {
+					    if (user != null) {
+					      // Hooray! The user is logged in.
+					    	test = true;
+					    } else {
+					      // Signup failed. Look at the ParseException to see what happened.
+					    	 test = false;
+					    	 Log.d("login fail", e.getMessage());
+					    }
+					  }
+					});
+				
+				
 				// Simulate network access.
 				Thread.sleep(2000);
 			} catch (InterruptedException e) {
@@ -231,17 +246,7 @@ public class LoginActivity extends Activity {
 			  }
 			});
 			*/
-			ParseUser.logInInBackground(mEmail,mPassword, new LogInCallback() {
-				  public void done(ParseUser user, ParseException e) {
-				    if (user != null) {
-				      // Hooray! The user is logged in.
-				    	test = true;
-				    } else {
-				      // Signup failed. Look at the ParseException to see what happened.
-				    	 test = false;
-				    }
-				  }
-				});
+			
 	////////////////end parse login test  ///////////////////////
 			return test;
 		}
