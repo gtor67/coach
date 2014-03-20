@@ -2,10 +2,15 @@ package com.example.coachme;
 
 import java.util.List;
 
+import com.parse.FindCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseException;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -21,6 +26,10 @@ public class MainActivity extends Activity {
         myDb = new DBAdapter(this);
         openDB();
         filldb();
+        String title = "Fingers up thumbs down";
+        //Cursor exercise = myDb.getRow(title);
+        //String word = exercise.getString(1);
+        check();
         myDb.getAllRows();
        // loadMylist();
         
@@ -66,6 +75,67 @@ public class MainActivity extends Activity {
 		myDb.insertRow("Advanced"," Batting"," " , " " , " " ,"www.ar5.com");
 		  
 	}
+	 public void check() {
+			
+		 	//myDb.insertRow("Beginner","Running"," " , " " , " " ,"www.br1.com");
+			ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
+			query.findInBackground(new FindCallback<ParseObject>() {
+			  public void done(List<ParseObject> Beginner1, ParseException e) {
+			    if (e == null) {
+			    	int tableSize= Beginner1.size();
+			    	//tableSize = 4; //we only have 4 rows to update
+			    	//Cursor c = myDb.getAllRows();
+			    	boolean test = true;
+			    	String title = "Fingers up thumbs down";
+			        Cursor exercise = myDb.getRow(title);
+			    	for(int i= 0; i < tableSize; i++){
+			    		//Cursor exercise = myDb.getRow(Beginner1.get(i).getString("Title"));
+			    		test=true;
+			    		//Log.d("TEST V2","" + test);
+			    		
+			    		if( Beginner1.get(i).getString("Level").equals(exercise.getString(1))==false){
+			    		test=false;	
+			    		}
+			    		else if( Beginner1.get(i).getString("Type").equals(exercise.getString(2))==false){
+				    		test=false;	
+				    		}
+			    		else if( Beginner1.get(i).getString("Focus").equals(exercise.getString(3))==false){
+				    		test=false;	
+				    		}
+			    		else if( Beginner1.get(i).getString("Procedure").equals(exercise.getString(4))==false){
+				    		test=false;	
+				    		}
+			    		else if( Beginner1.get(i).getString("Title").equals(exercise.getString(5))==false){
+				    		test=false;	
+				    		}
+			    		else if( Beginner1.get(i).getString("VideoURL").equals(exercise.getString(6))==false){
+				    		test=false;	
+				    		}
+			    		
+			    		if(test==false)
+			    		{
+			    			myDb.updateRow(i, Beginner1.get(i).getString("Level"), Beginner1.get(i).getString("Type"), Beginner1.get(i).getString("Focus"), Beginner1.get(i).getString("Procedure"), Beginner1.get(i).getString("Title"), Beginner1.get(i).getString("VideoURL"));
+			    		}
+			    		Log.d("TEST LOOP","" + i );
+			    		Log.d("TEST V","" + test);
+			    		
+			    		}//for loop
+			    		
+			    		//Log.d("TEST PARSE",  " " +row.getString("Type"));
+			    		
+			    	
+//			    	ParseObject row=	Beginner1.get(0);
+//			    	Log.d("TEST PARSE",  " " +row.getString("Type"));
+
+			      
+			    } else {
+			    	Log.d("ERROR", "Error: " + e.getMessage());
+			      // something went wrong
+			    		}
+			  	}
+				});
+
+			}//end check
 	@Override
     protected void onDestroy() {
      super.onDestroy(); 

@@ -253,7 +253,16 @@ public class DBAdapter {
   }
   return c;
  }
- 
+
+ public Cursor getRow(long id) {
+	 String where = KEY_ROWID + "=" + id;
+	  Cursor c =  db.query(true, DATABASE_TABLE, ALL_KEYS, 
+	      where, null, null, null, null, null);
+	  if (c != null) {
+	   c.moveToFirst();
+	  }
+	  return c;
+	 }
  // Change an existing row to be equal to new data.
 // public boolean updateRow(long rowId, String name, int studentNum, String favColour) {
    
