@@ -53,15 +53,15 @@ public class MainActivity extends Activity {
 		String procedure2 ="With the player standing at thier infield position the coach yes Set and the player gets in the ready position.  the coach then proceeds to  to hit short fungoes directly at the player who fields the ball and throws to first.  Continue the drill by hitting balls to the glove and backhand sides.  The goal of the players is to move their feet so they field the ball in front of thier bodies not allowing the players to reach for the ball with only their gloves.";
 		String procedure3 ="the coach pulls the rug out form under the faller. to execute  this drill properly, the faller thorws his arms and head back when the rug is poulled out. ONe leg should bend underneath to cushion the fall which should leave the player in a sitting position at teh end of the fall teh top leg slightly flexed should remain four inches off the floor";
 		
-		myDb.insertRow("Beginner","Running"," " , " " , " " ,"www.br1.com");
+		myDb.insertRow("Beginner","Running"," " , " " , "asdflj" ,"www.br1.com");
 		myDb.insertRow("Beginner","Catching",focus1 , procedure1 , "Fingers up thumbs down" ,"www.bc2.com");
-		myDb.insertRow("Beginner","Batting"," " , " " , " " ,"www.bc3.com");
+		myDb.insertRow("Beginner","Batting"," " , " " , " 55" ,"www.bc3.com");
 		myDb.insertRow("Beginner","Fielding"," " , " " , " " ,"www.bc4.com");
 		myDb.insertRow("Beginner","Bunting"," " , " " , " " ,"www.bc5.com");
 		myDb.insertRow("Beginner","Catching"," " , " " , " " ,"www.bc6.com");
 		myDb.insertRow("Beginner","Batting"," " , " " , " " ,"www.ib7.com");		    	
 			
-		myDb.insertRow("Intermedite","BatTing"," " , " " , " " ,"www.ib1.com");		
+		myDb.insertRow("Intermedite","BatTing"," " , " " , " 66" ,"www.ib1.com");		
 		myDb.insertRow("Intermedite","Catching"," " , " " , " " ,"www.ib3.com");		    	
 		myDb.insertRow("Intermedite","Running"," " , " " , " " ,"www.ib2.com");		    	
 		myDb.insertRow("Intermedite","Fielding",focus2 , procedure2 , "infield drill" ,"www.ib4.com");		    	
@@ -88,11 +88,14 @@ public class MainActivity extends Activity {
 			    	boolean test = true;
 			    	String title = "Fingers up thumbs down";
 			       
-			    	for(int i= 0; i < tableSize-1; i++){
-			    		 Cursor exercise = myDb.getRow(i+1);
+			    	for(int i= 0; i < tableSize; i++){
+			    		int c=i+1;
+			    		 Cursor exercise = myDb.getRow(c);
 			    		//Cursor exercise = myDb.getRow(Beginner1.get(i).getString("Title"));
 			    		test=true;
-			    		Log.d("TEST V2","" +exercise.getString(5));
+			    		Log.d("TEST mydb","variable I " +i);
+			    		Log.d("TEST mydb","" +exercise.getString(5));
+			    		Log.d("TEST parse","" +Beginner1.get(i).getString("Title"));
 			    		
 			    		if( Beginner1.get(i).getString("Level").equals(exercise.getString(1))==false){
 			    		test=false;	
@@ -115,11 +118,14 @@ public class MainActivity extends Activity {
 			    		
 			    		if(test==false)
 			    		{
-			    			myDb.updateRow(i + 1, Beginner1.get(i).getString("Level"), Beginner1.get(i).getString("Type"), Beginner1.get(i).getString("Focus"), Beginner1.get(i).getString("Procedure"), Beginner1.get(i).getString("Title"), Beginner1.get(i).getString("VideoURL"));
+			    			Log.d("TEST update","update row " + i );
+			    			Log.d("TEST update","update row c" + c );
+			    			myDb.updateRow(c, Beginner1.get(i).getString("Level"), Beginner1.get(i).getString("Type"), Beginner1.get(i).getString("Focus"), Beginner1.get(i).getString("Procedure"), Beginner1.get(i).getString("Title"), Beginner1.get(i).getString("VideoURL"));
 			    		}
 			    		Log.d("TEST LOOP","" + i );
 			    		Log.d("TEST V","" + test);
-			    		
+			    		Log.d("TEST end mydb","" +exercise.getString(5));
+			    		Log.d("TEST end parse","" +Beginner1.get(i).getString("Title"));
 			    		}//for loop
 			    		
 			    		//Log.d("TEST PARSE",  " " +row.getString("Type"));
