@@ -115,7 +115,7 @@ public class MainActivity extends Activity {
 			    		
 			    		if(test==false)
 			    		{
-			    			myDb.updateRow(i, Beginner1.get(i).getString("Level"), Beginner1.get(i).getString("Type"), Beginner1.get(i).getString("Focus"), Beginner1.get(i).getString("Procedure"), Beginner1.get(i).getString("Title"), Beginner1.get(i).getString("VideoURL"));
+			    			myDb.updateRow(i + 1, Beginner1.get(i).getString("Level"), Beginner1.get(i).getString("Type"), Beginner1.get(i).getString("Focus"), Beginner1.get(i).getString("Procedure"), Beginner1.get(i).getString("Title"), Beginner1.get(i).getString("VideoURL"));
 			    		}
 			    		Log.d("TEST LOOP","" + i );
 			    		Log.d("TEST V","" + test);
