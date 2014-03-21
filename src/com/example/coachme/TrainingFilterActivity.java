@@ -194,13 +194,16 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
         switch (selTab)
         {
         case 0:
-        		loadMylist("Beginner",type);
+        		level="Beginner";
+        		loadMylist(level,type);
         		break;
         case 1:
-        		loadMylist("Intermediate",type);
+        		level="Intermediate";
+        		loadMylist(level,type);
         		break;
         case 2:
-        		loadMylist("Advanced",type);
+        		level= "Advanced";
+        		loadMylist(level,type);
         		break;
         default:
         		break;
