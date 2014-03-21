@@ -67,6 +67,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.coachme.MainActivity" />
         </activity>
+        <activity
+            android:name="com.example.coachme.AccSettings"
+            android:label="@string/title_activity_acc_settings" >
+        </activity>
     </application>
 
 </manifest>

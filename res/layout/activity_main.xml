@@ -23,7 +23,7 @@
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textViewEmailHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/home_note"
@@ -80,6 +80,15 @@
             android:layout_alignParentRight="true"
             android:onClick="logOut"
             android:text="Log Out" />
+
+        <Button
+            android:id="@+id/settingsButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/settings" 
+            android:onClick="chooseSettings"/>
 
     </RelativeLayout>
 

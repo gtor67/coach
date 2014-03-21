@@ -60,6 +60,9 @@ public class MainActivity extends Activity {
         	View crAcc =findViewById(R.id.createAccButton);
         	crAcc.setVisibility(View.INVISIBLE);
         	
+        	View settings = findViewById(R.id.settingsButton);
+        	settings.setVisibility(View.VISIBLE);
+        	
         } else {
         	Log.d("User  is logged out ", ""+currentUser);
         	View lOut = findViewById(R.id.buttonLogout);
@@ -68,6 +71,9 @@ public class MainActivity extends Activity {
         	lIn.setVisibility(View.VISIBLE);
         	View crAcc = findViewById(R.id.createAccButton);
         	crAcc.setVisibility(View.VISIBLE);
+        	
+        	View settings = findViewById(R.id.settingsButton);
+        	settings.setVisibility(View.INVISIBLE);
         	
         }
         
@@ -240,5 +246,10 @@ public class MainActivity extends Activity {
     	finish();
     	startActivity(getIntent());
     	
+    }
+    
+    public void chooseSettings(View view){
+    	Intent intent = new Intent(this, AccSettings.class);
+    	startActivity(intent);
     }
 }
