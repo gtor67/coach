@@ -44,7 +44,6 @@ public final class R {
         public static final int TextView02=0x7f0b000f;
         public static final int action_forgot_password=0x7f0b002c;
         public static final int action_settings=0x7f0b002b;
-        public static final int button1=0x7f0b0008;
         public static final int button1Login=0x7f0b0020;
         public static final int buttonContainer=0x7f0b001f;
         public static final int buttonLogout=0x7f0b0015;
@@ -84,6 +83,7 @@ public final class R {
         public static final int textViewEmailHead=0x7f0b0001;
         public static final int textViewEnterPass=0x7f0b0002;
         public static final int textViewTitle=0x7f0b000c;
+        public static final int viewVideobutton=0x7f0b0008;
     }
     public static final class layout {
         public static final int activity_acc_settings=0x7f030000;

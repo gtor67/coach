@@ -10,7 +10,10 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
@@ -21,6 +24,10 @@ import android.database.Cursor;
 import android.os.Build;
 
 public class Content extends Activity {
+	
+	// for the View Video Button
+	Button button;
+	
 	private DBAdapter myDb;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,8 @@ public class Content extends Activity {
 		setContentView(R.layout.activity_content);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		// for the View Video Button
+		addListenerOnButton();
 		
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(TrainingFilterActivity.EXTRA_MESSAGE);
@@ -140,6 +149,27 @@ public class Content extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+		
+		
+	}
+	 
+	public void addListenerOnButton() {
+ 
+		button = (Button) findViewById(R.id.viewVideobutton);
+ 
+		button.setOnClickListener(new OnClickListener() {
+ 
+			@Override
+			public void onClick(View arg0) {
+ 
+				Uri address = Uri.parse("https://www.youtube.com/watch?v=_UTxTzRzpVg");
+				Intent browserSurf = new Intent(Intent.ACTION_VIEW, address);
+			    startActivity(browserSurf);
+ 
+			}
+ 
+		});
+		
 	}
 
 

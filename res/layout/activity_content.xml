@@ -85,4 +85,11 @@
 
     </ScrollView>
 
+    <Button
+        android:id="@+id/viewVideobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+         android:text="View Video" />
+
 </LinearLayout>
