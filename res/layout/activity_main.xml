@@ -31,10 +31,26 @@
             android:textStyle="italic" />
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="chooseBaseball"
-            android:text="@string/button_baseball" />
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_baseball_large_squared_gray"
+            android:onClick="chooseBaseball" />
+        
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_basketball_large_squared_gray" />
+        
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_football_large_squared_gray" />
 
         <LinearLayout
             android:layout_width="match_parent"
