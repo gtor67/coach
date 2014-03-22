@@ -1,15 +1,24 @@
 package com.example.coachme;
 
-import java.util.List;
-
+import java.util.Timer;
+import java.util.TimerTask;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.os.Bundle;
+import android.view.Window;
+
+import java.util.List;
+/*
 import android.media.MediaPlayer;
 import android.media.SoundPool;
-import android.os.Bundle;
+*/
 import com.parse.*;
-public class Splash extends Activity
-{
+
+
+
+public class Splash extends Activity {
+	
 	String level;
 	String type;
 	String focus;
@@ -19,15 +28,52 @@ public class Splash extends Activity
 
 	///Array of strings corresponds to rows in table. they are Unique keys
 	String[] BeginnerRows ={"74JzuMovnV", "qgIW87yP9F"};
+	
 
-	
-	
+	// Set the duration of the splash screen
+	private static final long SPLASH_SCREEN_DELAY = 3000;
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
+		
+		/*
 		// TODO Auto-generated method stub
+		 */
+		
+		
 		super.onCreate(savedInstanceState);
+		/*
 		setContentView(R.layout.splash);
+		*/
+		
+		// Set portrait orientation
+				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+				// Hide title bar
+				requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+				setContentView(R.layout.splash);
+
+				TimerTask task = new TimerTask() {
+					@Override
+					public void run() {
+
+						// Start the next activity
+						Intent mainIntent = new Intent().setClass(
+								Splash.this, MainActivity.class);
+						startActivity(mainIntent);
+
+						// Close the activity so the user won't able to go back this
+						// activity pressing Back button
+						finish();
+					}
+				};
+
+				// Simulate a long loading process on application startup.
+				Timer timer = new Timer();
+				timer.schedule(task, SPLASH_SCREEN_DELAY);
+		
+		
+		/*
 		Thread timer = new Thread()
 		{
 			public void run()
@@ -58,9 +104,11 @@ public class Splash extends Activity
 			}
 		};
 		timer.start();
+*/		
 		
-		
-		////////////PARSE.COM TESTING ////////////
+
+				
+	    ////////////PARSE.COM TESTING ////////////
 		Parse.initialize(this, "eT6q3q5rgzDUgTAjRuTPAzyHSzvo7sbilbu9jqvU", "4TrzrKp78gLmGH0IcEB2pE4BtyIDz8siPrGszV6i");		
 		
 		
@@ -72,7 +120,7 @@ public class Splash extends Activity
 
 	}
 	
-	
+
 	
 	public void getBeginner1(int row) {
 
@@ -96,5 +144,5 @@ public class Splash extends Activity
 
 		}//end getBeginner1
 
-	
-}
+	}	
+
