@@ -29,6 +29,7 @@ public class Content extends Activity {
 	Button button;
 	
 	private DBAdapter myDb;
+	private String link;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -104,7 +105,7 @@ public class Content extends Activity {
 		int resourceId = this.getResources().getIdentifier(fileName.toString(), "drawable", "com.example.coachme");
 		image.setImageResource(resourceId);
 		
-
+		link = exersice.getString(6);
 		
 		
 		
@@ -161,11 +162,16 @@ public class Content extends Activity {
  
 			@Override
 			public void onClick(View arg0) {
- 
-				Uri address = Uri.parse("https://www.youtube.com/watch?v=_UTxTzRzpVg");
+				
+				//Uri address = Uri.parse("https://www.youtube.com/watch?v=_UTxTzRzpVg");
+				Uri address = Uri.parse(link);
 				Intent browserSurf = new Intent(Intent.ACTION_VIEW, address);
 			    startActivity(browserSurf);
- 
+ 				
+				/*
+				Intent intent = new Intent(Content.this, Video.class);
+		    	startActivity(intent);
+		    	*/
 			}
  
 		});

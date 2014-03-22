@@ -103,23 +103,26 @@ public class MainActivity extends Activity {
 		myDb.insertRow("Beginner","Running"," " , " " , "asdflj" ,"www.br1.com");
 		myDb.insertRow("Beginner","Catching",focus1 , procedure1 , "Fingers up thumbs down" ,"www.bc2.com");
 		myDb.insertRow("Beginner","Batting"," " , " " , " 55" ,"www.bc3.com");
-		myDb.insertRow("Beginner","Fielding"," " , " " , " " ,"www.bc4.com");
-		myDb.insertRow("Beginner","Bunting"," " , " " , " " ,"www.bc5.com");
-		myDb.insertRow("Beginner","Catching"," " , " " , " " ,"www.bc6.com");
+		myDb.insertRow("Beginner","Fielding"," " , " " , "66 " ,"www.bc4.com");
+		myDb.insertRow("Beginner","Bunting"," " , " " , "77 " ,"www.bc5.com");
+		myDb.insertRow("Beginner","Catching"," " , " " , "88 " ,"www.bc6.com");
 		myDb.insertRow("Beginner","Batting"," " , " " , " " ,"www.ib7.com");		    	
 			
-		myDb.insertRow("Intermediate","BatTing"," " , " " , " 66" ,"www.ib1.com");		
-		myDb.insertRow("Intermediate","Catching"," " , " " , " " ,"www.ib3.com");		    	
-		myDb.insertRow("Intermediate","Running"," " , " " , " " ,"www.ib2.com");		    	
+		myDb.insertRow("Intermediate","BatTing"," " , " " , " 666" ,"www.ib1.com");		
+		myDb.insertRow("Intermediate","Catching"," " , " " , "777 " ,"www.ib3.com");		    	
+		myDb.insertRow("Intermediate","Running"," " , " " , "888 " ,"www.ib2.com");		    	
 		myDb.insertRow("Intermediate","Fielding",focus2 , procedure2 , "infield drill" ,"www.ib4.com");		    	
-		myDb.insertRow("Intermediate","Catching"," " , " " , " " ,"www.ib5.com");		    	
-		myDb.insertRow("Intermediate","Batting"," " , " " , " " ,"www.ib6.com");		    	
+		myDb.insertRow("Intermediate","Catching"," " , " " , "999 " ,"www.ib5.com");		    	
+		myDb.insertRow("Intermediate","Batting"," " , " " , "9999 " ,"www.ib6.com");	
+		myDb.insertRow("Intermediate","Batting"," " , " " , "99999 " ,"www.ib6.com");
 			
 		myDb.insertRow("Advanced"," Sliding",focus3 , procedure3 , "Rub Pull" ,"www.ar1.com");
-		myDb.insertRow("Advanced"," Batting"," " , " " , " " ,"www.ar2.com");
-		myDb.insertRow("Advanced"," Catching"," " , " " , " " ,"www.ar3.com");
-		myDb.insertRow("Advanced"," Fielding"," " , " " , " " ,"www.ar4.com");
-		myDb.insertRow("Advanced"," Batting"," " , " " , " " ,"www.ar5.com");
+		myDb.insertRow("Advanced"," Batting"," " , " " , "123 " ,"www.ar2.com");
+		myDb.insertRow("Advanced"," Catching"," " , " " , "456 " ,"www.ar3.com");
+		myDb.insertRow("Advanced"," Fielding"," " , " " , "789 " ,"www.ar4.com");
+		myDb.insertRow("Advanced"," Batting"," " , " " , "1011 " ,"www.ar5.com");
+		myDb.insertRow("Advanced"," Batting"," " , " " , "1012 " ,"www.ar5.com");
+		myDb.insertRow("Advanced"," Batting"," " , " " , "1013 " ,"www.ar5.com");
 		  
 	}
 	 public void check() {
