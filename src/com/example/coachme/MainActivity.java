@@ -129,6 +129,7 @@ public class MainActivity extends Activity {
 			
 		 	//myDb.insertRow("Beginner","Running"," " , " " , " " ,"www.br1.com");
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
+			query.orderByAscending("createdAt");
 			query.findInBackground(new FindCallback<ParseObject>() {
 			  public void done(List<ParseObject> Beginner1, ParseException e) {
 			    if (e == null) {

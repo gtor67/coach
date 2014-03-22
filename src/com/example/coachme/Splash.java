@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.view.Window;
 
 import java.util.List;
-/*
+
 import android.media.MediaPlayer;
 import android.media.SoundPool;
-*/
+
 import com.parse.*;
 
 
@@ -56,7 +56,13 @@ public class Splash extends Activity {
 				TimerTask task = new TimerTask() {
 					@Override
 					public void run() {
-
+						SoundPool sp = new SoundPool(1,3,0);
+						int id = sp.load(Splash.this,R.raw.splashsound,1);
+					
+						sp.play(id, 0.5f, 0.5f, 0, 0, 1.0f);
+						MediaPlayer mPlayer = MediaPlayer.create(Splash.this, R.raw.splashsound);
+						mPlayer.start();
+						sp.release();
 						// Start the next activity
 						Intent mainIntent = new Intent().setClass(
 								Splash.this, MainActivity.class);
