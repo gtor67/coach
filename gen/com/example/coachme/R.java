@@ -29,18 +29,25 @@ public final class R {
     public static final class drawable {
         public static final int a=0x7f020000;
         public static final int b=0x7f020001;
-        public static final int button_baseball_large_squared_gray=0x7f020002;
-        public static final int button_basketball_large_squared_gray=0x7f020003;
-        public static final int button_football_large_squared_gray=0x7f020004;
-        public static final int c=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int p1=0x7f020007;
-        public static final int p14=0x7f020008;
-        public static final int p2=0x7f020009;
-        public static final int p8=0x7f02000a;
-        public static final int splash=0x7f02000b;
-        public static final int splash2=0x7f02000c;
-        public static final int splash_screen=0x7f02000d;
+        public static final int button_baseball_change=0x7f020002;
+        public static final int button_baseball_large_squared_blue_selected=0x7f020003;
+        public static final int button_baseball_large_squared_gray=0x7f020004;
+        public static final int button_basketball_change=0x7f020005;
+        public static final int button_basketball_large_squared_gray=0x7f020006;
+        public static final int button_football_change=0x7f020007;
+        public static final int button_football_large_squared_gray=0x7f020008;
+        public static final int button_soccer_change=0x7f020009;
+        public static final int button_soccer_large_squared_gray=0x7f02000a;
+        public static final int c=0x7f02000b;
+        public static final int ic_launcher=0x7f02000c;
+        public static final int not_available_large_squared_gray_selected=0x7f02000d;
+        public static final int p1=0x7f02000e;
+        public static final int p14=0x7f02000f;
+        public static final int p2=0x7f020010;
+        public static final int p8=0x7f020011;
+        public static final int splash=0x7f020012;
+        public static final int splash2=0x7f020013;
+        public static final int splash_screen=0x7f020014;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0b000b;

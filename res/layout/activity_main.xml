@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="342dp"
+        android:layout_height="400dp"
         android:orientation="vertical"
         android:paddingBottom="@dimen/activity_vertical_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -35,7 +35,7 @@
             android:layout_height="60dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/button_baseball_large_squared_gray"
+            android:background="@drawable/button_baseball_change"
             android:onClick="chooseBaseball" />
         
         <Button
@@ -43,14 +43,21 @@
             android:layout_height="60dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/button_basketball_large_squared_gray" />
+            android:background="@drawable/button_basketball_change" />
         
         <Button
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
-            android:background="@drawable/button_football_large_squared_gray" />
+            android:background="@drawable/button_football_change" />
+        
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_soccer_change" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -69,20 +76,19 @@
     <RelativeLayout
         android:id="@+id/buttonContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.40" >
+        android:layout_height="90dp" >
 
         <Button
             android:id="@+id/button1Login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
             android:onClick="chooseLogin"
             android:text="login" />
 
         <Button
             android:id="@+id/createAccButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="48dp"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/button1Login"
             android:onClick="createAccount"

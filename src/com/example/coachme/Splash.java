@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.view.Window;
 
 import java.util.List;
-
+/*
 import android.media.MediaPlayer;
 import android.media.SoundPool;
-
+*/
 import com.parse.*;
 
 
@@ -38,7 +38,7 @@ public class Splash extends Activity {
 		
 		/*
 		// TODO Auto-generated method stub
-		 */
+		*/
 		
 		
 		super.onCreate(savedInstanceState);
@@ -47,36 +47,42 @@ public class Splash extends Activity {
 		*/
 		
 		// Set portrait orientation
-				setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-				// Hide title bar
-				requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		// Hide title bar
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-				setContentView(R.layout.splash);
+	    setContentView(R.layout.splash);
 
-				TimerTask task = new TimerTask() {
-					@Override
-					public void run() {
-						SoundPool sp = new SoundPool(1,3,0);
-						int id = sp.load(Splash.this,R.raw.splashsound,1);
+		TimerTask task = new TimerTask() {
+
+	
+	@Override
+	public void run() {
+	
+	/*					
+    SoundPool sp = new SoundPool(1,3,0);
+	int id = sp.load(Splash.this,R.raw.splashsound,1);
 					
-						sp.play(id, 0.5f, 0.5f, 0, 0, 1.0f);
-						MediaPlayer mPlayer = MediaPlayer.create(Splash.this, R.raw.splashsound);
-						mPlayer.start();
-						sp.release();
-						// Start the next activity
-						Intent mainIntent = new Intent().setClass(
-								Splash.this, MainActivity.class);
-						startActivity(mainIntent);
+	sp.play(id, 0.5f, 0.5f, 0, 0, 1.0f);
+	MediaPlayer mPlayer = MediaPlayer.create(Splash.this, R.raw.splashsound);
+	mPlayer.start();
+	sp.release();
+	*/
+						
+		// Start the next activity
+		Intent mainIntent = new Intent().setClass(
+		Splash.this, MainActivity.class);
+		startActivity(mainIntent);
 
-						// Close the activity so the user won't able to go back this
-						// activity pressing Back button
-						finish();
-					}
-				};
+		// Close the activity so the user won't able to go back this
+		// activity pressing Back button
+		finish();
+	}
+};
 
-				// Simulate a long loading process on application startup.
-				Timer timer = new Timer();
-				timer.schedule(task, SPLASH_SCREEN_DELAY);
+		// Simulate a long loading process on application startup.
+		Timer timer = new Timer();
+		timer.schedule(task, SPLASH_SCREEN_DELAY);
 		
 		
 		/*
