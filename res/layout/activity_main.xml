@@ -80,19 +80,20 @@
 
         <Button
             android:id="@+id/button1Login"
-            android:layout_width="200dp"
-            android:layout_height="48dp"
-            android:onClick="chooseLogin"
-            android:text="login" />
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+             android:layout_marginTop="20dp"
+            android:background="@drawable/button_login_change"
+            android:onClick="chooseLogin" />
 
         <Button
             android:id="@+id/createAccButton"
-            android:layout_width="200dp"
-            android:layout_height="48dp"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/button1Login"
-            android:onClick="createAccount"
-            android:text="@string/create_account" />
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_create_an_account_change"
+            android:onClick="createAccount" />
 
         <Button
             android:id="@+id/buttonLogout"
