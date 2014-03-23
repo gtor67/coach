@@ -125,7 +125,8 @@ public final class R {
         public static final int video=0x7f0a0007;
     }
     public static final class raw {
-        public static final int splashsound=0x7f050000;
+        public static final int baseballsound=0x7f050000;
+        public static final int splashsound=0x7f050001;
     }
     public static final class string {
         public static final int account_reg_descript=0x7f07000e;

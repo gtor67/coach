@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+
 public class MainActivity extends Activity {
 	DBAdapter myDb;
 	ListView lv;
@@ -76,11 +77,8 @@ public class MainActivity extends Activity {
         	settings.setVisibility(View.INVISIBLE);
         	
         }
-        
-        
-        
-        
     }
+    
     private void loadMylist() {
   		// TODO Auto-generated method stub
   		List<String> list = myDb.listdata("Beginner","All");
@@ -234,7 +232,7 @@ public class MainActivity extends Activity {
     	Intent intent = new Intent(this, TrainingFilterActivity.class);
     	startActivity(intent);
     }
-    
+
     public void chooseLogin(View view) {
     	Intent intent = new Intent(this, LoginActivity.class);
     	startActivity(intent);
