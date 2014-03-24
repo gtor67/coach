@@ -28,8 +28,7 @@
         <ImageView
             android:id="@+id/imageView1"
             android:layout_width="166dp"
-            android:layout_height="176dp"
-            android:src="@drawable/p1" />
+            android:layout_height="176dp" />
 
         <LinearLayout
             android:layout_width="134dp"
@@ -59,6 +58,13 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/viewVideobutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="85dp"
+        android:text="View Video" />
+
     <TextView
         android:id="@+id/textViewEmail"
         android:layout_width="match_parent"
@@ -85,12 +91,5 @@
         android:layout_marginTop="26dp" >
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/viewVideobutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="85dp"
-         android:text="View Video" />
 
 </LinearLayout>

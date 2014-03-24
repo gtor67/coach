@@ -55,11 +55,15 @@ public final class R {
         public static final int not_available_large_squared_gray_selected=0x7f020019;
         public static final int p1=0x7f02001a;
         public static final int p10=0x7f02001b;
-        public static final int p19=0x7f02001c;
-        public static final int p2=0x7f02001d;
-        public static final int splash=0x7f02001e;
-        public static final int splash2=0x7f02001f;
-        public static final int splash_screen=0x7f020020;
+        public static final int p11=0x7f02001c;
+        public static final int p15=0x7f02001d;
+        public static final int p19=0x7f02001e;
+        public static final int p2=0x7f02001f;
+        public static final int p5=0x7f020020;
+        public static final int p8=0x7f020021;
+        public static final int splash=0x7f020022;
+        public static final int splash2=0x7f020023;
+        public static final int splash_screen=0x7f020024;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0b000b;

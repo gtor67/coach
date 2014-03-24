@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
         //String title = "Fingers up thumbs down";
         //Cursor exercise = myDb.getRow(title);
         //String word = exercise.getString(1);
-        check();
+        //check();
         myDb.getAllRows();
        // loadMylist();
         
@@ -95,26 +95,39 @@ public class MainActivity extends Activity {
 		String focus2="To stress proper fielding technique for ground balls hit directly at the fielder, to his glove, and to his backhand side";
 		String focus3="To learn to perform a controlled fall for a bent-leg slide";
 		String procedure1 ="Any ball above the belt requires that the thumbs be brought closer together so that the fingers point up to the sky (photo a). This ensures that two hands are used to catch the ball. Any ball below the belt requires that the pinkies be brought together (fingers point down to the ground) (photo b).With the athletes facing you between the side-by-side cones, move through the receiving positions as a group. When you point up, the athletes should move their hands up, connecting their thumbs. When you point down, the athletes should flip their hands around so that the pinkies touch. The first part of this drill is simply to feel the hands turn over and move from ���thumbs��� to ���pinkies.��� The second part of the drill is to understand the concept of when to use each position���on a ball above the belt, use thumbs; on a ball below the belt, use pinkies";
-		String procedure2 ="With the player standing at thier infield position the coach yes Set and the player gets in the ready position.  the coach then proceeds to  to hit short fungoes directly at the player who fields the ball and throws to first.  Continue the drill by hitting balls to the glove and backhand sides.  The goal of the players is to move their feet so they field the ball in front of thier bodies not allowing the players to reach for the ball with only their gloves.";
+		String procedure2 ="With the player standing at thier infield position the coach yells Set and the player gets in the ready position.  the coach then proceeds to  to hit short fungoes directly at the player who fields the ball and throws to first.  Continue the drill by hitting balls to the glove and backhand sides.  The goal of the players is to move their feet so they field the ball in front of thier bodies not allowing the players to reach for the ball with only their gloves.";
 		String procedure3 ="the coach pulls the rug out form under the faller. to execute  this drill properly, the faller thorws his arms and head back when the rug is poulled out. ONe leg should bend underneath to cushion the fall which should leave the player in a sitting position at teh end of the fall teh top leg slightly flexed should remain four inches off the floor";
-		
+		String focus4= "Working on hand eye corrdination";
+		String procedure4 ="This one is essay just instruct the child to throw the ball up into the air and have then catch the ball using the basket catch( the glove in front of the body and facing palm up)";
+		String focus5= "Practice catching a ball thrown by someone else";
+		String procedure5 ="Position the child in different position and toss him the ball underhanded making him reach to either side to catch the ball";
+		String focus6= "this is used to teach the mechanics and the timing required to be a successfull bunter";
+		String procedure6 ="This drill does not use a drill. This drill requires a person to pretent to be a pitcher.  this person will pretend to throw a pitch going throu the whole motion a real pitcher users  the player will then work on the motion of getting ready to bunt while timing the imaginary pitch.";
+		String focus7 = "Work on bunting the ball to a certain location";
+		String procedure7 ="This drill requiera bit of a setup of four cones and having the bunter try to bunt the ball in between two of the four logs when insturctred view picture to see the setup of the cones";
+		String focus8= "";
+		String procedure8 ="";
+		String focus9= "";
+		String procedure9 ="";
+		String focus10= "";
+		String procedure10 ="";
 		myDb.insertRow("Beginner","Running"," " , " " , "asdflj" ,"www.br1.com");
-		myDb.insertRow("Beginner","Catching",focus1 , procedure1 , "Fingers up thumbs down" ,"www.bc2.com");
+		myDb.insertRow("Beginner","Catching",focus1 , procedure1 , "Fingers up thumbs down" ,"http://youtu.be/Hu-qaaVLmNo");
 		myDb.insertRow("Beginner","Batting"," " , " " , " 55" ,"www.bc3.com");
 		myDb.insertRow("Beginner","Fielding"," " , " " , "66 " ,"www.bc4.com");
-		myDb.insertRow("Beginner","Bunting"," " , " " , "77 " ,"www.bc5.com");
-		myDb.insertRow("Beginner","Catching"," " , " " , "88 " ,"www.bc6.com");
-		myDb.insertRow("Beginner","Batting"," " , " " , " " ,"www.ib7.com");		    	
+		myDb.insertRow("Beginner","Bunting",focus6 , procedure6 , "Sacrifice bunting " ,"http://youtu.be/-l7Hi8IBtNg");
+		myDb.insertRow("Beginner","Catching",focus4 , procedure4 , "Self Toss " ,"http://youtu.be/S7lhOwxFoqo");
+		myDb.insertRow("Beginner","Catching",focus5 , procedure5 , "Play Toss " ,"http://youtu.be/uLuPbyGGXOk");		    	
 			
-		myDb.insertRow("Intermediate","BatTing"," " , " " , " 666" ,"www.ib1.com");		
+		myDb.insertRow("Intermediate","Buntung",focus7 , procedure7 , " Aim Game" ,"http://youtu.be/r0BYBlkgRsg");		
 		myDb.insertRow("Intermediate","Catching"," " , " " , "777 " ,"www.ib3.com");		    	
 		myDb.insertRow("Intermediate","Running"," " , " " , "888 " ,"www.ib2.com");		    	
-		myDb.insertRow("Intermediate","Fielding",focus2 , procedure2 , "infield drill" ,"www.ib4.com");		    	
+		myDb.insertRow("Intermediate","Fielding",focus2 , procedure2 , "infield drill" ,"http://youtu.be/7BD-zfEqyF4");		    	
 		myDb.insertRow("Intermediate","Catching"," " , " " , "999 " ,"www.ib5.com");		    	
 		myDb.insertRow("Intermediate","Batting"," " , " " , "9999 " ,"www.ib6.com");	
 		myDb.insertRow("Intermediate","Batting"," " , " " , "99999 " ,"www.ib6.com");
 			
-		myDb.insertRow("Advanced"," Sliding",focus3 , procedure3 , "Rub Pull" ,"www.ar1.com");
+		myDb.insertRow("Advanced"," Sliding",focus3 , procedure3 , "Rub Pull" ,"http://youtu.be/8kiiOXW41kI");
 		myDb.insertRow("Advanced"," Batting"," " , " " , "123 " ,"www.ar2.com");
 		myDb.insertRow("Advanced"," Catching"," " , " " , "456 " ,"www.ar3.com");
 		myDb.insertRow("Advanced"," Fielding"," " , " " , "789 " ,"www.ar4.com");
