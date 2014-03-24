@@ -63,7 +63,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="85dp"
-        android:text="View Video" />
+        android:text="View Video"
+        android:textSize="@dimen/activity_vertical_margin" />
 
     <TextView
         android:id="@+id/textViewEmail"

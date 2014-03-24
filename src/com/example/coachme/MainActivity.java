@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
         //String title = "Fingers up thumbs down";
         //Cursor exercise = myDb.getRow(title);
         //String word = exercise.getString(1);
-        //check();
+        check();
         myDb.getAllRows();
        // loadMylist();
         
@@ -105,15 +105,16 @@ public class MainActivity extends Activity {
 		String procedure6 ="This drill does not use a drill. This drill requires a person to pretent to be a pitcher.  this person will pretend to throw a pitch going throu the whole motion a real pitcher users  the player will then work on the motion of getting ready to bunt while timing the imaginary pitch.";
 		String focus7 = "Work on bunting the ball to a certain location";
 		String procedure7 ="This drill requiera bit of a setup of four cones and having the bunter try to bunt the ball in between two of the four logs when insturctred view picture to see the setup of the cones";
-		String focus8= "";
-		String procedure8 ="";
-		String focus9= "";
-		String procedure9 ="";
-		String focus10= "";
-		String procedure10 ="";
+		String focus8= "This is used to help futher develop hand-eye coordination, quick reaction and the value of knocking down the ball";
+		String procedure8 ="The coach will instruct the player to get in position at whatever base they are and start hitting or simulating a player hitting grounders.  The player then has to stop the balls however they can if they are unable to catch the ball they should try to bat the ball down with their glove";
+		String focus9= "Drill used to develop reaction to pitches in different locations in the strike zone.";
+		String procedure9 ="This drill requires that the coach be in a position where he can pitch two balls at a time." +
+				"the coach will instruct the batter which ball he is to swing at while the balls have been pitched. (Ususally high or low but can be inside outside)";
+		String focus10= "This is used to emphsis the importance of hitting the ball to the ground as these types of hits are harder to deffined";
+		String procedure10 ="To run this drill the coach will instruct the player to hit a ground ball only giving the player praise when he hits the ball on the ground.  If the player hits a popup then he is reminded to swing down instead of up which cased the popup";
 		myDb.insertRow("Beginner","Running"," " , " " , "asdflj" ,"www.br1.com");
 		myDb.insertRow("Beginner","Catching",focus1 , procedure1 , "Fingers up thumbs down" ,"http://youtu.be/Hu-qaaVLmNo");
-		myDb.insertRow("Beginner","Batting"," " , " " , " 55" ,"www.bc3.com");
+		myDb.insertRow("Beginner","Batting"," " , " " , "Swing Down" ,"www.bc3.com");
 		myDb.insertRow("Beginner","Fielding"," " , " " , "66 " ,"www.bc4.com");
 		myDb.insertRow("Beginner","Bunting",focus6 , procedure6 , "Sacrifice bunting " ,"http://youtu.be/-l7Hi8IBtNg");
 		myDb.insertRow("Beginner","Catching",focus4 , procedure4 , "Self Toss " ,"http://youtu.be/S7lhOwxFoqo");
@@ -128,10 +129,10 @@ public class MainActivity extends Activity {
 		myDb.insertRow("Intermediate","Batting"," " , " " , "99999 " ,"www.ib6.com");
 			
 		myDb.insertRow("Advanced"," Sliding",focus3 , procedure3 , "Rub Pull" ,"http://youtu.be/8kiiOXW41kI");
-		myDb.insertRow("Advanced"," Batting"," " , " " , "123 " ,"www.ar2.com");
+		myDb.insertRow("Advanced"," Batting",focus9 , procedure9 , "Hi Low Hitting" ,"http://youtu.be/FaHo2XqNSWU");
 		myDb.insertRow("Advanced"," Catching"," " , " " , "456 " ,"www.ar3.com");
-		myDb.insertRow("Advanced"," Fielding"," " , " " , "789 " ,"www.ar4.com");
-		myDb.insertRow("Advanced"," Batting"," " , " " , "1011 " ,"www.ar5.com");
+		myDb.insertRow("Advanced"," Fielding",focus8 , procedure8 , "Pepper " ,"http://youtu.be/U2lqU2ESp9Q");
+		myDb.insertRow("Advanced"," Batting",focus10 , procedure10 , "Swing Low " ,"http://youtu.be/VMHWBi1efJQ");
 		myDb.insertRow("Advanced"," Batting"," " , " " , "1012 " ,"www.ar5.com");
 		myDb.insertRow("Advanced"," Batting"," " , " " , "1013 " ,"www.ar5.com");
 		  
