@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.parse.*;
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -98,7 +100,31 @@ public class LoginActivity extends Activity {
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}
+	public void resetPassword(View view){
+		EditText emailET = (EditText)findViewById(R.id.editTextrecoverEmail);
+		String email = emailET.getText().toString();
+		
+		ParseUser.requestPasswordResetInBackground(email,
+                new RequestPasswordResetCallback() {
+				public void done(ParseException e) {
+				if (e == null) {
+				// An email was successfully sent with reset instructions.
+					CharSequence text = "Check your inbox for instructions.";
+			    	int duration = Toast.LENGTH_SHORT;
 
+			    	Toast toast = Toast.makeText(LoginActivity.this, text, duration);
+			    	toast.show();  
+				} else {
+				// Something went wrong. Look at the ParseException to see what's up.
+					CharSequence text = "Email was not sent. Check email address you supplied.";
+			    	int duration = Toast.LENGTH_SHORT;
+
+			    	Toast toast = Toast.makeText(LoginActivity.this, text, duration);
+			    	toast.show();  
+				}
+				}
+				});
+	}
 	/**
 	 * Attempts to sign in or register the account specified by the login form.
 	 * If there are form errors (invalid email, missing fields, etc.), the
