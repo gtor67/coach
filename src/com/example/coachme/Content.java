@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -98,11 +99,14 @@ public class Content extends Activity {
 		
 		TextView focusTV = (TextView) findViewById (R.id.TextView01);
 		focusTV.setText(exersice.getString(3));
+		focusTV.setMovementMethod(new ScrollingMovementMethod());
 		TextView proTV = (TextView) findViewById (R.id.TextView02);
+		proTV.setMovementMethod(new ScrollingMovementMethod());
 		proTV.setText(exersice.getString(4));
 		
 		ImageView image = (ImageView) findViewById (R.id.imageView1);
 		int resourceId = this.getResources().getIdentifier(fileName.toString(), "drawable", "com.example.coachme");
+		Log.d("resourcce id",""+resourceId);
 		image.setImageResource(resourceId);
 		
 		link = exersice.getString(6);
