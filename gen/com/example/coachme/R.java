@@ -54,9 +54,9 @@ public final class R {
         public static final int ic_launcher=0x7f020018;
         public static final int not_available_large_squared_gray_selected=0x7f020019;
         public static final int p1=0x7f02001a;
-        public static final int p14=0x7f02001b;
-        public static final int p2=0x7f02001c;
-        public static final int p8=0x7f02001d;
+        public static final int p10=0x7f02001b;
+        public static final int p19=0x7f02001c;
+        public static final int p2=0x7f02001d;
         public static final int splash=0x7f02001e;
         public static final int splash2=0x7f02001f;
         public static final int splash_screen=0x7f020020;
