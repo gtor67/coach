@@ -84,7 +84,7 @@
             android:id="@+id/button1Login"
             android:layout_width="160dp"
             android:layout_height="40dp"
-             android:layout_marginTop="20dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/button_login_change"
             android:onClick="chooseLogin" />
 
@@ -99,20 +99,19 @@
 
         <Button
             android:id="@+id/buttonLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/createAccButton"
-            android:layout_alignParentRight="true"
-            android:onClick="logOut"
-            android:text="Log Out" />
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_logout_change"
+            android:onClick="logOut" />
 
         <Button
             android:id="@+id/settingsButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:text="@string/settings" 
+            android:layout_width="160dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="160dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_account_settings_change"
             android:onClick="chooseSettings"/>
 
     </RelativeLayout>
