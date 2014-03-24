@@ -89,7 +89,7 @@ public class Content extends Activity {
 		Log.d("exersice 5", exersice.getString(5));
 		
 	
-		fileName.append(exersice.getString(0));
+		//fileName.append(exersice.getString(0));
 		Log.d("pic id",""+fileName);
 		
 		
