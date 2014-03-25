@@ -35,11 +35,11 @@
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="140dp"
             android:background="@drawable/button_baseball_change"
             android:soundEffectsEnabled="true"
             android:onClick="chooseBaseball" />
-        
+    <!--    
         <Button
             android:layout_width="160dp"
             android:layout_height="60dp"
@@ -60,7 +60,7 @@
             android:layout_marginLeft="70dp"
             android:layout_marginTop="15dp"
             android:background="@drawable/button_soccer_change" />
-
+-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

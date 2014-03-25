@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         myDb = new DBAdapter(this);
         openDB();
-      //  filldb();
+     
         
         
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
