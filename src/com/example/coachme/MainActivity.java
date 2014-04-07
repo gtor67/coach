@@ -17,6 +17,7 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -240,6 +241,35 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+
+    	    @Override
+    	    public boolean onOptionsItemSelected(MenuItem item) {
+    	    	// Handle item selection
+    	    	switch (item.getItemId()) {
+    	    	
+    	    	// From overflow menu, goes to Sign-in page
+    	    	case R.id.action_login:
+    	    	startActivity(new Intent(this,LoginActivity.class));
+    	    	return true;
+    	    	
+    	    	// From overflow menu, goes to the Create an Account page
+    	    	case R.id.action_create_account:
+        	    startActivity(new Intent(this, CreateAccount.class));
+        	    return true;
+        	    
+        	    // From overflow menu, goes to the Settings page
+    	    	case R.id.action_settings:
+        	    startActivity(new Intent(this, Settings.class));
+        	    return true;
+    	    	
+        	    // From overflow menu, goes to the About page
+    	    	case R.id.action_about:
+        	    startActivity(new Intent(this, About.class));
+        	    return true;
+    	    	default:
+    	    	return super.onOptionsItemSelected(item);
+    	    	}
+    	    	}
     
     /** Called when the user clicks the Baseball button */
     public void chooseBaseball(View view) {

@@ -44,7 +44,24 @@ public class CreateAccount extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
 		switch (item.getItemId()) {
+
+		// From overflow menu, goes to Recover Lost Password page
+    	case R.id.action_forgot_password:
+	    startActivity(new Intent(this, RecoverLostPassword.class));
+	    return true;
+		
+		// From overflow menu, goes to the Settings page
+    	case R.id.action_settings:
+	    startActivity(new Intent(this, Settings.class));
+	    return true;
+    	
+	    // From overflow menu, goes to the About page
+    	case R.id.action_about:
+	    startActivity(new Intent(this, About.class));
+	    return true;
+	
 		case android.R.id.home:
 			// This ID represents the Home or Up button. In the case of this
 			// activity, the Up button is shown. Use NavUtils to allow users
@@ -55,8 +72,9 @@ public class CreateAccount extends Activity {
 			//
 			NavUtils.navigateUpFromSameTask(this);
 			return true;
+			default:
+			return super.onOptionsItemSelected(item);
 		}
-		return super.onOptionsItemSelected(item);
 	}
 	
 	public void createAccount(View view) 

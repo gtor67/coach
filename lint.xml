@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <lint>
-    <issue id="NewApi">
+    <issue id="NewApi" severity="ignore">
         <ignore path="res/layout/activity_content.xml" />
     </issue>
 </lint>

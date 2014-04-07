@@ -141,21 +141,42 @@ public class Content extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
 		switch (item.getItemId()) {
+
+	    // From overflow menu, goes to the Create an Account page
+		case R.id.action_create_account:
+	    startActivity(new Intent(this, CreateAccount.class));
+	    return true;
+				
+	    // From overflow menu, goes to the Favorites page
+		case R.id.action_favorites:
+	    startActivity(new Intent(this, Favorites.class));
+	    return true;
+			    
+	    // From overflow menu, goes to the Settings page
+		case R.id.action_settings:
+		startActivity(new Intent(this, Settings.class));
+	    return true;
+		    	
+		// From overflow menu, goes to the About page
+		case R.id.action_about:
+		startActivity(new Intent(this, About.class));
+		return true;
+
 		case android.R.id.home:
-			// This ID represents the Home or Up button. In the case of this
-			// activity, the Up button is shown. Use NavUtils to allow users
-			// to navigate up one level in the application structure. For
-			// more details, see the Navigation pattern on Android Design:
-			//
-			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
-			//
-			NavUtils.navigateUpFromSameTask(this);
-			return true;
-		}
+	    // This ID represents the Home or Up button. In the case of this
+		// activity, the Up button is shown. Use NavUtils to allow users
+		// to navigate up one level in the application structure. For
+		// more details, see the Navigation pattern on Android Design:
+		//
+		// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+		//
+		NavUtils.navigateUpFromSameTask(this);
+		return true;
+		default:
 		return super.onOptionsItemSelected(item);
-		
-		
+		}
 	}
 	 
 	public void addListenerOnButton() {

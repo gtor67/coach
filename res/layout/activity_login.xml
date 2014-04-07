@@ -82,7 +82,7 @@
                 android:text="@string/action_sign_in_register" />
 
             <TextView
-                android:id="@+id/textView1"
+                android:id="@+id/about_CoachMe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Forgot your password?"

@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name="com.example.coachme.MainActivity"
-            android:label="@string/app_name" >
+            android:label="Main Sports Menu" >
             <intent-filter>
                 <action android:name="android.intent.action.MAINACTIVITY" />
 
@@ -61,7 +61,7 @@
         </activity>
         <activity
             android:name="com.example.coachme.CreateAccount"
-            android:label="@string/title_activity_create_account"
+            android:label="Create an Account"
             android:parentActivityName="com.example.coachme.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -71,6 +71,31 @@
             android:name="com.example.coachme.AccSettings"
             android:label="@string/title_activity_acc_settings" >
         </activity>
+        
+        <!-- About activity -->
+        <activity
+            android:name="com.example.coachme.About"
+            android:label="About CoachMe v1.0" >
+        </activity>
+        
+        <!-- Settings activity -->
+        <activity
+            android:name="com.example.coachme.Settings"
+            android:label="Settings" >
+        </activity>
+        
+        <!-- Recover Lost Password activity -->
+        <activity
+            android:name="com.example.coachme.RecoverLostPassword"
+            android:label="Recover Lost Password" >
+        </activity>
+        
+        <!-- Favorites activity -->
+        <activity
+            android:name="com.example.coachme.Favorites"
+            android:label="Favorites" >
+        </activity>
+
     </application>
 
 </manifest>

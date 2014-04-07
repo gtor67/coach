@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
@@ -100,6 +101,36 @@ public class LoginActivity extends Activity {
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    	// Handle item selection
+    	switch (item.getItemId()) {
+    	
+    	// From overflow menu, goes to the Create an Account page
+    	case R.id.action_create_account:
+	    startActivity(new Intent(this, CreateAccount.class));
+	    return true;
+	    
+	    // From overflow menu, goes to Recover Lost Password page
+    	case R.id.action_forgot_password:
+	    startActivity(new Intent(this, RecoverLostPassword.class));
+	    return true;
+	    
+	    // From overflow menu, goes to the Settings page
+    	case R.id.action_settings:
+	    startActivity(new Intent(this, Settings.class));
+	    return true;
+    	
+	    // From overflow menu, goes to the About page
+    	case R.id.action_about:
+	    startActivity(new Intent(this, About.class));
+	    return true;
+    	default:
+    	return super.onOptionsItemSelected(item);
+    	}
+    }
+ 
 	public void resetPassword(View view){
 		EditText emailET = (EditText)findViewById(R.id.editTextrecoverEmail);
 		String email = emailET.getText().toString();
