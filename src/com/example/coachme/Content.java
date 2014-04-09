@@ -38,7 +38,7 @@ public class Content extends Activity {
 		// Show the Up button in the action bar.
 		setupActionBar();
 		// for the View Video Button
-		addListenerOnButton();
+		viewVideo();
 		
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(TrainingFilterActivity.EXTRA_MESSAGE);
@@ -179,7 +179,7 @@ public class Content extends Activity {
 		}
 	}
 	 
-	public void addListenerOnButton() {
+	public void viewVideo() {
  
 		button = (Button) findViewById(R.id.viewVideobutton);
  

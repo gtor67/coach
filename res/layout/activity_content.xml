@@ -22,7 +22,7 @@
         android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_width="426dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
         <ImageView
@@ -32,7 +32,7 @@
 
         <LinearLayout
             android:layout_width="134dp"
-            android:layout_height="128dp"
+            android:layout_height="160dp"
             android:orientation="vertical" >
 
             <TextView
@@ -47,24 +47,35 @@
             <TextView
                 android:id="@+id/TextView01"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="fill"
-                android:layout_weight="1.37"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
                 android:text="focus"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="@dimen/activity_horizontal_margin" />
-
+                android:textSize="14sp" />
         </LinearLayout>
-
     </LinearLayout>
 
-    <Button
-        android:id="@+id/viewVideobutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="85dp"
-        android:text="View Video"
-        android:textSize="@dimen/activity_vertical_margin" />
+    
+    <LinearLayout
+        android:layout_width="205dp"
+        android:layout_height="40dp"
+        android:orientation="horizontal" >
+    
+        <!-- View Video Button -->
+           <Button
+               android:id="@+id/viewVideobutton"
+               android:layout_width="100dp"
+               android:layout_height="40dp"
+               android:background="@drawable/button_view_video_change"
+               android:onClick="viewVideo" />
+    
+        <!-- Add to Favorites -->
+           <Button
+             android:id="@+id/add_favorites_button"
+             android:layout_marginLeft="5dp"
+    	     android:layout_width="100dp"
+             android:layout_height="40dp"
+    	     android:background="@drawable/button_favorites_change" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/textViewEmail"
@@ -78,19 +89,17 @@
 
     <TextView
         android:id="@+id/TextView02"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
         android:text="procedure"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textSize="14sp" />
 
     <ScrollView
         android:id="@+id/scrollView1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp" >
-
     </ScrollView>
-
 </LinearLayout>

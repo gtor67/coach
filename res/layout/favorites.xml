@@ -4,16 +4,27 @@
            android:layout_height="fill_parent"
            android:background="#414141"
            android:orientation="vertical" >
-
+    
         <TextView
-            android:id="@+id/about_settings1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:text="This is the Favorites Page"
-            android:textColor="#ffffff"
-            android:textSize="14sp" />
-
+           android:id="@+id/empty_textview"
+           android:layout_width="fill_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           android:textColor="#ffffff"
+           android:textSize="14sp"
+           android:text="@string/no_favorites"/>
+    
+       <!-- ScrollView is needed when adding views, or only the last view will show up -->
+       <ScrollView
+	       android:layout_width="match_parent"
+	       android:layout_height="match_parent">
+	   
+	   <LinearLayout
+		    android:id="@+id/bookmark_insert_point"
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:orientation="vertical">
+		</LinearLayout>
+	</ScrollView>
 </LinearLayout>
