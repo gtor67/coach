@@ -18,11 +18,13 @@
 
         <TextView
             android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@string/home_instruction"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textSize="18sp" /> />
 
+        <!--
         <TextView
             android:id="@+id/textViewEmailHead"
             android:layout_width="wrap_content"
@@ -30,6 +32,7 @@
             android:text="@string/home_note"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textStyle="italic" />
+         -->   
 
         <Button
             android:layout_width="160dp"
@@ -78,36 +81,42 @@
     <RelativeLayout
         android:id="@+id/buttonContainer"
         android:layout_width="fill_parent"
-        android:layout_height="70dp" >
+        android:layout_height="fill_parent" >
 
+        <!-- Login Button -->
         <Button
             android:id="@+id/button1Login"
-            android:layout_width="160dp"
+            android:layout_width="100dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_login_change"
             android:onClick="chooseLogin" />
-
+        
+        <!-- Create an Account Button -->
         <Button
             android:id="@+id/createAccButton"
-            android:layout_width="160dp"
+            android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginLeft="160dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_create_an_account_change"
             android:onClick="createAccount" />
 
+        <!-- Logout Button -->
         <Button
             android:id="@+id/buttonLogout"
-            android:layout_width="160dp"
+             android:layout_width="100dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_logout_change"
             android:onClick="logOut" />
-
+        
+        <!-- Account Settings Button -->
         <Button
             android:id="@+id/settingsButton"
-            android:layout_width="160dp"
+            android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_marginLeft="160dp"
             android:layout_marginTop="10dp"

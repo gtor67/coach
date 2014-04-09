@@ -27,7 +27,7 @@
         </activity>
         <activity
             android:name="com.example.coachme.MainActivity"
-            android:label="Main Sports Menu" >
+            android:label="Main Sports Screen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAINACTIVITY" />
 
@@ -48,7 +48,7 @@
         </activity>
         <activity
             android:name="com.example.coachme.LoginActivity"
-            android:label="@string/title_activity_login"
+            android:label="Login Screen"
             android:windowSoftInputMode="adjustResize|stateVisible" >
         </activity>
         <activity
@@ -61,7 +61,7 @@
         </activity>
         <activity
             android:name="com.example.coachme.CreateAccount"
-            android:label="Create an Account"
+            android:label="Create an Account Screen"
             android:parentActivityName="com.example.coachme.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

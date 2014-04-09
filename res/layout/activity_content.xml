@@ -39,6 +39,7 @@
                 android:id="@+id/textViewEmailHead"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:gravity="center"
                 android:text="Focus"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -47,7 +48,10 @@
             <TextView
                 android:id="@+id/TextView01"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbarAlwaysDrawVerticalTrack="true"
+                android:fadeScrollbars="false"
+                android:scrollbars="vertical"
                 android:layout_marginLeft="10dp"
                 android:text="focus"
                 android:textSize="14sp" />
@@ -81,8 +85,8 @@
         android:id="@+id/textViewEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:scrollHorizontally="false"
         android:text="Procedure"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold" />
@@ -92,6 +96,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:fadeScrollbars="false"
         android:scrollbars="vertical"
         android:text="procedure"
         android:textSize="14sp" />
@@ -100,6 +105,7 @@
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:scrollbarStyle="outsideOverlay"
         android:layout_marginTop="26dp" >
     </ScrollView>
 </LinearLayout>
