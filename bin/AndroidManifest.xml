@@ -90,6 +90,12 @@
             android:label="Recover Lost Password" >
         </activity>
         
+        <!-- Video class activity -->
+        <activity
+            android:name="com.example.coachme.Video"
+            android:label="Video" >
+        </activity>
+        
         <!-- Favorites activity -->
         <activity
             android:name="com.example.coachme.Favorites"

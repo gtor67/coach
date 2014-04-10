@@ -8,10 +8,12 @@ import com.google.android.youtube.player.YouTubePlayerView;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 
 public class Video extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener
@@ -64,7 +66,11 @@ public class Video extends YouTubeBaseActivity implements YouTubePlayer.OnInitia
 	
 	@Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider,YouTubePlayer player, boolean wasRestored) {
-             if (!wasRestored) player.cueVideo("KEhVTL35v2s"); // your video ID to play
+		// Get the message from the intent
+	    Intent intent = getIntent();
+	    String message = intent.getStringExtra(Content.VIDEO_MESSAGE);  
+	    Log.d ("VIDKEY",message);
+		if (!wasRestored) player.cueVideo(message); // your video ID to play
     }
     @Override
     public void onInitializationFailure(Provider arg0,  YouTubeInitializationResult arg1){

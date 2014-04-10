@@ -31,6 +31,7 @@ public class Content extends Activity {
 	
 	private DBAdapter myDb;
 	private String link;
+	public final static String VIDEO_MESSAGE = "com.example.coach.VideoURL";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -189,14 +190,24 @@ public class Content extends Activity {
 			public void onClick(View arg0) {
 				
 				//Uri address = Uri.parse("https://www.youtube.com/watch?v=_UTxTzRzpVg");
+				/*
 				Uri address = Uri.parse(link);
 				Intent browserSurf = new Intent(Intent.ACTION_VIEW, address);
 			    startActivity(browserSurf);
- 				
-				/*
+ 				*/
+				//		Pattern stopWords = Pattern.compile("\\b(?:Beginner|Intermedite|Advanced|Catching|Bunting|Fielding|Pitching|Sliding|Running|Batting)\\b\\s*");
+
+//				Pattern stopWord = Pattern.compile("\\b(?:https://www.youtube.com/watch?v=|.|//|wwwyoutubecomwatch)\\b\\s*");
+//				Matcher matcher = stopWord.matcher(link);
+				String videoKey = link.substring(32, link.length());
+				
+				Log.d("Is this the title?", videoKey);
+				
+			
 				Intent intent = new Intent(Content.this, Video.class);
+				intent.putExtra(VIDEO_MESSAGE, videoKey);
 		    	startActivity(intent);
-		    	*/
+		    	
 			}
  
 		});
