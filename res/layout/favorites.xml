@@ -16,6 +16,7 @@
            android:text="@string/no_favorites"/>
     
        <!-- ScrollView is needed when adding views, or only the last view will show up -->
+      <!--  
        <ScrollView
 	       android:layout_width="match_parent"
 	       android:layout_height="match_parent">
@@ -27,4 +28,11 @@
 		    android:orientation="vertical">
 		</LinearLayout>
 	</ScrollView>
+	 -->  
+       <ListView
+           android:id="@+id/listViewFavs"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" >
+       </ListView>
+
 </LinearLayout>

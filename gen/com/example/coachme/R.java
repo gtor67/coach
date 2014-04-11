@@ -104,7 +104,6 @@ public final class R {
         public static final int action_login=0x7f0b003f;
         public static final int action_settings=0x7f0b003b;
         public static final int add_favorites_button=0x7f0b0016;
-        public static final int bookmark_insert_point=0x7f0b0037;
         public static final int button1Login=0x7f0b002a;
         public static final int buttonContainer=0x7f0b0029;
         public static final int buttonLogout=0x7f0b001d;
@@ -122,6 +121,7 @@ public final class R {
         public static final int filterContainer=0x7f0b002f;
         public static final int imageView1=0x7f0b0014;
         public static final int listView1Beginner=0x7f0b0032;
+        public static final int listViewFavs=0x7f0b0037;
         public static final int listdb=0x7f0b0028;
         public static final int login=0x7f0b0023;
         public static final int login_form=0x7f0b0020;

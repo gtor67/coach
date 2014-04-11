@@ -129,6 +129,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		  	        //String selRoutine = TrainingFilterActivity.advancedList[position]; //Get text of item
 		  	        String selRoutine = (String)parent.getAdapter().getItem(position);
 		  	        intent.putExtra(EXTRA_MESSAGE, selRoutine);
+		  	        intent.putExtra("Origin", "TrainingFilter");
 		  	        //intent.putExtra("routine",position);
 		  	        Log.d("Position","my postion"+position);
 		  	      Log.d("FINAL TITLE","my title"+selRoutine);

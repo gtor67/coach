@@ -78,7 +78,8 @@
              android:layout_marginLeft="5dp"
     	     android:layout_width="100dp"
              android:layout_height="40dp"
-    	     android:background="@drawable/button_favorites_change" />
+    	     android:background="@drawable/button_favorites_change" 
+    	     android:onClick="addToFavorites"/>
     </LinearLayout>
 
     <TextView

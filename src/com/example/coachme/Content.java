@@ -4,6 +4,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseException;
+import com.parse.ParseRelation;
+import com.parse.ParseUser;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
@@ -31,6 +39,7 @@ public class Content extends Activity {
 	
 	private DBAdapter myDb;
 	private String link;
+	private int rowNum;
 	public final static String VIDEO_MESSAGE = "com.example.coach.VideoURL";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +51,14 @@ public class Content extends Activity {
 		viewVideo();
 		
 		Intent intent = getIntent();
-		String title = intent.getStringExtra(TrainingFilterActivity.EXTRA_MESSAGE);
+		Log.d("Content Page","Made it into content.");
+		String title = "";
+		String origin = intent.getStringExtra("Origin");
+		Log.d("ORIGIN", origin);
+		if(origin.equals("Favorites"))
+			title = intent.getStringExtra(Favorites.EXTRA_ROWNUM);
+		else
+			title = intent.getStringExtra(TrainingFilterActivity.EXTRA_MESSAGE);
 		Log.d("test",title);
 		myDb = new DBAdapter(this);
 	    myDb.open();
@@ -80,6 +96,7 @@ public class Content extends Activity {
 		}
 		String idS = id.toString();
 		long idL = Long.valueOf(idS).longValue();
+		rowNum = Integer.parseInt(idS);
 		//Cursor curs = myDb.getRow(idL);
 		//Cursor exersice = myDb.getRow(clean);
 		Cursor exersice = myDb.getRow(idL);
@@ -213,7 +230,146 @@ public class Content extends Activity {
 		});
 		
 	}
+	public void addToFavorites(View view){
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
+		query.orderByAscending("createdAt");
+		query.findInBackground(new FindCallback<ParseObject>() {
+		  public void done(List<ParseObject> beginner1, ParseException e) {
+		    if (e == null) {
+		    	
+		    	//Note: Local DB is 1 index ahead
+		    	int parseRowNum = rowNum - 1;
+		    	ParseObject favRow = beginner1.get(parseRowNum);
+		    	ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
+		    	ParseUser.getCurrentUser().saveInBackground();
 
+		    } else {
+		    	Log.d("ERROR", "Error: " + e.getMessage());
+		      // something went wrong
+		    		}
+		  	}
+			});
+	    }	
 
+	//assumes that the user table has the relation column    
+	private void testingRelation2(){
+	    	
+	    	ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
+	    	query.getInBackground("LM3gQPNPm8", new GetCallback<ParseObject>() {
+	    		  public void done(ParseObject object, ParseException e) {
+	    		    if (e == null) {
+	    		    	ParseObject currentUser = ParseUser.getCurrentUser();
+	    		    	ParseRelation<ParseObject> relation = currentUser.getRelation("Favs");
+	    		    	relation.add(object);
+	    		    	currentUser.saveInBackground();
+	    		    } else {
+	    		      // something went wrong
+	    		    }
+	    		  }
+	    		});
+	    	
+	    	//now try to see if i can see what user has
+	    	// first we will create a query on the Book object
+	    	//ParseQuery<ParseObject> query2 = ParseQuery.getQuery("User");
+	    	ParseRelation<ParseObject> relation = ParseUser.getCurrentUser().getRelation("Favs"); 
+	    	ParseQuery<ParseObject> query2 = relation.getQuery();
+	    	query2.findInBackground(new FindCallback<ParseObject>() {
+				  public void done(List<ParseObject> favs, ParseException e) {
+				    if (e == null) {
+				    	int tableSize= favs.size();
+				    	
+				       
+				    	for(int i= 0; i < tableSize; i++){
+				    		
+				    		
+				    		//Cursor exercise = myDb.getRow(Beginner1.get(i).getString("Title"));
+				    		Log.d("Routine:", favs.get(i).getString("Title"));
+				
+				    		
+				    ////////////TO REFRESH WITH PARSE		
+				    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
+				    			  public void done(ParseObject object, ParseException e) {
+				    			    if (e == null) {
+				    			      // Success!
+				    			    } else {
+				    			      // Failure!
+				    			    }
+				    			  }
+				    			});
+				    /////////////END REFRESH		
+				    		
+				    		
+				    		
+				    		
+				    		}//for loop
+
+				    } else {
+				    	Log.d("ERROR", "Error: " + e.getMessage());
+				      // something went wrong
+				    		}
+				  	}
+					});
+	    }
+	
+    private void testingRelation(){
+    	
+    	ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
+    	query.getInBackground("gpMBEObMvm", new GetCallback<ParseObject>() {
+    		  public void done(ParseObject object, ParseException e) {
+    		    if (e == null) {
+    		    	ParseObject currentUser = ParseUser.getCurrentUser();
+    		    	ParseRelation<ParseObject> relation = object.getRelation("Users");
+    		    	relation.add(currentUser);
+    		    	object.saveInBackground();
+    		    } else {
+    		      // something went wrong
+    		    }
+    		  }
+    		});
+    	
+    	//now try to see if i can see what user has
+    	// first we will create a query on the Book object
+    	ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Beginner");
+    	 
+    	// now we will query the authors relation to see if the author object we have 
+    	// is contained therein
+    	query2.whereEqualTo("Users", ParseUser.getCurrentUser());
+    	query2.findInBackground(new FindCallback<ParseObject>() {
+			  public void done(List<ParseObject> favs, ParseException e) {
+			    if (e == null) {
+			    	int tableSize= favs.size();
+			    	
+			       
+			    	for(int i= 0; i < tableSize; i++){
+			    		int c=i+1;
+			    		
+			    		//Cursor exercise = myDb.getRow(Beginner1.get(i).getString("Title"));
+			    		Log.d("Routine:", favs.get(i).getString("Title"));
+			
+			    		
+			    ////////////TO REFRESH WITH PARSE		
+			    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
+			    			  public void done(ParseObject object, ParseException e) {
+			    			    if (e == null) {
+			    			      // Success!
+			    			    } else {
+			    			      // Failure!
+			    			    }
+			    			  }
+			    			});
+			    /////////////END REFRESH		
+			    		
+			    		
+			    		
+			    		
+			    		}//for loop
+
+			    } else {
+			    	Log.d("ERROR", "Error: " + e.getMessage());
+			      // something went wrong
+			    		}
+			  	}
+				});
+    }
 }
 
