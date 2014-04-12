@@ -240,8 +240,12 @@ public class Content extends Activity {
 		    	//Note: Local DB is 1 index ahead
 		    	int parseRowNum = rowNum - 1;
 		    	ParseObject favRow = beginner1.get(parseRowNum);
-		    	ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
+		    	if(beginner1.contains(favRow))
+		    		ParseUser.getCurrentUser().getRelation("Favs").remove(favRow);
+		    	else
+		    		ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
 		    	ParseUser.getCurrentUser().saveInBackground();
+		    	
 
 		    } else {
 		    	Log.d("ERROR", "Error: " + e.getMessage());
