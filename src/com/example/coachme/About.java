@@ -26,14 +26,24 @@ public class About extends Activity {
 	// Handle item selection
 	switch (item.getItemId()) {
 	
-	// From overflow menu, goes to the Create an Account page
+	// 1, From overflow menu, goes to the Create an Account page
 	case R.id.action_create_account:
     startActivity(new Intent(this, CreateAccount.class));
     return true;
     
-    // From overflow menu, goes to the Settings page
- 	case R.id.action_settings:
-    startActivity(new Intent(this, Settings.class));
+     // 2, From overflow menu, goes to Recover Lost Password page
+ 	 case R.id.action_forgot_password:
+     startActivity(new Intent(this, RecoverLostPassword.class));
+     return true;
+    
+     // 3, From overflow menu, goes to the Favorites page
+     case R.id.action_favorites:
+ 	 startActivity(new Intent(this, Favorites.class));
+ 	 return true;
+    
+    // 4, From overflow menu, goes to the Help page
+	case R.id.action_help:
+    startActivity(new Intent(this, Help.class));
     return true;
 	default:
 	return super.onOptionsItemSelected(item);

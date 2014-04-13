@@ -71,22 +71,22 @@
 
     <Button
         android:id="@+id/buttonUpdatePass"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextNewPass"
-        android:layout_centerHorizontal="true"
-        android:text="@string/submit" 
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_account_settings_email_change"
+        android:layout_marginTop="10dp"
+        android:layout_alignRight="@+id/editTextSettingEmail"
+        android:layout_below="@+id/editTextSettingEmail"
         android:onClick="updatePass"/>
 
     <Button
-        android:id="@+id/viewVideobutton"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/buttonUpdatePass"
-        android:layout_below="@+id/editTextSettingEmail"
-        android:text="@string/submit"
+        android:id="@+id/buttonUpdateEmail"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_account_settings_password_change"
+        android:layout_marginTop="10dp"
+        android:layout_alignRight="@+id/editTextNewPass"
+        android:layout_below="@+id/editTextNewPass"
         android:onClick="updateEmail" />
 
     <TextView

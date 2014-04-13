@@ -6,18 +6,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class Settings extends Activity {
+public class Help extends Activity {
  
    public void onCreate(Bundle savedInstanceState){
    super.onCreate(savedInstanceState);
-   setContentView(R.layout.settings);
+   setContentView(R.layout.help);
    
    }
    
    @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.settings, menu);
+		getMenuInflater().inflate(R.menu.help, menu);
 		return true;
 	}
 
@@ -27,12 +27,22 @@ public class Settings extends Activity {
 	switch (item.getItemId()) {
 	
 	
-	// From overflow menu, goes to the Create an Account page
+	// 1, From overflow menu, goes to the Create an Account page
 	case R.id.action_create_account:
 	startActivity(new Intent(this, CreateAccount.class));
 	return true;
 	
-	// From overflow menu, goes to the About page
+	// 2, From overflow menu, goes to Recover Lost Password page
+	case R.id.action_forgot_password:
+    startActivity(new Intent(this, RecoverLostPassword.class));
+    return true;
+	
+	// 3, From overflow menu, goes to the Favorites page
+    case R.id.action_favorites:
+	startActivity(new Intent(this, Favorites.class));
+	return true;
+	
+	// 4, From overflow menu, goes to the About page
 	case R.id.action_about:
     startActivity(new Intent(this, About.class));
     return true;

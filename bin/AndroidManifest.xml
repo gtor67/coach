@@ -75,13 +75,7 @@
         <!-- About activity -->
         <activity
             android:name="com.example.coachme.About"
-            android:label="About CoachMe v1.0" >
-        </activity>
-        
-        <!-- Settings activity -->
-        <activity
-            android:name="com.example.coachme.Settings"
-            android:label="Settings" >
+            android:label="About Screen" >
         </activity>
         
         <!-- Recover Lost Password activity -->
@@ -90,16 +84,22 @@
             android:label="Recover Lost Password" >
         </activity>
         
-        <!-- Video class activity -->
+        <!-- Video activity -->
         <activity
             android:name="com.example.coachme.Video"
-            android:label="Video" >
+            android:label="Video Screen" >
         </activity>
         
         <!-- Favorites activity -->
         <activity
             android:name="com.example.coachme.Favorites"
-            android:label="Favorites" >
+            android:label="@string/title_activity_favorites" >
+        </activity>
+        
+        <!-- Help activity -->
+        <activity
+            android:name="com.example.coachme.Help"
+            android:label="Help Screen" >
         </activity>
 
     </application>

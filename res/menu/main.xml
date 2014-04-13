@@ -6,33 +6,50 @@
     android:showAsAction="always">
 
     <menu>
-    <!-- Login -->
+    <!-- Login 
     <item
         android:id="@+id/action_login"
         android:orderInCategory="1"
         android:icon="@drawable/ic_action_person"
         android:title="@string/action_login"
         android:showAsAction="never"/>
+    -->
     
     <!-- Create Account -->
     <item
         android:id="@+id/action_create_account"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         android:icon="@drawable/ic_action_add_person"
         android:title="@string/action_create_account"
         android:showAsAction="never"/>
     
-   <!-- Settings -->
+    <!-- Recover Lost Password -->
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_forgot_password"
+        android:orderInCategory="2"
+        android:icon="@drawable/ic_action_accounts"
+        android:title="@string/action_forgot_password"
+        android:showAsAction="never"/>
+    
+    <!-- Favorites -->
+    <item
+        android:id="@+id/action_favorites"
         android:orderInCategory="3"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_action_important"
+        android:title="@string/action_favorites"
+        android:showAsAction="never"/>
+    
+   <!-- Help -->
+    <item
+        android:id="@+id/action_help"
+        android:orderInCategory="4"
+        android:icon="@drawable/ic_action_help"
         android:title="@string/action_settings"
         android:showAsAction="never"/>
     
     <!-- About -->
     <item android:id="@+id/action_about"
-          android:orderInCategory="4"
+          android:orderInCategory="5"
           android:icon="@drawable/ic_action_about"
           android:title="@string/action_about"
           android:showAsAction="never"/>
