@@ -1,9 +1,6 @@
 package com.example.coachme;
 
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseObject;
@@ -12,7 +9,6 @@ import com.parse.ParseException;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.method.ScrollingMovementMethod;
@@ -21,10 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
@@ -234,7 +228,8 @@ public class Content extends Activity {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<ParseObject>() {
-		  public void done(List<ParseObject> beginner1, ParseException e) {
+		  @Override
+		public void done(List<ParseObject> beginner1, ParseException e) {
 		    if (e == null) {
 		    	
 		    	//Note: Local DB is 1 index ahead
@@ -260,7 +255,8 @@ public class Content extends Activity {
 	    	
 	    	ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 	    	query.getInBackground("LM3gQPNPm8", new GetCallback<ParseObject>() {
-	    		  public void done(ParseObject object, ParseException e) {
+	    		  @Override
+				public void done(ParseObject object, ParseException e) {
 	    		    if (e == null) {
 	    		    	ParseObject currentUser = ParseUser.getCurrentUser();
 	    		    	ParseRelation<ParseObject> relation = currentUser.getRelation("Favs");
@@ -278,7 +274,8 @@ public class Content extends Activity {
 	    	ParseRelation<ParseObject> relation = ParseUser.getCurrentUser().getRelation("Favs"); 
 	    	ParseQuery<ParseObject> query2 = relation.getQuery();
 	    	query2.findInBackground(new FindCallback<ParseObject>() {
-				  public void done(List<ParseObject> favs, ParseException e) {
+				  @Override
+				public void done(List<ParseObject> favs, ParseException e) {
 				    if (e == null) {
 				    	int tableSize= favs.size();
 				    	
@@ -292,7 +289,8 @@ public class Content extends Activity {
 				    		
 				    ////////////TO REFRESH WITH PARSE		
 				    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-				    			  public void done(ParseObject object, ParseException e) {
+				    			  @Override
+								public void done(ParseObject object, ParseException e) {
 				    			    if (e == null) {
 				    			      // Success!
 				    			    } else {
@@ -319,7 +317,8 @@ public class Content extends Activity {
     	
     	ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
     	query.getInBackground("gpMBEObMvm", new GetCallback<ParseObject>() {
-    		  public void done(ParseObject object, ParseException e) {
+    		  @Override
+			public void done(ParseObject object, ParseException e) {
     		    if (e == null) {
     		    	ParseObject currentUser = ParseUser.getCurrentUser();
     		    	ParseRelation<ParseObject> relation = object.getRelation("Users");
@@ -339,7 +338,8 @@ public class Content extends Activity {
     	// is contained therein
     	query2.whereEqualTo("Users", ParseUser.getCurrentUser());
     	query2.findInBackground(new FindCallback<ParseObject>() {
-			  public void done(List<ParseObject> favs, ParseException e) {
+			  @Override
+			public void done(List<ParseObject> favs, ParseException e) {
 			    if (e == null) {
 			    	int tableSize= favs.size();
 			    	
@@ -353,7 +353,8 @@ public class Content extends Activity {
 			    		
 			    ////////////TO REFRESH WITH PARSE		
 			    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-			    			  public void done(ParseObject object, ParseException e) {
+			    			  @Override
+							public void done(ParseObject object, ParseException e) {
 			    			    if (e == null) {
 			    			      // Success!
 			    			    } else {

@@ -9,8 +9,6 @@
         android:id="@+id/coach"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:layout_marginTop="15dp"
         android:text="Enter name of Team you wish to register"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -19,8 +17,6 @@
              android:id="@+id/coachCode"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_alignLeft="@+id/textView2"
-             android:layout_below="@+id/textView2"
              android:ems="10"
              android:inputType="text" />
      
@@ -29,36 +25,20 @@
           style="?android:attr/buttonStyleSmall"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/teamcode"
-          android:layout_centerHorizontal="true"
           android:text="register team" />
     
          <TextView
              android:id="@+id/entCoach"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_alignParentLeft="true"
-             android:layout_alignParentTop="true"
              android:layout_marginTop="15dp"
              android:text="this is your team code"
              android:textAppearance="?android:attr/textAppearanceMedium" />
-    
-     <TextView
-         android:id="@+id/about_CoachMe"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_alignParentLeft="true"
-         android:layout_alignParentTop="true"
-         android:layout_marginTop="15dp"
-         android:text="Team code"
-         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
         android:id="@+id/teamcode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
         android:ems="10"
         android:text="TextView" />
 

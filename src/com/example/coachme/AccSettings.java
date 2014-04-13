@@ -5,8 +5,6 @@ import com.parse.ParseUser;
 
 import android.os.Bundle;
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -56,7 +54,8 @@ public class AccSettings extends Activity {
 			//user.saveInBackground();
 			
 			user.saveInBackground(new SaveCallback() {
-				  public void done(ParseException e) {
+				  @Override
+				public void done(ParseException e) {
 				    if(e == null)
 				    {
 				    	spinner.setVisibility(View.GONE);
@@ -92,7 +91,8 @@ public class AccSettings extends Activity {
 			user.setEmail(newEmail);
 			//user.saveInBackground();
 			user.saveInBackground(new SaveCallback() {
-				  public void done(ParseException e) {
+				  @Override
+				public void done(ParseException e) {
 				    if(e == null)
 				    {
 				    	spinner.setVisibility(View.GONE);

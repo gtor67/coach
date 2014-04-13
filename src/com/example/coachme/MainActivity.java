@@ -1,7 +1,6 @@
 package com.example.coachme;
 
 import java.util.List;
-
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseObject;
@@ -9,6 +8,7 @@ import com.parse.ParseQuery;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
@@ -26,15 +26,14 @@ import android.widget.ListView;
 public class MainActivity extends Activity {
 	DBAdapter myDb;
 	ListView lv;
-    @Override
+   
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         myDb = new DBAdapter(this);
         openDB();
      
-        
-        
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         if(!prefs.getBoolean("firstTime", false)) {
         filldb();// makes it only run once
@@ -42,7 +41,6 @@ public class MainActivity extends Activity {
         editor.putBoolean("firstTime", true);
         editor.commit();
         }
-        
         
         //String title = "Fingers up thumbs down";
         //Cursor exercise = myDb.getRow(title);
@@ -144,7 +142,8 @@ public class MainActivity extends Activity {
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 			query.orderByAscending("createdAt");
 			query.findInBackground(new FindCallback<ParseObject>() {
-			  public void done(List<ParseObject> Beginner1, ParseException e) {
+			  @Override
+			public void done(List<ParseObject> Beginner1, ParseException e) {
 			    if (e == null) {
 			    	int tableSize= Beginner1.size();
 			    	//tableSize = 4; //we only have 4 rows to update
@@ -163,7 +162,8 @@ public class MainActivity extends Activity {
 			    		
 			    ////////////TO REFRESH WITH PARSE		
 			    		Beginner1.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-			    			  public void done(ParseObject object, ParseException e) {
+			    			  @Override
+							public void done(ParseObject object, ParseException e) {
 			    			    if (e == null) {
 			    			      // Success!
 			    			    } else {
@@ -271,11 +271,16 @@ public class MainActivity extends Activity {
     	    	}
     	    	}
     
-    /** Called when the user clicks the Baseball button */
-    public void chooseBaseball(View view) {
-    	Intent intent = new Intent(this, TrainingFilterActivity.class);
-    	startActivity(intent);
-    }
+   /** Called when the user clicks the Baseball button */
+   public void chooseBaseball(View view) {
+   
+   // Baseball Button Sound
+   final MediaPlayer baseballSound = MediaPlayer.create(MainActivity.this, R.raw.baseballsound);
+   
+   Intent intent = new Intent(this, TrainingFilterActivity.class);
+   startActivity(intent);
+   baseballSound.start();
+   }
 
     public void chooseLogin(View view) {
     	Intent intent = new Intent(this, LoginActivity.class);

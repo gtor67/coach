@@ -3,7 +3,6 @@ package com.example.coachme;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
-import android.net.ParseException;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;

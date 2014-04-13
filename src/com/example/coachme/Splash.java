@@ -138,7 +138,8 @@ public class Splash extends Activity {
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.findInBackground(new FindCallback<ParseObject>() {
-		  public void done(List<ParseObject> Beginner1, ParseException e) {
+		  @Override
+		public void done(List<ParseObject> Beginner1, ParseException e) {
 		    if (e == null) {
 //			level= Beginner1.getString("Level");// column names
 //			type= Beginner1.getString("Type");

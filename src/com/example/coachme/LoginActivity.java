@@ -137,6 +137,7 @@ public class LoginActivity extends Activity {
 		
 		ParseUser.requestPasswordResetInBackground(email,
                 new RequestPasswordResetCallback() {
+				@Override
 				public void done(ParseException e) {
 				if (e == null) {
 				// An email was successfully sent with reset instructions.
@@ -265,7 +266,8 @@ public class LoginActivity extends Activity {
 
 			try {
 				ParseUser.logInInBackground(mEmail,mPassword, new LogInCallback() {
-					  public void done(ParseUser user, ParseException e) {
+					  @Override
+					public void done(ParseUser user, ParseException e) {
 					    if (user != null) {
 					      // Hooray! The user is logged in.
 					    	test = true;

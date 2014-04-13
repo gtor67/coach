@@ -31,7 +31,8 @@ public class Settings extends Activity {
 	private EditText named ;
 	TextView teamcode;
  
-   public void onCreate(Bundle savedInstanceState){
+   @Override
+public void onCreate(Bundle savedInstanceState){
    super.onCreate(savedInstanceState);
    setContentView(R.layout.coach);
    addListenerOnButton();
@@ -54,40 +55,29 @@ public class Settings extends Activity {
 				display.setText(" " + counter);
 				
 				
-				////this code creates a new row in coaches table
-//       			ParseObject coachdb = new ParseObject("coaches");       	
-//					coachdb.put("coach","sample");
-//					coachdb.put("teamname", "smellys");
-//					coachdb.saveInBackground();
-//					Log.d("test", "team does not exist ");
-
 				Log.d("test email", "email"+ me.get("name"));
-				
+				//query to check of user has already created a team
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("coaches");
-				query.whereEqualTo("name", "sfgf");
-				query.findInBackground(new FindCallback<ParseObject>() {
-					@Override
-				    public void done(List<ParseObject> objects, ParseException e) {
-				        if (e == null) {
-				        	
-				            Log.d("ok" ,"team does not exist "+ objects.size());
-				            
-				        	ParseObject coachdb = new ParseObject("coaches");
-							coachdb.put("email", me.get("email"));
-							coachdb.put("name","sfgf" );
-							coachdb.saveInBackground();
-							Log.d("after save", "team created " + objects.size());
-							teamcode.setText(coachdb.getObjectId());
-				            
-				        } else {
-
-							Log.d("test","Sorry already registered a team");
-				        }
+				query.whereEqualTo("email", me.get("email"));
+				query.getFirstInBackground(new GetCallback<ParseObject>() {
+				  public void done(ParseObject object, ParseException e) {
+				    if (object == null) {
+				      Log.d("score", "dint find team");
+			        	ParseObject coachdb = new ParseObject("coaches");
+						coachdb.put("email", me.get("email"));
+						coachdb.put("name","sfgf" );
+						coachdb.saveInBackground();
+						Log.d("after save", "team created ");
+						teamcode.setText("tema codes is");
+				    } else {
+				      Log.d("score", "found team");
+				      Log.d("score", "" + object);
+				      teamcode.setText(object.getObjectId());
 				    }
-
-				
+				  
+				  }
 				});
-					
+				
 			}
 		});
 	   
@@ -100,27 +90,48 @@ public class Settings extends Activity {
 				counter--;
 				display.setText(" " + counter);
 				
-				
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("coaches");
-				query.whereEqualTo("name", "angeles");
-				query.findInBackground(new FindCallback<ParseObject>() {
-					public void done(List<ParseObject> scoreList,
-							ParseException e) {
-					
-						
-						if (e == null) {
-							Log.d("score", "Retrieved " + scoreList.size() + " scores");
-							Log.d("score", "Retrieved " + scoreList.get(0).get("coach") + " scores");
-						
-							ParseRelation<ParseObject> relation = scoreList.get(0).getRelation("players");
-							relation.add(me);
-							scoreList.get(0).saveInBackground();
+				query.whereEqualTo("team", me.get("damn dogs"));
+				query.getFirstInBackground(new GetCallback<ParseObject>() {
+				  public void done(ParseObject object, ParseException e) {
+				    if (object == null) {
+						Log.d("score", "Retrieved "  + " scores");
+			//			Log.d("score", "Retrieved " + object.get("coach") + " scores");
+						ParseRelation<ParseObject> relation = object.getRelation("players");
+						relation.add(me);
+						object.saveInBackground();
 
-						} else {
-							Log.d("score", "Error: " + e.getMessage());
-						}
-					}
+				    } else {
+				      Log.d("score", "already joined team");
+				      Log.d("score", "" + object);
+				      teamcode.setText(object.getString("name"));
+				    }
+				  
+				  }
 				});
+				
+				
+//				ParseQuery<ParseObject> query = ParseQuery.getQuery("coaches");
+//				query.whereEqualTo("name", "angeles");
+//				query.findInBackground(new FindCallback<ParseObject>() {
+//					@Override
+//					public void done(List<ParseObject> scoreList,
+//							ParseException e) {
+//					
+//						
+//						if (e == null) {
+//							Log.d("score", "Retrieved " + scoreList.size() + " scores");
+//							Log.d("score", "Retrieved " + scoreList.get(0).get("coach") + " scores");
+//						
+//							ParseRelation<ParseObject> relation = scoreList.get(0).getRelation("players");
+//							relation.add(me);
+//							scoreList.get(0).saveInBackground();
+//
+//						} else {
+//							Log.d("score", "Error: " + e.getMessage());
+//						}
+//					}
+//				});
 
 			}
 		});
