@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/home_instruction"
-            android:textSize="18sp" /> />
+            android:textSize="18sp" />
 
         <!--
         <TextView
@@ -35,13 +35,15 @@
          -->   
 
         <Button
+            android:id="@+id/chooseBaseball"
             android:layout_width="160dp"
             android:layout_height="60dp"
             android:layout_marginLeft="70dp"
             android:layout_marginTop="140dp"
             android:background="@drawable/button_baseball_change"
-            android:soundEffectsEnabled="true"
-            android:onClick="chooseBaseball" />
+            android:onClick="chooseBaseball"
+            android:soundEffectsEnabled="true" />
+
     <!--    
         <Button
             android:layout_width="160dp"
