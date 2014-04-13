@@ -49,7 +49,7 @@ public class AccSettings extends Activity {
 		  	ParseUser user = ParseUser.getCurrentUser();
 		  	
 			
-			EditText newPassET = (EditText) findViewById(R.id.editTextNewPass);
+			EditText newPassET = (EditText) findViewById(R.id.teamcode);
 			
 			String newPass = newPassET.getText().toString();
 			user.setPassword(newPass);
