@@ -52,6 +52,15 @@ public class Content extends Activity {
 		setContentView(R.layout.activity_content);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		ParseUser currentUser = ParseUser.getCurrentUser();
+		Button fb = (Button)findViewById(R.id.add_favorites_button);
+		
+        if (currentUser != null) {
+        	fb.setVisibility(View.VISIBLE);
+        } else {
+        	fb.setVisibility(View.INVISIBLE);
+        }
 		// for the View Video Button
 		viewVideo();
 		
