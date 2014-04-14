@@ -14,11 +14,27 @@
         android:title="@string/action_create_account"
         android:showAsAction="never"/>
     
-    <!-- Settings -->
+    <!-- Recover Lost Password -->
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_forgot_password"
         android:orderInCategory="2"
-        android:icon="@drawable/ic_action_settings"
+        android:icon="@drawable/ic_action_accounts"
+        android:title="@string/action_forgot_password"
+        android:showAsAction="never"/>
+    
+    <!-- Favorites -->
+    <item
+        android:id="@+id/action_favorites"
+        android:orderInCategory="3"
+        android:icon="@drawable/ic_action_important"
+        android:title="@string/action_favorites"
+        android:showAsAction="never"/>
+    
+    <!-- Help -->
+    <item
+        android:id="@+id/action_help"
+        android:orderInCategory="4"
+        android:icon="@drawable/ic_action_help"
         android:title="@string/action_settings"
         android:showAsAction="never"/>
     </menu>

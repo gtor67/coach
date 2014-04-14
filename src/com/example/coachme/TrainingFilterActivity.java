@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -19,6 +21,7 @@ import android.widget.TabHost.TabSpec;
 import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
@@ -129,11 +132,12 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		  	        intent.putExtra("Origin", "TrainingFilter");
 		  	        //intent.putExtra("routine",position);
 		  	        Log.d("Position","my postion"+position);
-		  	      Log.d("FINAL TITLE","my title"+selRoutine);
+		  	        Log.d("FINAL TITLE","my title"+selRoutine);
 	            	startActivity(intent);
+	            	/*
 		  	          Toast.makeText(getApplicationContext(),
 		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
-		  	            .show();
+		  	            .show(); */
       	  }
       	}); 
         
@@ -168,22 +172,27 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		// Handle item selection
 		switch (item.getItemId()) {
 
-		// From overflow menu, goes to the Create an Account page
+		// 1, From overflow menu, goes to the Create an Account page
     	case R.id.action_create_account:
 	    startActivity(new Intent(this, CreateAccount.class));
 	    return true;
+	    
+	    // 2, From overflow menu, goes to Recover Lost Password page
+    	case R.id.action_forgot_password:
+        startActivity(new Intent(this, RecoverLostPassword.class));
+        return true;
 		
-	    // From overflow menu, goes to the Favorites page
+	    // 3, From overflow menu, goes to the Favorites page
     	case R.id.action_favorites:
 	    startActivity(new Intent(this, Favorites.class));
 	    return true;
 	    
-	    // From overflow menu, goes to the Settings page
-    	case R.id.action_settings:
-	    startActivity(new Intent(this, Settings.class));
+	    // 4, From overflow menu, goes to the Help page
+    	case R.id.action_help:
+	    startActivity(new Intent(this, Help.class));
 	    return true;
     	
-	    // From overflow menu, goes to the About page
+	    // 5, From overflow menu, goes to the About page
     	case R.id.action_about:
 	    startActivity(new Intent(this, About.class));
 	    return true;

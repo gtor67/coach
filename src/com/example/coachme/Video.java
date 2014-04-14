@@ -7,6 +7,7 @@ import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import android.os.Bundle;
+import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -49,6 +50,32 @@ public class Video extends YouTubeBaseActivity implements YouTubePlayer.OnInitia
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
+		
+		// 1, From overflow menu, goes to the Create an Account page
+	    case R.id.action_create_account:
+	    startActivity(new Intent(this, CreateAccount.class));
+	    return true;
+	    
+	    // 2, From overflow menu, goes to Recover Lost Password page
+	 	case R.id.action_forgot_password:
+	    startActivity(new Intent(this, RecoverLostPassword.class));
+	    return true;
+						
+	    // 3, From overflow menu, goes to the Favorites page
+	    case R.id.action_favorites:
+		startActivity(new Intent(this, Favorites.class));
+		return true;
+			    
+		// 4, From overflow menu, goes to the Help page
+		case R.id.action_help:
+		startActivity(new Intent(this, Help.class));
+	    return true;
+				    	
+		// 5, From overflow menu, goes to the About page
+		case R.id.action_about:
+		startActivity(new Intent(this, About.class));
+		return true;
+		
 		case android.R.id.home:
 			// This ID represents the Home or Up button. In the case of this
 			// activity, the Up button is shown. Use NavUtils to allow users

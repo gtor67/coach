@@ -13,6 +13,7 @@ import com.parse.ParseUser;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +21,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -32,11 +35,11 @@ public class Favorites extends Activity {
    private String parseID = ""; //Represents ParseOBject ID of selected row
    public final static String EXTRA_ROWNUM = "com.example.coach.RowNum";
    
-   @Override
-public void onCreate(Bundle savedInstanceState){
+   public void onCreate(Bundle savedInstanceState){
    super.onCreate(savedInstanceState);
    setContentView(R.layout.favorites);
    initList();
+
    listViewFavs.setOnItemClickListener(new OnItemClickListener() {
    	  @Override
    	  public void onItemClick(AdapterView<?> parent, View view,
@@ -57,11 +60,14 @@ public void onCreate(Bundle savedInstanceState){
 		  	        
 		  	      //Log.d("FINAL TITLE","my title"+selRoutine);
 	            	  //startActivity(intent);
+   		  		/*
 		  	          Toast.makeText(getApplicationContext(),
 		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
 		  	            .show();
+		  	            */
    	  }
    	}); 
+
    }
    
    @Override
@@ -76,17 +82,22 @@ public void onCreate(Bundle savedInstanceState){
 	// Handle item selection
 	switch (item.getItemId()) {
     
-	// From overflow menu, goes to the Create an Account page
+	// 1, From overflow menu, goes to the Create an Account page
 	case R.id.action_create_account:
 	startActivity(new Intent(this, CreateAccount.class));
 	return true;
-
-	// From overflow menu, goes to the Settings page
- 	case R.id.action_settings:
-    startActivity(new Intent(this, Settings.class));
+	
+	// 2, From overflow menu, goes to Recover Lost Password page
+	case R.id.action_forgot_password:
+	startActivity(new Intent(this, RecoverLostPassword.class));
+	return true;
+	
+	// 3, From overflow menu, goes to the Help page
+	case R.id.action_help:
+    startActivity(new Intent(this, Help.class));
     return true;
     
-    // From overflow menu, goes to the About page
+    // 4, From overflow menu, goes to the About page
  	case R.id.action_about:
     startActivity(new Intent(this, About.class));
     return true;
@@ -104,8 +115,7 @@ public void onCreate(Bundle savedInstanceState){
 	ParseRelation<ParseObject> relation = ParseUser.getCurrentUser().getRelation("Favs"); 
 	ParseQuery<ParseObject> query2 = relation.getQuery();
 	query2.findInBackground(new FindCallback<ParseObject>() {
-		  @Override
-		public void done(List<ParseObject> favs, ParseException e) {
+		  public void done(List<ParseObject> favs, ParseException e) {
 		    if (e == null) {
 		    	int tableSize= favs.size();
 		    	//Need to make list of strings out of list of ParseOBjects
@@ -121,8 +131,7 @@ public void onCreate(Bundle savedInstanceState){
 		    		Log.d("Object ID into list", favs.get(i).getObjectId());
 		    ////////////TO REFRESH WITH PARSE		
 		    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-		    			  @Override
-						public void done(ParseObject object, ParseException e) {
+		    			  public void done(ParseObject object, ParseException e) {
 		    			    if (e == null) {
 		    			      // Success!
 		    			    } else {
@@ -141,13 +150,28 @@ public void onCreate(Bundle savedInstanceState){
 		    		android.R.layout.simple_list_item_1, appList);
 		    //maybe replace simple list_item_1?
 		    listViewFavs.setAdapter(adapter);
-
+		    Log.d("Empty?", "Error: " + corresID.isEmpty());
+			   TextView tv = (TextView)findViewById(R.id.empty_textview);
+			   LinearLayout ly = (LinearLayout) findViewById(R.id.favorites);
+			   if(!(corresID.isEmpty()))
+			   {
+				   tv.setText("");
+				   ly.setBackgroundColor(Color.WHITE);
+			   }
+			   else
+				   {
+				   		tv.setText(R.string.no_favorites);
+				   		ly.setBackgroundColor(Color.DKGRAY);
+				   	
+				   }
 		    } else {
 		    	Log.d("ERROR", "Error: " + e.getMessage());
 		      // something went wrong
 		    		}
 		  	}
 			});
+	
+	
    }
    public void getRowNumandLaunch()
    {
@@ -156,8 +180,7 @@ public void onCreate(Bundle savedInstanceState){
 	   ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<ParseObject>() {
-		  @Override
-		public void done(List<ParseObject> beginner1, ParseException e) {
+		  public void done(List<ParseObject> beginner1, ParseException e) {
 		    if (e == null) {
 		    	
 		    	//Note: Local DB is 1 index ahead, but doesn't matter here since listPos starts at 0

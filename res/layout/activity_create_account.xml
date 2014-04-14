@@ -10,28 +10,39 @@
     android:orientation= "vertical"
     tools:context=".CreateAccount" >
 
+    
+    
+     <ImageView
+            android:id="@+id/imageCoach_Account_Register"
+            android:layout_gravity="center"
+            android:layout_width="263dp"
+            android:layout_height="154dp"
+            android:src="@drawable/coach_clipboard_account_register" />
+    
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/account_reg_head" />
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:text="Account Registration" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/account_reg_descript" />
+        android:text="Sign up by entering your email address and password." />
 
     <TextView
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/enter_Email" />
 
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
         android:inputType="textEmailAddress" >
 
         <requestFocus />
@@ -40,13 +51,13 @@
         android:id="@+id/passTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="@string/enter_Pass" />
 
 	<EditText
 	    android:id="@+id/passEditText"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:ems="10"
 	    android:inputType="textPassword" />
 
 	

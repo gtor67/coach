@@ -1,6 +1,10 @@
 package com.example.coachme;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseObject;
@@ -9,6 +13,7 @@ import com.parse.ParseException;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.method.ScrollingMovementMethod;
@@ -17,9 +22,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -34,6 +42,9 @@ public class Content extends Activity {
 	private DBAdapter myDb;
 	private String link;
 	private int rowNum;
+	private boolean relHasRow;
+	private ParseObject favRow;
+	
 	public final static String VIDEO_MESSAGE = "com.example.coach.VideoURL";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +52,15 @@ public class Content extends Activity {
 		setContentView(R.layout.activity_content);
 		// Show the Up button in the action bar.
 		setupActionBar();
+		
+		ParseUser currentUser = ParseUser.getCurrentUser();
+		Button fb = (Button)findViewById(R.id.add_favorites_button);
+		
+        if (currentUser != null) {
+        	fb.setVisibility(View.VISIBLE);
+        } else {
+        	fb.setVisibility(View.INVISIBLE);
+        }
 		// for the View Video Button
 		viewVideo();
 		
@@ -156,22 +176,27 @@ public class Content extends Activity {
 		// Handle item selection
 		switch (item.getItemId()) {
 
-	    // From overflow menu, goes to the Create an Account page
+	    // 1, From overflow menu, goes to the Create an Account page
 		case R.id.action_create_account:
 	    startActivity(new Intent(this, CreateAccount.class));
 	    return true;
+	    
+	    // 2, From overflow menu, goes to Recover Lost Password page
+	 	case R.id.action_forgot_password:
+	    startActivity(new Intent(this, RecoverLostPassword.class));
+	    return true;
 				
-	    // From overflow menu, goes to the Favorites page
+	    // 3, From overflow menu, goes to the Favorites page
 		case R.id.action_favorites:
 	    startActivity(new Intent(this, Favorites.class));
 	    return true;
-			    
-	    // From overflow menu, goes to the Settings page
-		case R.id.action_settings:
-		startActivity(new Intent(this, Settings.class));
+	    
+	    // 4, From overflow menu, goes to the Help page
+    	case R.id.action_help:
+	    startActivity(new Intent(this, Help.class));
 	    return true;
 		    	
-		// From overflow menu, goes to the About page
+		// 5, From overflow menu, goes to the About page
 		case R.id.action_about:
 		startActivity(new Intent(this, About.class));
 		return true;
@@ -228,18 +253,58 @@ public class Content extends Activity {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<ParseObject>() {
-		  @Override
-		public void done(List<ParseObject> beginner1, ParseException e) {
+		  public void done(List<ParseObject> beginner1, ParseException e) {
 		    if (e == null) {
+		    	
+		    	
 		    	
 		    	//Note: Local DB is 1 index ahead
 		    	int parseRowNum = rowNum - 1;
-		    	ParseObject favRow = beginner1.get(parseRowNum);
-		    	if(beginner1.contains(favRow))
-		    		ParseUser.getCurrentUser().getRelation("Favs").remove(favRow);
-		    	else
-		    		ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
-		    	ParseUser.getCurrentUser().saveInBackground();
+		    	favRow = beginner1.get(parseRowNum);
+		    	//Now need to look up whether user has this row
+		    	relHasRow = false;
+		    	ParseRelation<ParseObject> relation = ParseUser.getCurrentUser().getRelation("Favs"); 
+		    	ParseQuery<ParseObject> query2 = relation.getQuery();
+		    	query2.findInBackground(new FindCallback<ParseObject>() {
+		    		  public void done(List<ParseObject> favs, ParseException e) {
+		    			int duration = Toast.LENGTH_SHORT;
+		  		    	CharSequence text = "";
+		  		    	Log.d("Favs:Object ID", favRow.getObjectId());
+		  		    	int tableSize = favs.size();
+		  		    	if (e == null) {
+		  		    	    for(int i = 0; i < tableSize; i++)
+			    		    {
+		  		    	    	if(favs.get(i).hasSameId(favRow))
+		  		    	    		{
+		  		    	    			relHasRow = true;
+		  		    	    			break;
+		  		    	    		}
+			    		    }
+		    		  
+		    		    	Log.d("Hasrow?", "" + relHasRow);
+		    		    
+		    		    	if(relHasRow)
+				    		{
+				    			ParseUser.getCurrentUser().getRelation("Favs").remove(favRow);
+				    			text = "Successful remove!";
+				    			Toast toast = Toast.makeText(Content.this, text, duration);
+						    	toast.show();
+				    		}
+				    	else
+				    		{
+				    			ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
+				    			text = "Successful add";
+				    			Toast toast = Toast.makeText(Content.this, text, duration);
+				    			toast.show();
+				    		}
+				    	ParseUser.getCurrentUser().saveInBackground();
+		    		    } else {
+		    		    	Log.d("ERROR", "Error: " + e.getMessage());
+		    		      // something went wrong
+		    		    		}
+		    		  	}
+		    			});
+		
 		    	
 
 		    } else {
@@ -255,8 +320,7 @@ public class Content extends Activity {
 	    	
 	    	ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 	    	query.getInBackground("LM3gQPNPm8", new GetCallback<ParseObject>() {
-	    		  @Override
-				public void done(ParseObject object, ParseException e) {
+	    		  public void done(ParseObject object, ParseException e) {
 	    		    if (e == null) {
 	    		    	ParseObject currentUser = ParseUser.getCurrentUser();
 	    		    	ParseRelation<ParseObject> relation = currentUser.getRelation("Favs");
@@ -274,8 +338,7 @@ public class Content extends Activity {
 	    	ParseRelation<ParseObject> relation = ParseUser.getCurrentUser().getRelation("Favs"); 
 	    	ParseQuery<ParseObject> query2 = relation.getQuery();
 	    	query2.findInBackground(new FindCallback<ParseObject>() {
-				  @Override
-				public void done(List<ParseObject> favs, ParseException e) {
+				  public void done(List<ParseObject> favs, ParseException e) {
 				    if (e == null) {
 				    	int tableSize= favs.size();
 				    	
@@ -289,8 +352,7 @@ public class Content extends Activity {
 				    		
 				    ////////////TO REFRESH WITH PARSE		
 				    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-				    			  @Override
-								public void done(ParseObject object, ParseException e) {
+				    			  public void done(ParseObject object, ParseException e) {
 				    			    if (e == null) {
 				    			      // Success!
 				    			    } else {
@@ -317,8 +379,7 @@ public class Content extends Activity {
     	
     	ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
     	query.getInBackground("gpMBEObMvm", new GetCallback<ParseObject>() {
-    		  @Override
-			public void done(ParseObject object, ParseException e) {
+    		  public void done(ParseObject object, ParseException e) {
     		    if (e == null) {
     		    	ParseObject currentUser = ParseUser.getCurrentUser();
     		    	ParseRelation<ParseObject> relation = object.getRelation("Users");
@@ -338,8 +399,7 @@ public class Content extends Activity {
     	// is contained therein
     	query2.whereEqualTo("Users", ParseUser.getCurrentUser());
     	query2.findInBackground(new FindCallback<ParseObject>() {
-			  @Override
-			public void done(List<ParseObject> favs, ParseException e) {
+			  public void done(List<ParseObject> favs, ParseException e) {
 			    if (e == null) {
 			    	int tableSize= favs.size();
 			    	
@@ -353,8 +413,7 @@ public class Content extends Activity {
 			    		
 			    ////////////TO REFRESH WITH PARSE		
 			    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-			    			  @Override
-							public void done(ParseObject object, ParseException e) {
+			    			  public void done(ParseObject object, ParseException e) {
 			    			    if (e == null) {
 			    			      // Success!
 			    			    } else {
