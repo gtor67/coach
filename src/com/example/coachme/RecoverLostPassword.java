@@ -1,10 +1,17 @@
 package com.example.coachme;
 
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.RequestPasswordResetCallback;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class RecoverLostPassword extends Activity {
  
@@ -20,7 +27,31 @@ public class RecoverLostPassword extends Activity {
 		getMenuInflater().inflate(R.menu.recover_lost_password, menu);
 		return true;
 	}
+	public void resetPassword(View view){
+		EditText emailET = (EditText)findViewById(R.id.editTextrecoverEmail);
+		String email = emailET.getText().toString();
+		
+		ParseUser.requestPasswordResetInBackground(email,
+                new RequestPasswordResetCallback() {
+				public void done(ParseException e) {
+				if (e == null) {
+				// An email was successfully sent with reset instructions.
+					CharSequence text = "Check your inbox for instructions.";
+			    	int duration = Toast.LENGTH_SHORT;
 
+			    	Toast toast = Toast.makeText(RecoverLostPassword.this, text, duration);
+			    	toast.show();  
+				} else {
+				// Something went wrong. Look at the ParseException to see what's up.
+					CharSequence text = "Email was not sent. Check email address you supplied.";
+			    	int duration = Toast.LENGTH_SHORT;
+
+			    	Toast toast = Toast.makeText(RecoverLostPassword.this, text, duration);
+			    	toast.show();  
+				}
+				}
+				});
+	}
    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 	// Handle item selection
