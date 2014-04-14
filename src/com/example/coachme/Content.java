@@ -25,6 +25,7 @@ import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Build;
 
 public class Content extends Activity {
@@ -56,6 +57,10 @@ public class Content extends Activity {
         }
 		// for the View Video Button
 		viewVideo();
+		
+		
+		
+		
 		
 		Intent intent = getIntent();
 		Log.d("Content Page","Made it into content.");
@@ -144,6 +149,66 @@ public class Content extends Activity {
 		//String imageLoc = "android.resource://your.pack.name" + "";
 		//Uri myUri = Uri.parse(imageLoc);
 		//image.setImageURI("" + "");
+		
+		
+		//Need to know if row is with user here to change button. possibly remove things from add to favs
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
+		query.orderByAscending("createdAt");
+		query.findInBackground(new FindCallback<ParseObject>() {
+		  @Override
+		public void done(List<ParseObject> beginner1, ParseException e) {
+		    if (e == null) {
+		    	
+		    	
+		    	
+		    	//Note: Local DB is 1 index ahead
+		    	int parseRowNum = rowNum - 1;
+		    	favRow = beginner1.get(parseRowNum);
+		    	//Now need to look up whether user has this row
+		    	relHasRow = false;
+		    	ParseRelation<ParseObject> relation = ParseUser.getCurrentUser().getRelation("Favs"); 
+		    	ParseQuery<ParseObject> query2 = relation.getQuery();
+		    	query2.findInBackground(new FindCallback<ParseObject>() {
+		    		  @Override
+					public void done(List<ParseObject> favs, ParseException e) {
+		    			int duration = Toast.LENGTH_SHORT;
+		  		    	CharSequence text = "";
+		  		    	Log.d("Favs:Object ID", favRow.getObjectId());
+		  		    	int tableSize = favs.size();
+		  		    	if (e == null) {
+		  		    		Button buttonF = (Button) findViewById(R.id.add_favorites_button);
+		  		    	    for(int i = 0; i < tableSize; i++)
+			    		    {
+		  		    	    	if(favs.get(i).hasSameId(favRow))
+		  		    	    		{
+		  		    	    			relHasRow = true;
+		  		    	    			
+		  		    	    			buttonF.setText("Remove");
+		  		    	    			buttonF.setBackgroundColor(Color.RED);
+		  		    	    			break;
+		  		    	    		}
+			    		    }
+		  		    	    if(!relHasRow)
+		  		    	    {
+		  		    	    	buttonF.setBackgroundResource(R.drawable.button_favorites_change);
+		  		    	    }
+		    		    	Log.d("Hasrow?", "" + relHasRow);
+				    	
+		    		    } else {
+		    		    	Log.d("ERROR", "Error: " + e.getMessage());
+		    		      // something went wrong
+		    		    		}
+		    		  	}
+		    			});
+		
+		    	
+
+		    } else {
+		    	Log.d("ERROR", "Error: " + e.getMessage());
+		      // something went wrong
+		    		}
+		  	}
+			});
 		
 	}
 
@@ -282,11 +347,15 @@ public class Content extends Activity {
 			    		    }
 		    		  
 		    		    	Log.d("Hasrow?", "" + relHasRow);
-		    		    
+		    		    	
+		    		    	Button buttonF = (Button) findViewById(R.id.add_favorites_button);
 		    		    	if(relHasRow)
 				    		{
 				    			ParseUser.getCurrentUser().getRelation("Favs").remove(favRow);
+				    			
 				    			text = "Successful remove!";
+				    			buttonF.setBackgroundResource(R.drawable.button_favorites_change);
+				    			buttonF.setText("");
 				    			Toast toast = Toast.makeText(Content.this, text, duration);
 						    	toast.show();
 				    		}
@@ -294,6 +363,8 @@ public class Content extends Activity {
 				    		{
 				    			ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
 				    			text = "Successful add";
+				    			buttonF.setText("Remove");
+  		    	    			buttonF.setBackgroundColor(Color.RED);
 				    			Toast toast = Toast.makeText(Content.this, text, duration);
 				    			toast.show();
 				    		}
