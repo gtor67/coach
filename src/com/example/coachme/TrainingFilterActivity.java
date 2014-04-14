@@ -132,11 +132,12 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		  	        intent.putExtra("Origin", "TrainingFilter");
 		  	        //intent.putExtra("routine",position);
 		  	        Log.d("Position","my postion"+position);
-		  	      Log.d("FINAL TITLE","my title"+selRoutine);
+		  	        Log.d("FINAL TITLE","my title"+selRoutine);
 	            	startActivity(intent);
+	            	/*
 		  	          Toast.makeText(getApplicationContext(),
 		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
-		  	            .show();
+		  	            .show(); */
       	  }
       	}); 
         

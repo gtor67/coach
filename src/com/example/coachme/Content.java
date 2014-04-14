@@ -1,5 +1,6 @@
 package com.example.coachme;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +27,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
 import android.content.Intent;
@@ -40,6 +42,9 @@ public class Content extends Activity {
 	private DBAdapter myDb;
 	private String link;
 	private int rowNum;
+	private boolean relHasRow;
+	private ParseObject favRow;
+	
 	public final static String VIDEO_MESSAGE = "com.example.coach.VideoURL";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -242,14 +247,55 @@ public class Content extends Activity {
 		  public void done(List<ParseObject> beginner1, ParseException e) {
 		    if (e == null) {
 		    	
+		    	
+		    	
 		    	//Note: Local DB is 1 index ahead
 		    	int parseRowNum = rowNum - 1;
-		    	ParseObject favRow = beginner1.get(parseRowNum);
-		    	if(beginner1.contains(favRow))
-		    		ParseUser.getCurrentUser().getRelation("Favs").remove(favRow);
-		    	else
-		    		ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
-		    	ParseUser.getCurrentUser().saveInBackground();
+		    	favRow = beginner1.get(parseRowNum);
+		    	//Now need to look up whether user has this row
+		    	relHasRow = false;
+		    	ParseRelation<ParseObject> relation = ParseUser.getCurrentUser().getRelation("Favs"); 
+		    	ParseQuery<ParseObject> query2 = relation.getQuery();
+		    	query2.findInBackground(new FindCallback<ParseObject>() {
+		    		  public void done(List<ParseObject> favs, ParseException e) {
+		    			int duration = Toast.LENGTH_SHORT;
+		  		    	CharSequence text = "";
+		  		    	Log.d("Favs:Object ID", favRow.getObjectId());
+		  		    	int tableSize = favs.size();
+		  		    	if (e == null) {
+		  		    	    for(int i = 0; i < tableSize; i++)
+			    		    {
+		  		    	    	if(favs.get(i).hasSameId(favRow))
+		  		    	    		{
+		  		    	    			relHasRow = true;
+		  		    	    			break;
+		  		    	    		}
+			    		    }
+		    		  
+		    		    	Log.d("Hasrow?", "" + relHasRow);
+		    		    
+		    		    	if(relHasRow)
+				    		{
+				    			ParseUser.getCurrentUser().getRelation("Favs").remove(favRow);
+				    			text = "Successful remove!";
+				    			Toast toast = Toast.makeText(Content.this, text, duration);
+						    	toast.show();
+				    		}
+				    	else
+				    		{
+				    			ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
+				    			text = "Successful add";
+				    			Toast toast = Toast.makeText(Content.this, text, duration);
+				    			toast.show();
+				    		}
+				    	ParseUser.getCurrentUser().saveInBackground();
+		    		    } else {
+		    		    	Log.d("ERROR", "Error: " + e.getMessage());
+		    		      // something went wrong
+		    		    		}
+		    		  	}
+		    			});
+		
 		    	
 
 		    } else {

@@ -13,6 +13,7 @@ import com.parse.ParseUser;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +21,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -36,6 +39,7 @@ public class Favorites extends Activity {
    super.onCreate(savedInstanceState);
    setContentView(R.layout.favorites);
    initList();
+
    listViewFavs.setOnItemClickListener(new OnItemClickListener() {
    	  @Override
    	  public void onItemClick(AdapterView<?> parent, View view,
@@ -56,11 +60,14 @@ public class Favorites extends Activity {
 		  	        
 		  	      //Log.d("FINAL TITLE","my title"+selRoutine);
 	            	  //startActivity(intent);
+   		  		/*
 		  	          Toast.makeText(getApplicationContext(),
 		  	            "Click Advance ListItem Number " + position, Toast.LENGTH_LONG)
 		  	            .show();
+		  	            */
    	  }
    	}); 
+
    }
    
    @Override
@@ -143,13 +150,28 @@ public class Favorites extends Activity {
 		    		android.R.layout.simple_list_item_1, appList);
 		    //maybe replace simple list_item_1?
 		    listViewFavs.setAdapter(adapter);
-
+		    Log.d("Empty?", "Error: " + corresID.isEmpty());
+			   TextView tv = (TextView)findViewById(R.id.empty_textview);
+			   LinearLayout ly = (LinearLayout) findViewById(R.id.favorites);
+			   if(!(corresID.isEmpty()))
+			   {
+				   tv.setText("");
+				   ly.setBackgroundColor(Color.WHITE);
+			   }
+			   else
+				   {
+				   		tv.setText(R.string.no_favorites);
+				   		ly.setBackgroundColor(Color.DKGRAY);
+				   	
+				   }
 		    } else {
 		    	Log.d("ERROR", "Error: " + e.getMessage());
 		      // something went wrong
 		    		}
 		  	}
 			});
+	
+	
    }
    public void getRowNumandLaunch()
    {
