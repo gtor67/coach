@@ -142,7 +142,8 @@ public class MainActivity extends Activity {
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 			query.orderByAscending("createdAt");
 			query.findInBackground(new FindCallback<ParseObject>() {
-			  public void done(List<ParseObject> Beginner1, ParseException e) {
+			  @Override
+			public void done(List<ParseObject> Beginner1, ParseException e) {
 			    if (e == null) {
 			    	int tableSize= Beginner1.size();
 			    	//tableSize = 4; //we only have 4 rows to update
@@ -161,7 +162,8 @@ public class MainActivity extends Activity {
 			    		
 			    ////////////TO REFRESH WITH PARSE		
 			    		Beginner1.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-			    			  public void done(ParseObject object, ParseException e) {
+			    			  @Override
+							public void done(ParseObject object, ParseException e) {
 			    			    if (e == null) {
 			    			      // Success!
 			    			    } else {

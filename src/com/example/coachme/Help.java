@@ -8,7 +8,8 @@ import android.view.MenuItem;
 
 public class Help extends Activity {
  
-   public void onCreate(Bundle savedInstanceState){
+   @Override
+public void onCreate(Bundle savedInstanceState){
    super.onCreate(savedInstanceState);
    setContentView(R.layout.help);
    

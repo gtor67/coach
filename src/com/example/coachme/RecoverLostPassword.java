@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 public class RecoverLostPassword extends Activity {
  
-   public void onCreate(Bundle savedInstanceState){
+   @Override
+public void onCreate(Bundle savedInstanceState){
    super.onCreate(savedInstanceState);
    setContentView(R.layout.recover_lost_password);
    
@@ -33,6 +34,7 @@ public class RecoverLostPassword extends Activity {
 		
 		ParseUser.requestPasswordResetInBackground(email,
                 new RequestPasswordResetCallback() {
+				@Override
 				public void done(ParseException e) {
 				if (e == null) {
 				// An email was successfully sent with reset instructions.

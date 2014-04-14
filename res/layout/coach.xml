@@ -18,6 +18,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:ems="10"
+             android:hint="Enter Team Name"
              android:inputType="text" />
      
       <Button
@@ -40,14 +41,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:text="TextView" />
+        android:hint="Team Code" />
+    
+    <TextView
+        android:id="@+id/team"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Enter the team code you wish to join "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+     
+         <EditText
+             android:id="@+id/teamCode"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:ems="10"
+             android:hint="Enter Team Code"
+             android:inputType="text" />
 
     <Button
         android:id="@+id/buttoncoachcode"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="updatePass"
         android:text="join team" />
 
 </LinearLayout>

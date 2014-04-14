@@ -24,7 +24,6 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class Favorites extends Activity {
@@ -35,7 +34,8 @@ public class Favorites extends Activity {
    private String parseID = ""; //Represents ParseOBject ID of selected row
    public final static String EXTRA_ROWNUM = "com.example.coach.RowNum";
    
-   public void onCreate(Bundle savedInstanceState){
+   @Override
+public void onCreate(Bundle savedInstanceState){
    super.onCreate(savedInstanceState);
    setContentView(R.layout.favorites);
    initList();
@@ -115,7 +115,8 @@ public class Favorites extends Activity {
 	ParseRelation<ParseObject> relation = ParseUser.getCurrentUser().getRelation("Favs"); 
 	ParseQuery<ParseObject> query2 = relation.getQuery();
 	query2.findInBackground(new FindCallback<ParseObject>() {
-		  public void done(List<ParseObject> favs, ParseException e) {
+		  @Override
+		public void done(List<ParseObject> favs, ParseException e) {
 		    if (e == null) {
 		    	int tableSize= favs.size();
 		    	//Need to make list of strings out of list of ParseOBjects
@@ -131,7 +132,8 @@ public class Favorites extends Activity {
 		    		Log.d("Object ID into list", favs.get(i).getObjectId());
 		    ////////////TO REFRESH WITH PARSE		
 		    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
-		    			  public void done(ParseObject object, ParseException e) {
+		    			  @Override
+						public void done(ParseObject object, ParseException e) {
 		    			    if (e == null) {
 		    			      // Success!
 		    			    } else {
@@ -180,7 +182,8 @@ public class Favorites extends Activity {
 	   ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<ParseObject>() {
-		  public void done(List<ParseObject> beginner1, ParseException e) {
+		  @Override
+		public void done(List<ParseObject> beginner1, ParseException e) {
 		    if (e == null) {
 		    	
 		    	//Note: Local DB is 1 index ahead, but doesn't matter here since listPos starts at 0
