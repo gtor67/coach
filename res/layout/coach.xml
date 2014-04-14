@@ -1,39 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:background="#ffffff"
+    android:layout_height="wrap_content" >
+
+<LinearLayout
+    style="@style/LoginFormContainer"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
     
-    
+    <ImageView
+            android:id="@+id/imageJoinTeam"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_width="300dp"
+            android:layout_height="199dp"
+            android:src="@drawable/join_a_team" />
+     
+     
      <TextView
         android:id="@+id/coach"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Enter name of Team you wish to register"
+        android:text="Enter the Team name you wish to register"
         android:textAppearance="?android:attr/textAppearanceMedium" />
      
          <EditText
              android:id="@+id/coachCode"
-             android:layout_width="wrap_content"
+             android:layout_width="match_parent"
              android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
              android:ems="10"
              android:hint="Enter Team Name"
              android:inputType="text" />
      
       <Button
           android:id="@+id/buttonrequestcoach"
-          style="?android:attr/buttonStyleSmall"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="register team" />
+          android:layout_width="120dp"
+          android:layout_height="40dp"
+          android:background="@drawable/button_register_team_change"
+          android:layout_gravity="right"
+          android:layout_marginTop="10dp"
+          android:onClick="request" />
     
          <TextView
              android:id="@+id/entCoach"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
-             android:layout_marginTop="15dp"
-             android:text="this is your team code"
+             android:layout_marginTop="30dp"
+             android:text="Below is your Team Code:"
              android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -41,29 +59,36 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:textColor="#1900ff"
         android:hint="Team Code" />
     
     <TextView
         android:id="@+id/team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:text="Enter the team code you wish to join "
         android:textAppearance="?android:attr/textAppearanceMedium" />
      
          <EditText
              android:id="@+id/teamCode"
-             android:layout_width="wrap_content"
+             android:layout_width="match_parent"
              android:layout_height="wrap_content"
+             android:layout_marginTop="10dp"
              android:ems="10"
              android:hint="Enter Team Code"
              android:inputType="text" />
 
     <Button
         android:id="@+id/buttoncoachcode"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="join team" />
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:background="@drawable/button_join_team_change"
+        android:layout_gravity="right"
+        android:layout_marginTop="10dp" 
+        android:onClick="register" />
 
 </LinearLayout>
+    
+   
+</ScrollView>

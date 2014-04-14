@@ -6,15 +6,6 @@
     android:showAsAction="always">
 
     <menu>
-    <!-- Login 
-    <item
-        android:id="@+id/action_login"
-        android:orderInCategory="1"
-        android:icon="@drawable/ic_action_person"
-        android:title="@string/action_login"
-        android:showAsAction="never"/>
-    -->
-    
     <!-- Create Account -->
     <item
         android:id="@+id/action_create_account"
@@ -39,17 +30,25 @@
         android:title="@string/action_favorites"
         android:showAsAction="never"/>
     
+    <!-- Team Settings -->
+    <item
+        android:id="@+id/action_team"
+        android:orderInCategory="4"
+        android:icon="@drawable/ic_action_group"
+        android:title="@string/action_team"
+        android:showAsAction="never"/>
+    
    <!-- Help -->
     <item
         android:id="@+id/action_help"
-        android:orderInCategory="4"
+        android:orderInCategory="5"
         android:icon="@drawable/ic_action_help"
         android:title="@string/action_settings"
         android:showAsAction="never"/>
     
     <!-- About -->
     <item android:id="@+id/action_about"
-          android:orderInCategory="5"
+          android:orderInCategory="6"
           android:icon="@drawable/ic_action_about"
           android:title="@string/action_about"
           android:showAsAction="never"/>

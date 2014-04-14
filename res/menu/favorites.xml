@@ -21,18 +21,26 @@
         android:icon="@drawable/ic_action_accounts"
         android:title="@string/action_forgot_password"
         android:showAsAction="never"/>
+    
+    <!-- Team Settings -->
+    <item
+        android:id="@+id/action_team"
+        android:orderInCategory="3"
+        android:icon="@drawable/ic_action_group"
+        android:title="@string/action_team"
+        android:showAsAction="never"/>
    
    <!-- Help -->
     <item
         android:id="@+id/action_help"
-        android:orderInCategory="3"
+        android:orderInCategory="4"
         android:icon="@drawable/ic_action_help"
         android:title="@string/action_settings"
         android:showAsAction="never"/>
     
     <!-- About -->
     <item android:id="@+id/action_about"
-          android:orderInCategory="4"
+          android:orderInCategory="5"
           android:icon="@drawable/ic_action_about"
           android:title="@string/action_about"
           android:showAsAction="never"/>

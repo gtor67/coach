@@ -27,7 +27,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="42dp"
-        android:text="Email Address:" />
+        android:text="Current Email Address:" />
 
     <TextView
         android:id="@+id/textViewEnterPass"
@@ -71,7 +71,7 @@
 
     <Button
         android:id="@+id/buttonUpdatePass"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="40dp"
         android:background="@drawable/button_account_settings_email_change"
         android:layout_marginTop="10dp"
@@ -81,7 +81,7 @@
 
     <Button
         android:id="@+id/buttonUpdateEmail"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="40dp"
         android:background="@drawable/button_account_settings_password_change"
         android:layout_marginTop="10dp"

@@ -41,8 +41,13 @@ public void onCreate(Bundle savedInstanceState){
      case R.id.action_favorites:
  	 startActivity(new Intent(this, Favorites.class));
  	 return true;
+ 	 
+ 	// 4, From overflow menu, goes to the Team Settings page
+     case R.id.action_team:
+ 	startActivity(new Intent(this, Coach.class));
+ 	return true;
     
-    // 4, From overflow menu, goes to the Help page
+    // 5, From overflow menu, goes to the Help page
 	case R.id.action_help:
     startActivity(new Intent(this, Help.class));
     return true;

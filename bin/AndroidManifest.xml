@@ -101,6 +101,12 @@
             android:name="com.example.coachme.Help"
             android:label="Help Screen" >
         </activity>
+        
+        <!-- Coach activity -->
+        <activity
+            android:name="com.example.coachme.Coach"
+            android:label="Team Settings Screen" >
+        </activity>
 
     </application>
 

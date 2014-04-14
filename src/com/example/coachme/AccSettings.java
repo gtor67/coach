@@ -63,13 +63,18 @@ public class AccSettings extends Activity {
 	    case R.id.action_favorites:
 		startActivity(new Intent(this, Favorites.class));
 		return true;
+		
+		// 4, From overflow menu, goes to the Team Settings page
+        case R.id.action_team:
+    	startActivity(new Intent(this, Coach.class));
+    	return true;
 	    
-	    // 4, From overflow menu, goes to the Help page
+	    // 5, From overflow menu, goes to the Help page
     	case R.id.action_help:
 	    startActivity(new Intent(this, Help.class));
 	    return true;
     	
-	    // 5, From overflow menu, goes to the About page
+	    // 6, From overflow menu, goes to the About page
     	case R.id.action_about:
 	    startActivity(new Intent(this, About.class));
 	    return true;

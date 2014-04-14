@@ -247,13 +247,6 @@ public class MainActivity extends Activity {
     	    	// Handle item selection
     	    	switch (item.getItemId()) {
     	    	
-    	    	/**
-    	    	// From overflow menu, goes to Sign-in page
-    	    	case R.id.action_login:
-    	    	startActivity(new Intent(this,LoginActivity.class));
-    	    	return true;
-    	    	*/
-    	    	
     	    	// 1, From overflow menu, goes to the Create an Account page
     	    	case R.id.action_create_account:
         	    startActivity(new Intent(this, CreateAccount.class));
@@ -269,12 +262,17 @@ public class MainActivity extends Activity {
     	    	startActivity(new Intent(this, Favorites.class));
     	    	return true;
         	    
-        	    // 4, From overflow menu, goes to the Help page
+    	    	// 4, From overflow menu, goes to the Team Settings page
+    	        case R.id.action_team:
+    	    	startActivity(new Intent(this, Coach.class));
+    	    	return true;
+    	    	
+    	    	// 5, From overflow menu, goes to the Help page
     	    	case R.id.action_help:
         	    startActivity(new Intent(this, Help.class));
         	    return true;
     	    	
-        	    // 5, From overflow menu, goes to the About page
+        	    // 6, From overflow menu, goes to the About page
     	    	case R.id.action_about:
         	    startActivity(new Intent(this, About.class));
         	    return true;

@@ -30,9 +30,17 @@
         android:title="@string/action_favorites"
         android:showAsAction="never"/>
     
+    <!-- Team Settings -->
+    <item
+        android:id="@+id/action_team"
+        android:orderInCategory="4"
+        android:icon="@drawable/ic_action_group"
+        android:title="@string/action_team"
+        android:showAsAction="never"/>
+    
     <!-- About -->
     <item android:id="@+id/action_about"
-          android:orderInCategory="4"
+          android:orderInCategory="5"
           android:icon="@drawable/ic_action_about"
           android:title="@string/action_about"
           android:showAsAction="never"/>
