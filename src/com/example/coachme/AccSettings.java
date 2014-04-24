@@ -28,7 +28,7 @@ public class AccSettings extends Activity {
 		TextView email = (TextView)findViewById(R.id.textViewEmail);
 		
 		ParseUser user = ParseUser.getCurrentUser();
-		String emailAdd = user.getEmail();
+		String emailAdd = user.getEmail(); 
 		Log.d("Email Address", emailAdd);
 		email.setText(emailAdd);
 		

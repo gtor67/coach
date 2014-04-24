@@ -107,7 +107,9 @@ public class CreateAccount extends Activity {
 			{
 				if (e == null) {
 				      // Hooray! Let them use the app now.
-					Intent intent = new Intent(CreateAccount.this, MainActivity.class);
+					ParseUser.logOut();
+			    	finish();
+					Intent intent = new Intent(CreateAccount.this, LoginActivity.class);
 			    	startActivity(intent);
 				    } else {
 				      // Sign up didn't succeed. Look at the ParseException

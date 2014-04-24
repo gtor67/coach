@@ -280,7 +280,8 @@ public class LoginActivity extends Activity {
 					public void done(ParseUser user, ParseException e) {
 					    if (user != null) {
 					      // Hooray! The user is logged in.
-					    	test = true;
+					    	if(user.getBoolean("emailVerified"))
+					    		test = true; 
 					    } else {
 					      // Signup failed. Look at the ParseException to see what happened.
 					    	 test = false;
@@ -333,9 +334,20 @@ public class LoginActivity extends Activity {
 				startActivity(openMainActivity);
 				//finish();
 			} else {
+				//Need to display right thing here
+				/*
 				mPasswordView
 						.setError(getString(R.string.error_incorrect_password));
 				mPasswordView.requestFocus();
+				*/
+				if(( (ParseUser.getCurrentUser() != null) && (!ParseUser.getCurrentUser().getBoolean("emailVerified"))))
+				{
+					ParseUser.logOut(); 
+					//finish(); 
+					Toast.makeText(getApplicationContext(),"Check your email to verify your account.",Toast.LENGTH_LONG).show();
+	        	}
+				else
+					Toast.makeText(getApplicationContext(),"Invalid email address or password.",Toast.LENGTH_LONG).show();
 			}
 		}
 

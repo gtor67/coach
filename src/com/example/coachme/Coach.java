@@ -22,6 +22,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Coach extends Activity {
 	Button request;
@@ -91,6 +92,12 @@ public class Coach extends Activity {
 			@Override
 			public void onClick(View v) {
 
+				if(me == null)
+				{
+					Intent intent = new Intent(Coach.this,LoginActivity.class);
+					startActivity(intent);
+					return;
+				}
 				// query to check of user has already created a team
 				ParseQuery<ParseObject> query = ParseQuery.getQuery("coaches");
 				query.whereEqualTo("email", me.get("email"));
@@ -138,6 +145,12 @@ public class Coach extends Activity {
 
 			@Override
 			public void onClick(View v) {
+				if(me == null)
+				{
+					Intent intent = new Intent(Coach.this,LoginActivity.class);
+					startActivity(intent);
+					return;
+				}
 				// TODO Auto-generated method stub
 				//search for team based on id
 				ParseQuery<ParseObject> query =ParseQuery.getQuery("coaches");
