@@ -9,11 +9,13 @@ import com.parse.ParseException;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 
+import android.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -57,11 +59,7 @@ public class Content extends Activity {
         }
 		// for the View Video Button
 		viewVideo();
-		
-		
-		
-		
-		
+	
 		Intent intent = getIntent();
 		Log.d("Content Page","Made it into content.");
 		String title = "";
@@ -140,7 +138,7 @@ public class Content extends Activity {
 		image.setImageResource(resourceId);
 		
 		link = exersice.getString(6);
-		
+		Log.d("link id",""+link);
 		
 		
 		//String imageLoc = "p1";
@@ -151,13 +149,16 @@ public class Content extends Activity {
 		//image.setImageURI("" + "");
 		
 		
+		
 		//Need to know if row is with user here to change button. possibly remove things from add to favs
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<ParseObject>() {
 		  @Override
 		public void done(List<ParseObject> beginner1, ParseException e) {
-		    if (e == null) {
+			  //// BUG FIX IF USER NOT LOGGED IN AUTOMATIC CRASH IN CONTENT
+		    if (e == null && ParseUser.getCurrentUser() !=null) {
+		    	Log.d("go thru??",""+"went thru without a user, crash");
 		    	
 		    	
 		    	
@@ -204,11 +205,13 @@ public class Content extends Activity {
 		    	
 
 		    } else {
-		    	Log.d("ERROR", "Error: " + e.getMessage());
+		//    	Log.d("ERROR", "Error: " + e.getMessage());
 		      // something went wrong
 		    		}
 		  	}
 			});
+		
+		
 		
 	}
 
@@ -221,14 +224,30 @@ public class Content extends Activity {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 	}
-
+/////HIDE SHOW MENU STUFF IN CONTENT PAGE
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.content, menu);
+		
+		if(ParseUser.getCurrentUser()==null){
+		    MenuItem   item = menu.findItem(R.id.action_create_account);
+		    
+		    item.setVisible(true);
+		    invalidateOptionsMenu();} /// CALL to reinsert items,restart action bar with correct items 
+		
+		    else{ 
+		    	MenuItem   item = menu.findItem(R.id.action_create_account);
+		    
+		    item.setVisible(false);
+		    invalidateOptionsMenu();}
+		
 		return true;
 	}
 
+	
+	
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle item selection
@@ -326,7 +345,8 @@ public class Content extends Activity {
 		query.findInBackground(new FindCallback<ParseObject>() {
 		  @Override
 		public void done(List<ParseObject> beginner1, ParseException e) {
-		    if (e == null) {
+			  /////BUG FIX AUTOMAIC CRASH IN CONTENT PAGE IF NO USER IS LOGGED IN
+		    if (e == null && ParseUser.getCurrentUser() !=null) {
 		    	
 		    	
 		    	
