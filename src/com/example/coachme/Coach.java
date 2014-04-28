@@ -74,7 +74,15 @@ public class Coach extends Activity {
         	    // 5, From overflow menu, goes to the About page
     	    	case R.id.action_about:
         	    startActivity(new Intent(this, About.class));
-        	    return true;
+                return true;
+        	    
+        	    // 6, From overflow menu, Exits program
+    	    	case R.id.action_exit:
+    	    	this.finish();
+    	    	Intent intent = new Intent(Intent.ACTION_MAIN);
+    	    	intent.addCategory(Intent.CATEGORY_HOME);
+    	    	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    	    	startActivity(intent);
     	    	default:
     	    	return super.onOptionsItemSelected(item);
     	    	}

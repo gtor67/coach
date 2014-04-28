@@ -30,5 +30,6 @@
     <string name="title_activity_favorites">Favorites Screen</string>
     <string name="action_team">Team Settings</string>
     <string name="error_email_taken">Email address already taken.</string>
+    <string name="action_exit">Exit</string>
 
 </resources>

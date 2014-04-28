@@ -79,32 +79,34 @@ public final class R {
         public static final int ic_action_about=0x7f020031;
         public static final int ic_action_accounts=0x7f020032;
         public static final int ic_action_add_person=0x7f020033;
-        public static final int ic_action_group=0x7f020034;
-        public static final int ic_action_help=0x7f020035;
-        public static final int ic_action_important=0x7f020036;
-        public static final int ic_action_overflow=0x7f020037;
-        public static final int ic_action_person=0x7f020038;
-        public static final int ic_action_settings=0x7f020039;
-        public static final int ic_launcher=0x7f02003a;
-        public static final int join_a_team=0x7f02003b;
-        public static final int login_account_screen=0x7f02003c;
-        public static final int main_sports_screen=0x7f02003d;
-        public static final int not_available_large_squared_gray_selected=0x7f02003e;
-        public static final int p1=0x7f02003f;
-        public static final int p10=0x7f020040;
-        public static final int p11=0x7f020041;
-        public static final int p15=0x7f020042;
-        public static final int p16=0x7f020043;
-        public static final int p18=0x7f020044;
-        public static final int p19=0x7f020045;
-        public static final int p2=0x7f020046;
-        public static final int p5=0x7f020047;
-        public static final int p7=0x7f020048;
-        public static final int p8=0x7f020049;
-        public static final int person_forgot_password=0x7f02004a;
-        public static final int splash=0x7f02004b;
-        public static final int splash2=0x7f02004c;
-        public static final int splash_screen=0x7f02004d;
+        public static final int ic_action_cancel=0x7f020034;
+        public static final int ic_action_error=0x7f020035;
+        public static final int ic_action_group=0x7f020036;
+        public static final int ic_action_help=0x7f020037;
+        public static final int ic_action_important=0x7f020038;
+        public static final int ic_action_overflow=0x7f020039;
+        public static final int ic_action_person=0x7f02003a;
+        public static final int ic_action_settings=0x7f02003b;
+        public static final int ic_launcher=0x7f02003c;
+        public static final int join_a_team=0x7f02003d;
+        public static final int login_account_screen=0x7f02003e;
+        public static final int main_sports_screen=0x7f02003f;
+        public static final int not_available_large_squared_gray_selected=0x7f020040;
+        public static final int p1=0x7f020041;
+        public static final int p10=0x7f020042;
+        public static final int p11=0x7f020043;
+        public static final int p15=0x7f020044;
+        public static final int p16=0x7f020045;
+        public static final int p18=0x7f020046;
+        public static final int p19=0x7f020047;
+        public static final int p2=0x7f020048;
+        public static final int p5=0x7f020049;
+        public static final int p7=0x7f02004a;
+        public static final int p8=0x7f02004b;
+        public static final int person_forgot_password=0x7f02004c;
+        public static final int splash=0x7f02004d;
+        public static final int splash2=0x7f02004e;
+        public static final int splash_screen=0x7f02004f;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0b0014;
@@ -118,12 +120,13 @@ public final class R {
         public static final int about_juan=0x7f0b0007;
         public static final int about_nazmul=0x7f0b0008;
         public static final int about_roberto=0x7f0b0006;
-        public static final int action_about=0x7f0b005d;
+        public static final int action_about=0x7f0b005e;
         public static final int action_create_account=0x7f0b0058;
+        public static final int action_exit=0x7f0b005d;
         public static final int action_favorites=0x7f0b005a;
         public static final int action_forgot_password=0x7f0b0059;
         public static final int action_help=0x7f0b005c;
-        public static final int action_settings=0x7f0b005e;
+        public static final int action_settings=0x7f0b005f;
         public static final int action_team=0x7f0b005b;
         public static final int add_favorites_button=0x7f0b0019;
         public static final int button1Login=0x7f0b002f;
@@ -241,12 +244,13 @@ public final class R {
     public static final class string {
         public static final int action_about=0x7f070016;
         public static final int action_create_account=0x7f070015;
+        public static final int action_exit=0x7f07001d;
         public static final int action_favorites=0x7f070013;
-        public static final int action_forgot_password=0x7f070022;
+        public static final int action_forgot_password=0x7f070023;
         public static final int action_login=0x7f070014;
         public static final int action_settings=0x7f070001;
-        public static final int action_sign_in_register=0x7f070020;
-        public static final int action_sign_in_short=0x7f070021;
+        public static final int action_sign_in_register=0x7f070021;
+        public static final int action_sign_in_short=0x7f070022;
         public static final int action_team=0x7f07001b;
         public static final int add_favorites=0x7f070019;
         public static final int advanced=0x7f070009;
@@ -257,50 +261,50 @@ public final class R {
         public static final int enter_Email=0x7f07000d;
         public static final int enter_Pass=0x7f07000e;
         public static final int error_email_taken=0x7f07001c;
-        public static final int error_field_required=0x7f070027;
-        public static final int error_incorrect_password=0x7f070026;
-        public static final int error_invalid_email=0x7f070024;
-        public static final int error_invalid_password=0x7f070025;
+        public static final int error_field_required=0x7f070028;
+        public static final int error_incorrect_password=0x7f070027;
+        public static final int error_invalid_email=0x7f070025;
+        public static final int error_invalid_password=0x7f070026;
         public static final int hello_world=0x7f070006;
         public static final int home_instruction=0x7f070003;
         public static final int home_note=0x7f070004;
         public static final int intermediate=0x7f070008;
-        public static final int login_progress_signing_in=0x7f070023;
+        public static final int login_progress_signing_in=0x7f070024;
         public static final int menu_overflow=0x7f070017;
         public static final int no_favorites=0x7f070018;
-        public static final int pref_default_display_name=0x7f07002d;
-        public static final int pref_description_social_recommendations=0x7f07002b;
+        public static final int pref_default_display_name=0x7f07002e;
+        public static final int pref_description_social_recommendations=0x7f07002c;
         /**  Example settings for Data & Sync 
          */
-        public static final int pref_header_data_sync=0x7f07002f;
+        public static final int pref_header_data_sync=0x7f070030;
         /**  Strings related to Settings 
  Example General settings 
          */
-        public static final int pref_header_general=0x7f070029;
+        public static final int pref_header_general=0x7f07002a;
         /**  Example settings for Notifications 
          */
-        public static final int pref_header_notifications=0x7f070032;
-        public static final int pref_ringtone_silent=0x7f070035;
-        public static final int pref_title_add_friends_to_messages=0x7f07002e;
-        public static final int pref_title_display_name=0x7f07002c;
-        public static final int pref_title_new_message_notifications=0x7f070033;
-        public static final int pref_title_ringtone=0x7f070034;
-        public static final int pref_title_social_recommendations=0x7f07002a;
-        public static final int pref_title_sync_frequency=0x7f070030;
-        public static final int pref_title_system_sync_settings=0x7f070031;
-        public static final int pref_title_vibrate=0x7f070036;
+        public static final int pref_header_notifications=0x7f070033;
+        public static final int pref_ringtone_silent=0x7f070036;
+        public static final int pref_title_add_friends_to_messages=0x7f07002f;
+        public static final int pref_title_display_name=0x7f07002d;
+        public static final int pref_title_new_message_notifications=0x7f070034;
+        public static final int pref_title_ringtone=0x7f070035;
+        public static final int pref_title_social_recommendations=0x7f07002b;
+        public static final int pref_title_sync_frequency=0x7f070031;
+        public static final int pref_title_system_sync_settings=0x7f070032;
+        public static final int pref_title_vibrate=0x7f070037;
         /**  Strings related to login 
          */
-        public static final int prompt_email=0x7f07001e;
-        public static final int prompt_password=0x7f07001f;
+        public static final int prompt_email=0x7f07001f;
+        public static final int prompt_password=0x7f070020;
         public static final int settings=0x7f070011;
         public static final int submit=0x7f07000f;
         public static final int title_activity_acc_settings=0x7f070012;
         public static final int title_activity_content=0x7f07000b;
         public static final int title_activity_favorites=0x7f07001a;
-        public static final int title_activity_login=0x7f07001d;
+        public static final int title_activity_login=0x7f07001e;
         public static final int title_activity_register=0x7f07000a;
-        public static final int title_activity_settings=0x7f070028;
+        public static final int title_activity_settings=0x7f070029;
         public static final int title_activity_training_filter=0x7f070005;
         public static final int train=0x7f070010;
     }

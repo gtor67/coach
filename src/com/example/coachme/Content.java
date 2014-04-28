@@ -274,10 +274,18 @@ public class Content extends Activity {
 		//
 		NavUtils.navigateUpFromSameTask(this);
 		return true;
-		default:
-		return super.onOptionsItemSelected(item);
-		}
-	}
+	    
+	    // 7, From overflow menu, Exits program
+    	case R.id.action_exit:
+    	this.finish();
+    	Intent intent = new Intent(Intent.ACTION_MAIN);
+    	intent.addCategory(Intent.CATEGORY_HOME);
+    	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    	startActivity(intent);
+    	default:
+    	return super.onOptionsItemSelected(item);
+    	}
+    	}
 	 
 	public void viewVideo() {
  

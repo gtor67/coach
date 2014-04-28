@@ -136,10 +136,18 @@ public class LoginActivity extends Activity {
     	case R.id.action_about:
 	    startActivity(new Intent(this, About.class));
 	    return true;
+	    
+	    // 7, From overflow menu, Exits program
+    	case R.id.action_exit:
+    	this.finish();
+    	Intent intent = new Intent(Intent.ACTION_MAIN);
+    	intent.addCategory(Intent.CATEGORY_HOME);
+    	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    	startActivity(intent);
     	default:
     	return super.onOptionsItemSelected(item);
     	}
-    }
+    	}
  
 	public void resetPassword(View view){
 		EditText emailET = (EditText)findViewById(R.id.editTextrecoverEmail);
