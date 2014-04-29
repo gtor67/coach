@@ -423,7 +423,7 @@ public class LoginActivity extends Activity {
 			if (success) {
 				Intent openMainActivity = new Intent("android.intent.action.MAINACTIVITY");
 				startActivity(openMainActivity);
-				//finish();
+				finish();
 			} else {
 				//Need to display right thing here
 				/*
