@@ -424,6 +424,8 @@ public class LoginActivity extends Activity {
 				Intent openMainActivity = new Intent("android.intent.action.MAINACTIVITY");
 				startActivity(openMainActivity);
 				finish();
+				
+				
 			} else {
 				//Need to display right thing here
 				/*
