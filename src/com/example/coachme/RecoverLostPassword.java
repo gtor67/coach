@@ -95,18 +95,18 @@ public void onCreate(Bundle savedInstanceState){
 		
 		if(ParseUser.getCurrentUser()==null){
 		    MenuItem   item1 = menu.findItem(R.id.action_create_account);
-		    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
+//		    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
 		    
 		    item1.setVisible(true);
-		    item2.setVisible(true);
+//		    item2.setVisible(true);
 		    invalidateOptionsMenu();} /// CALL to reinsert items,restart action bar with correct items 
 		
 		    else{ 
 		    	MenuItem   item1 = menu.findItem(R.id.action_create_account);
-			    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
+//			    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
 			    
 			    item1.setVisible(false);
-			    item2.setVisible(false);
+//			    item2.setVisible(false);
 			    invalidateOptionsMenu();}
 		
 		return true;

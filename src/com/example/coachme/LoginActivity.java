@@ -421,8 +421,14 @@ public class LoginActivity extends Activity {
 			showProgress(false);
 
 			if (success) {
-				Intent openMainActivity = new Intent("android.intent.action.MAINACTIVITY");
-				startActivity(openMainActivity);
+				
+				///// bug fix, finish parent activity so you cant go back
+				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(intent);
+				
+//				Intent openMainActivity = new Intent("android.intent.action.MAINACTIVITY");
+//				startActivity(openMainActivity);
 				finish();
 				
 				
