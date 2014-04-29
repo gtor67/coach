@@ -12,6 +12,7 @@ import com.parse.ParseUser;
 import android.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.Menu;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v4.app.NavUtils;
 import android.annotation.TargetApi;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -224,6 +226,42 @@ public class Content extends Activity {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 	}
+	
+	
+	/////When clicking user related field
+	public  void displayAlert()
+    {
+     new AlertDialog.Builder(this).setMessage("You Need to be Logged in")  
+           .setTitle("Non User")  
+           .setCancelable(false)  
+           
+           .setPositiveButton("Log in",  
+              new DialogInterface.OnClickListener() {  
+              public void onClick(DialogInterface dialog, int whichButton){
+            	  
+            	  Intent mainIntent = new Intent().setClass(
+            				Content.this, LoginActivity.class);
+            				startActivity(mainIntent);
+            	  
+                  finish();
+              }  
+              }) 
+           
+           .setNegativeButton("No Thanks",  
+              new DialogInterface.OnClickListener() {  
+              public void onClick(DialogInterface dialog, int whichButton){
+            	  dialog.cancel();
+              }  
+              }) 
+           
+            
+           .show(); 
+     
+     
+     
+    }
+	
+	
 /////HIDE SHOW MENU STUFF IN CONTENT PAGE
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -231,16 +269,20 @@ public class Content extends Activity {
 		getMenuInflater().inflate(R.menu.content, menu);
 		
 		if(ParseUser.getCurrentUser()==null){
-		    MenuItem   item = menu.findItem(R.id.action_create_account);
+		    MenuItem   item1 = menu.findItem(R.id.action_create_account);
+		    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
 		    
-		    item.setVisible(true);
+		    item1.setVisible(true);
+		    item2.setVisible(true);
 		    invalidateOptionsMenu();} /// CALL to reinsert items,restart action bar with correct items 
 		
 		    else{ 
-		    	MenuItem   item = menu.findItem(R.id.action_create_account);
-		    
-		    item.setVisible(false);
-		    invalidateOptionsMenu();}
+		    	MenuItem   item1 = menu.findItem(R.id.action_create_account);
+			    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
+			    
+			    item1.setVisible(false);
+			    item2.setVisible(false);
+			    invalidateOptionsMenu();}
 		
 		return true;
 	}
@@ -265,12 +307,26 @@ public class Content extends Activity {
 				
 	    // 3, From overflow menu, goes to the Favorites page
 		case R.id.action_favorites:
-	    startActivity(new Intent(this, Favorites.class));
+			if(ParseUser.getCurrentUser()==null){
+				displayAlert();
+		   }  
+		
+		    else{ 
+		    	startActivity(new Intent(this, Favorites.class));
+		    	}
+	    
 	    return true;
 	    
 	    // 4, From overflow menu, goes to the Team Settings page
         case R.id.action_team:
-    	startActivity(new Intent(this, Coach.class));
+
+        	if(ParseUser.getCurrentUser()==null){
+				displayAlert();
+		   }  
+		
+		    else{ 
+		    	startActivity(new Intent(this, Coach.class));
+		    	}
     	return true;
 	    
 	    // 5, From overflow menu, goes to the Help page
