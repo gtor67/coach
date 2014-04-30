@@ -11,6 +11,16 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- For Push Also -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<permission android:protectionLevel="signature"
+    android:name="com.example.coachme.permission.C2D_MESSAGE" />
+	<uses-permission android:name="com.example.coachme.permission.C2D_MESSAGE" />
+	
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -71,43 +81,67 @@
             android:name="com.example.coachme.AccSettings"
             android:label="@string/title_activity_acc_settings" >
         </activity>
-        
+
         <!-- About activity -->
         <activity
             android:name="com.example.coachme.About"
             android:label="About Screen" >
         </activity>
-        
+
         <!-- Recover Lost Password activity -->
         <activity
             android:name="com.example.coachme.RecoverLostPassword"
             android:label="Recover Lost Password" >
         </activity>
-        
+
         <!-- Video activity -->
         <activity
             android:name="com.example.coachme.Video"
             android:label="Video Screen" >
         </activity>
-        
+
         <!-- Favorites activity -->
         <activity
             android:name="com.example.coachme.Favorites"
             android:label="@string/title_activity_favorites" >
         </activity>
-        
+
         <!-- Help activity -->
         <activity
             android:name="com.example.coachme.Help"
             android:label="Help Screen" >
         </activity>
-        
+
         <!-- Coach activity -->
         <activity
             android:name="com.example.coachme.Coach"
             android:label="Team Settings Screen" >
         </activity>
-
+        <activity
+            android:name="com.example.coachme.PushResponse"
+            android:label="@string/title_activity_push_response" >
+        </activity>
+        <!-- Start of Push -->
+		<service android:name="com.parse.PushService" />
+		<receiver android:name="com.parse.ParseBroadcastReceiver">
+		  <intent-filter>
+		    <action android:name="android.intent.action.BOOT_COMPLETED" />
+		    <action android:name="android.intent.action.USER_PRESENT" />
+		  </intent-filter>
+		</receiver>
+		<receiver android:name="com.parse.GcmBroadcastReceiver"
+		    android:permission="com.google.android.c2dm.permission.SEND">
+		  <intent-filter>
+		    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+		    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+		 
+		    <!--
+		      IMPORTANT: Change "com.parse.tutorials.pushnotifications" to match your app's package name.
+		    -->
+		    <category android:name="com.example.coachme" />
+		  </intent-filter>
+		</receiver>
+	<!-- End of Push -->
     </application>
 
 </manifest>
