@@ -123,7 +123,7 @@ public class Splash extends Activity {
 	    ////////////PARSE.COM TESTING ////////////
 		Parse.initialize(this, "eT6q3q5rgzDUgTAjRuTPAzyHSzvo7sbilbu9jqvU", "4TrzrKp78gLmGH0IcEB2pE4BtyIDz8siPrGszV6i");		
 		//Below if for push
-		PushService.setDefaultPushCallback(this, Splash.class);
+		PushService.setDefaultPushCallback(this, PushResponse.class);
 		ParseAnalytics.trackAppOpened(getIntent());
 		/*
 		ParseObject testObject = new ParseObject("TestObject");

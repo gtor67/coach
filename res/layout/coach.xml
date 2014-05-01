@@ -18,15 +18,32 @@
             android:layout_width="300dp"
             android:layout_height="199dp"
             android:src="@drawable/join_a_team" />
-     
-     
+
+     <EditText
+         android:id="@+id/sendMessEditText"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:ems="10"
+         android:inputType="textMultiLine" >
+
+         <requestFocus />
+     </EditText>
+
+     <Button
+         android:id="@+id/sendMessagebutton"
+         style="?android:attr/buttonStyleSmall"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Button"
+         android:onClick="sendMessage" />
+
      <TextView
-        android:id="@+id/coach"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Enter the Team name you wish to register"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+         android:id="@+id/coach"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginTop="15dp"
+         android:text="Enter the Team name you wish to register"
+         android:textAppearance="?android:attr/textAppearanceMedium" />
      
          <EditText
              android:id="@+id/coachCode"

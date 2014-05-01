@@ -6,13 +6,17 @@ import java.util.List;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseInstallation;
 import com.parse.ParseObject;
+import com.parse.ParsePush;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.parse.PushService;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -163,7 +167,16 @@ public class Coach extends Activity {
     	return super.onOptionsItemSelected(item);
     	}
     	}
-
+	public void sendMessage(View view)
+	{
+		//Currently set so that all messages sent to halos team
+		ParsePush push = new ParsePush();
+		EditText et = (EditText)findViewById(R.id.sendMessEditText); 
+	    String message = et.getText().toString();
+	    push.setChannel("halos");
+	    push.setMessage(message);
+	    push.sendInBackground();
+	}
 	private void addListenerOnButton() {
 		// TODO Auto-generated method stub
 		request = (Button) findViewById(R.id.buttonrequestcoach);
@@ -261,6 +274,14 @@ public class Coach extends Activity {
 								});
 							relation.add(me);
 							object.saveInBackground();
+							//Manually join halos team
+							ParseInstallation pi = ParseInstallation.getCurrentInstallation();
+					        
+					        //Register a channel to test push channels
+					        Context ctx = Coach.this.getApplicationContext();
+					        PushService.subscribe(ctx, "halos", PushResponse.class);
+					        
+					        pi.saveEventually();
 //							teamcode.setText(object.getString("name"));
 						}
 					}

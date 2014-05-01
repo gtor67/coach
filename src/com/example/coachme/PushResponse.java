@@ -2,7 +2,9 @@ package com.example.coachme;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.widget.TextView;
 
 public class PushResponse extends Activity {
 
@@ -10,6 +12,10 @@ public class PushResponse extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_push_response);
+		Intent intent = this.getIntent();
+		String message = intent.toURI();
+		TextView tv = (TextView)findViewById(R.id.pushedTextView);
+		tv.setText(message);
 	}
 
 	@Override
