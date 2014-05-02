@@ -46,7 +46,7 @@ public class AccSettings extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.coachcontents), findViewById(R.id.coachframe));
+		scaleContents(findViewById(R.id.accSettingContent), findViewById(R.id.accSettingFrame));
        scalingComplete = true;
 	}
 	     

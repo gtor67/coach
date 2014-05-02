@@ -32,7 +32,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	DBAdapter myDb;
 	ListView lv;
-		private boolean scalingComplete = false;
+	private boolean scalingComplete = false;
    
 	@Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -27,6 +27,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -78,7 +79,7 @@ public void onCreate(Bundle savedInstanceState){
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.coachcontents), findViewById(R.id.coachframe));
+		scaleContents(findViewById(R.id.favContent), findViewById(R.id.favFrame));
         scalingComplete = true;
 	}
 	     
@@ -258,7 +259,7 @@ public void onCreate(Bundle savedInstanceState){
 		    listViewFavs.setAdapter(adapter);
 		    Log.d("Empty?", "Error: " + corresID.isEmpty());
 			   TextView tv = (TextView)findViewById(R.id.empty_textview);
-			   LinearLayout ly = (LinearLayout) findViewById(R.id.favorites);
+			   RelativeLayout ly = (RelativeLayout) findViewById(R.id.favContent);
 			   if(!(corresID.isEmpty()))
 			   {
 				   tv.setText("");
