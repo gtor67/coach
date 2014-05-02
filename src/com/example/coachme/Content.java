@@ -1,6 +1,7 @@
 package com.example.coachme;
 
 import java.util.List;
+
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.ParseObject;
@@ -20,6 +21,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -42,6 +44,7 @@ public class Content extends Activity {
 	private int rowNum;
 	private boolean relHasRow;
 	private ParseObject favRow;
+		private boolean scalingComplete = false;
 	
 	public final static String VIDEO_MESSAGE = "com.example.coach.VideoURL";
 	@Override
@@ -216,6 +219,16 @@ public class Content extends Activity {
 		
 		
 	}
+	@Override
+		public void onWindowFocusChanged(boolean hasFocus) {
+		if (!scalingComplete) // only do this once
+		{
+			scaleContents(findViewById(R.id.contentcontainer), findViewById(R.id.contentframe));
+	        scalingComplete = true;
+		}
+		     
+			super.onWindowFocusChanged(hasFocus);
+		}
 
 	/**
 	 * Set up the {@link android.app.ActionBar}, if the API is available.
@@ -596,5 +609,66 @@ public class Content extends Activity {
 			  	}
 				});
     }
+    // Scales the contents of the given view so that it completely fills the
+	// given
+	// container on one axis (that is, we're scaling isotropically).
+	private void scaleContents(View rootView, View container) {
+		// Compute the scaling ratio
+		float xScale = (float) container.getWidth() / rootView.getWidth();
+		float yScale = (float) container.getHeight() / rootView.getHeight();
+		float scale = Math.min(xScale, yScale);
+
+		// Scale our contents
+		scaleViewAndChildren(rootView, scale);
+	}
+
+	// Scale the given view, its contents, and all of its children by the given
+	// factor.
+	public static void scaleViewAndChildren(View root, float scale) {
+		// Retrieve the view's layout information
+		ViewGroup.LayoutParams layoutParams = root.getLayoutParams();
+
+		// Scale the view itself
+		if (layoutParams.width != ViewGroup.LayoutParams.FILL_PARENT
+				&& layoutParams.width != ViewGroup.LayoutParams.WRAP_CONTENT) {
+			layoutParams.width *= scale;
+		}
+		if (layoutParams.height != ViewGroup.LayoutParams.FILL_PARENT
+				&& layoutParams.height != ViewGroup.LayoutParams.WRAP_CONTENT) {
+			layoutParams.height *= scale;
+		}
+
+		// If this view has margins, scale those too
+		if (layoutParams instanceof ViewGroup.MarginLayoutParams) {
+			ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) layoutParams;
+			marginParams.leftMargin *= scale;
+			marginParams.rightMargin *= scale;
+			marginParams.topMargin *= scale;
+			marginParams.bottomMargin *= scale;
+		}
+
+		// Set the layout information back into the view
+		root.setLayoutParams(layoutParams);
+
+		// Scale the view's padding
+		root.setPadding((int) (root.getPaddingLeft() * scale),
+				(int) (root.getPaddingTop() * scale),
+				(int) (root.getPaddingRight() * scale),
+				(int) (root.getPaddingBottom() * scale));
+
+		// If the root view is a TextView, scale the size of its text
+		if (root instanceof TextView) {
+			TextView textView = (TextView) root;
+			textView.setTextSize(textView.getTextSize() * scale);
+		}
+
+		// If the root view is a ViewGroup, scale all of its children
+		// recursively
+		if (root instanceof ViewGroup) {
+			ViewGroup groupView = (ViewGroup) root;
+			for (int cnt = 0; cnt < groupView.getChildCount(); ++cnt)
+				scaleViewAndChildren(groupView.getChildAt(cnt), scale);
+		}
+	}
 }
 

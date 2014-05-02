@@ -1,5 +1,7 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="475px"
+    android:layout_height="700px"
     tools:context=".LoginActivity" >
 
     <!-- Login progress -->
@@ -30,38 +32,41 @@
     </LinearLayout>
 
     <!-- Login form -->
+
     <ScrollView
         android:id="@+id/login_form"
-        android:background="#ffffff"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="475px"
+        android:layout_height="700px"
+        android:background="#ffffff" >
 
         <LinearLayout
+            android:id="@+id/logincontent"
             style="@style/LoginFormContainer"
+            android:layout_width="475px"
+            android:layout_height="700px"
             android:background="#ffffff"
             android:orientation="vertical" >
             
             <ImageView
             android:id="@+id/imagePerson_Login"
             android:layout_gravity="center"
-            android:layout_width="300dp"
-            android:layout_height="200dp"
+            android:layout_width="300px"
+            android:layout_height="200px"
             android:src="@drawable/login_account_screen" />
             
             <TextView
                 android:id="@+id/textViewTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                 android:layout_marginTop="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="120px"
+                android:layout_marginTop="10px"
                 android:text="Please Enter Your Account Details:"
-                android:textStyle="bold"
-                android:textSize="18sp" />
+                android:textSize="18px"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_width="fill_parent"
+                android:layout_height="120px"
                 android:hint="@string/prompt_email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
@@ -70,7 +75,7 @@
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="120px"
                 android:hint="@string/prompt_password"
                 android:imeActionId="@+id/login"
                 android:imeActionLabel="@string/action_sign_in_short"
@@ -80,15 +85,31 @@
                 android:singleLine="true" />
 
             <!-- Sign-in/Login Button -->
-            <Button
-                android:id="@+id/sign_in_button"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:background="@drawable/button_login_change"
-                android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:paddingLeft="32dp"
-                android:paddingRight="32dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:id="@+id/sign_in_button"
+                    android:layout_width="100px"
+                    android:layout_height="40px"
+                    android:layout_marginTop="10px"
+                    android:background="@drawable/button_login_change"
+                    android:paddingLeft="32px"
+                    android:paddingRight="32px" />
+
+                <Button
+                    android:id="@+id/createAccButton"
+                    android:layout_width="100px"
+                    android:layout_height="40px"
+                    android:layout_marginLeft="40px"
+                    android:layout_marginTop="10px"
+                    android:background="@drawable/button_create_an_account_change"
+                    android:onClick="createAccount" />
+
+            </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

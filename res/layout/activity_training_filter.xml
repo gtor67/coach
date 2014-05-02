@@ -8,8 +8,8 @@
 
     <TabHost
         android:id="@+id/tabhost"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_width="475px"
+        android:layout_height="700px" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,44 +19,44 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="100px" >
             </TabWidget>
 
             <LinearLayout
                 android:id="@+id/filterContainer"
                 android:layout_width="match_parent"
-                android:layout_height="39dp"
+                android:layout_height="50px"
                 android:gravity="center" >
 
                 <TextView
                     android:id="@+id/textViewTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="200px"
+                    android:layout_height="50px"
                     android:text="Select Filter: "
                     android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Spinner
                     android:id="@+id/spinner1Filter"
-                    android:layout_width="match_parent"
+                    android:layout_width="250px"
                     android:layout_height="wrap_content"
-                    android:scrollbars="vertical"  
-     				 />
+                    android:scrollbars="vertical" />
+
             </LinearLayout>
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="500px" >
 
                 <LinearLayout
                     android:id="@+id/tab1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="500px" >
 
                     <ListView
                         android:id="@+id/listView1Beginner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="fill_parent"
+                        android:layout_height="500px"
                         android:layout_weight="1" >
                     </ListView>
 
@@ -65,14 +65,14 @@
                 <LinearLayout
                     android:id="@+id/tab2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="500px" >
 
                     <ListView
                         android:id="@id/listView1Beginner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                    >
+                        android:layout_height="500px"
+                        android:layout_weight="1" >
+
                     </ListView>
 
                 </LinearLayout>
@@ -80,14 +80,14 @@
                 <LinearLayout
                     android:id="@+id/tab3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="500px" >
 
                     <ListView
                         android:id="@id/listView1Beginner"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                    >
+                        android:layout_height="500px"
+                        android:layout_weight="1" >
+
                     </ListView>
 
                 </LinearLayout>
