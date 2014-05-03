@@ -38,8 +38,8 @@ public class Coach extends Activity {
 	EditText named;
 	TextView teamcode;
 	EditText team;
-		private boolean scalingComplete = false;
-
+	private boolean scalingComplete = false;
+	private String messToSend;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -182,19 +182,36 @@ public class Coach extends Activity {
 	public void sendMessage(View view)
 	{
 		//Currently set so that all messages sent to halos team
-		ParsePush push = new ParsePush();
+		
 		EditText et = (EditText)findViewById(R.id.sendMessEditText); 
-	    String message = et.getText().toString();
+	    messToSend = et.getText().toString();
+		ParseQuery<ParseObject> query =ParseQuery.getQuery("coaches");
+		query.whereEqualTo("email",ParseUser.getCurrentUser().getEmail());
+		query.getFirstInBackground(new GetCallback<ParseObject>() {
+			public void done(ParseObject object, ParseException e) {
+				if (object == null) {
+					Log.d("SENDMESSAGE", "User does not have a team.");
+				} else {
+					//Team found(found team where user is coach)
+					ParsePush push = new ParsePush();
+					push.setChannel(object.getString("name"));
+					push.setMessage(messToSend);
+					push.sendInBackground();
+				}
+			}
+		});
+		/*below used for hard coding
 	    push.setChannel("halos");
 	    push.setMessage(message);
 	    push.sendInBackground();
+	    */
 	}
 	private void addListenerOnButton() {
 		// TODO Auto-generated method stub
 		request = (Button) findViewById(R.id.buttonrequestcoach);
 		teamcode = (TextView) findViewById(R.id.teamcode);
 		named = (EditText)findViewById(R.id.coachCode); 
-		team = (EditText)findViewById(R.id.teamCode); 
+		team = (EditText)findViewById(R.id.teamCode); //this is actually the code entered by user
 		final ParseUser me = ParseUser.getCurrentUser();
 		// name = (EditText) findViewById(R.id.coachCode);
 		request.setOnClickListener(new OnClickListener() {
@@ -271,6 +288,19 @@ public class Coach extends Activity {
 							Log.d("score", "sorry team code not correct");
 						} else {
 							Log.d("team create", "already joined team");
+							//So this else probably means that team exists? So then here I will also set up push stuff
+							String teamTitle = object.getString("name");
+							//Manually join halos team
+							ParseInstallation pi = ParseInstallation.getCurrentInstallation();
+					        
+					        //Register a channel to test push channels
+					        Context ctx = Coach.this.getApplicationContext();
+					        PushService.subscribe(ctx, teamTitle, PushResponse.class);
+					        
+					        pi.saveEventually();
+							
+							
+							
 							//check if player is already part of the team
 							ParseRelation<ParseObject> relation = object.getRelation("players");
 							ParseQuery<ParseObject>playersearch = relation.getQuery();
@@ -284,8 +314,10 @@ public class Coach extends Activity {
 								    }
 								  }
 								});
+							//So below means that not part of team?
 							relation.add(me);
 							object.saveInBackground();
+							/* Commented out since moved to upper part for customization
 							//Manually join halos team
 							ParseInstallation pi = ParseInstallation.getCurrentInstallation();
 					        
@@ -294,6 +326,7 @@ public class Coach extends Activity {
 					        PushService.subscribe(ctx, "halos", PushResponse.class);
 					        
 					        pi.saveEventually();
+					        */
 //							teamcode.setText(object.getString("name"));
 						}
 					}
