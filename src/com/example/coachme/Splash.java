@@ -13,7 +13,9 @@ import java.util.List;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 */
-import com.parse.*;
+
+
+
 
 
 
@@ -52,6 +54,7 @@ public class Splash extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 	    setContentView(R.layout.splash);
+	   getApplication();
 
 		TimerTask task = new TimerTask() {
 
@@ -121,10 +124,10 @@ public class Splash extends Activity {
 
 				
 	    ////////////PARSE.COM TESTING ////////////
-		Parse.initialize(this, "eT6q3q5rgzDUgTAjRuTPAzyHSzvo7sbilbu9jqvU", "4TrzrKp78gLmGH0IcEB2pE4BtyIDz8siPrGszV6i");		
+	//	Parse.initialize(this, "eT6q3q5rgzDUgTAjRuTPAzyHSzvo7sbilbu9jqvU", "4TrzrKp78gLmGH0IcEB2pE4BtyIDz8siPrGszV6i");		
 		//Below if for push
-		PushService.setDefaultPushCallback(this, PushResponse.class);
-		ParseAnalytics.trackAppOpened(getIntent());
+//		PushService.setDefaultPushCallback(this, PushResponse.class);
+//		ParseAnalytics.trackAppOpened(getIntent());
 		/*
 		ParseObject testObject = new ParseObject("TestObject");
 		testObject.put("foo", "bar");
@@ -134,30 +137,6 @@ public class Splash extends Activity {
 
 	}
 	
-
-	
-	public void getBeginner1(int row) {
-
-		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
-		query.findInBackground(new FindCallback<ParseObject>() {
-		  @Override
-		public void done(List<ParseObject> Beginner1, ParseException e) {
-		    if (e == null) {
-//			level= Beginner1.getString("Level");// column names
-//			type= Beginner1.getString("Type");
-//			focus= Beginner1.getString("Focus");
-//			procedure= Beginner1.getString("Procedure");
-//			title= Beginner1.getString("Title");
-//			URL= Beginner1.getString("VideoURL");
-
-		      
-		    } else {
-		      // something went wrong
-		    		}
-		  	}
-			});
-
-		}//end getBeginner1
 
 	}	
 

@@ -113,6 +113,17 @@
             android:layout_gravity="right"
             android:background="@drawable/button_join_team_change"
             android:onClick="register" />
+
+        <Button
+            android:id="@+id/sendbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/teamcode"
+            android:layout_alignTop="@+id/teamcode"
+            android:layout_marginRight="26dp"
+            android:onClick="sendMessage"
+            android:text="Send" />
+
     </RelativeLayout>
 
 

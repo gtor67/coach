@@ -125,6 +125,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	        ////////////////LIST VIEW BEGINNER  /////////////////////
 	        ////// http://www.vogella.com/tutorials/AndroidListView/article.html /////
         listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
+        Log.d("type","got this far");
         listViewBeginner.setOnItemClickListener(new OnItemClickListener() {
       	  @Override
       	  public void onItemClick(AdapterView<?> parent, View view,
@@ -402,7 +403,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		// If the root view is a TextView, scale the size of its text
 		if (root instanceof TextView) {
 			TextView textView = (TextView) root;
-			textView.setTextSize(textView.getTextSize() * scale);
+			textView.setTextSize(textView.getTextSize() * (scale/2));
 		}
 
 		// If the root view is a ViewGroup, scale all of its children

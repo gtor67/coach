@@ -298,6 +298,7 @@ public class Coach extends Activity {
 					        PushService.subscribe(ctx, teamTitle, PushResponse.class);
 					        
 					        pi.saveEventually();
+					       
 							
 							
 							

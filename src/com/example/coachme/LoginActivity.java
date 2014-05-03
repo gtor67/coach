@@ -1,10 +1,13 @@
 package com.example.coachme;
 
+import java.util.List;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -384,8 +387,78 @@ public class LoginActivity extends Activity {
 					public void done(ParseUser user, ParseException e) {
 					    if (user != null) {
 					      // Hooray! The user is logged in.
-					    	if(user.getBoolean("emailVerified"))
+					    	if(user.getBoolean("emailVerified")){
+					    		
+				////////////////////////FIX SUBCRIBE BUG
+					    		
+					    		
+//					    		ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("players");
+//					    		innerQuery.whereExists(user.getEmail());
+//					    		ParseQuery<ParseObject> query = ParseQuery.getQuery("coaches");
+//					    		query.whereMatchesQuery("player", innerQuery);
+//					    		query.findInBackground(new FindCallback<ParseObject>() {
+//					    		  public void done(List<ParseObject> playerList, ParseException e) {
+//					    		    // list of players 
+//					    			  if(playerList !=null){
+//					    				  Log.d("add", "already part of team");
+//										    //Register a channel to test push channels
+//										      Context ctx = LoginActivity.this.getApplicationContext();
+//										        PushService.subscribe(ctx, teamTitle, PushResponse.class);
+//					    				  
+//					    			  }
+//					    		  }
+//					    		});
+					    		
+					    		
+					    		
+					    		ParseQuery<ParseObject> query =ParseQuery.getQuery("coaches");
+					    		query.orderByAscending("createdAt");
+								query.findInBackground(new FindCallback<ParseObject>() {
+									@Override
+									public void done(List<ParseObject> coach, ParseException e) {
+										if (coach == null) {
+										} else {
+											for(int i= 0; i < coach.size(); i++){
+											final String teamTitle = coach.get(i).getString("name");
+//											ParseInstallation pi = ParseInstallation.getCurrentInstallation();
+//									        
+//									        pi.saveEventually();
+									       
+											//check if player is already part of the team
+											ParseRelation<ParseObject> relation = coach.get(i).getRelation("players");
+											ParseQuery<ParseObject>playersearch = relation.getQuery();
+											playersearch.whereEqualTo("email",ParseUser.getCurrentUser().get("email") );
+											playersearch.getFirstInBackground(new GetCallback<ParseObject>() {
+											public void done(ParseObject player, ParseException e) {
+												    if (player == null) {
+												      Log.d("add", "not a part of team yet");
+												    } else {
+												      Log.d("add", "already part of team");
+												    //Register a channel to test push channels
+												      Context ctx = LoginActivity.this.getApplicationContext();
+												        PushService.subscribe(ctx, teamTitle, PushResponse.class);
+												    }
+												  }
+												});
+											
+										}//end forloop
+										}
+									}
+								});
+//					    		
+					    		
+					    		
+					  
+				/////////////////////////END SUBSCRIBE BUG FIX
+					    		
+					    		
+					    		
+					    		
+					    		
+					    		
+					    		
 					    		test = true; 
+					    	}
 					    } else {
 					      // Signup failed. Look at the ParseException to see what happened.
 					    	 test = false;
