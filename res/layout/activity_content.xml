@@ -20,12 +20,15 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textStyle="bold" />
 
-         <ImageView
+         <ImageButton
             android:id="@+id/imageView1"
             android:layout_width="250px"
             android:layout_height="250px"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/textViewTitle" />
+            android:layout_below="@+id/textViewTitle" 
+            android:scaleType="centerCrop"
+            android:contentDescription="Click to zoom."
+            android:onClick="zoomImage"/>
          
          <TextView
              android:id="@+id/textViewEmailHead"
@@ -99,5 +102,10 @@
 
 
     </RelativeLayout>
-
+	 <ImageView
+        android:id="@+id/expanded_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        android:contentDescription="Zoomed in image" />
 </FrameLayout>
