@@ -76,24 +76,24 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/buttonUpdatePass"
+            android:id="@+id/buttonUpdateEmail"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_alignRight="@+id/editTextSettingEmail"
             android:layout_below="@+id/editTextSettingEmail"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_account_settings_email_change"
-            android:onClick="updatePass" />
+            android:onClick="updateEmail" />
 
         <Button
-            android:id="@+id/buttonUpdateEmail"
+            android:id="@+id/buttonUpdatePass"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:layout_alignRight="@+id/editTextNewPass"
             android:layout_below="@+id/editTextNewPass"
             android:layout_marginTop="10dp"
             android:background="@drawable/button_account_settings_password_change"
-            android:onClick="updateEmail" />
+            android:onClick="updatePass" />
 
         <TextView
             android:id="@+id/textView3"

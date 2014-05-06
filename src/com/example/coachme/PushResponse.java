@@ -1,5 +1,8 @@
 package com.example.coachme;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -15,9 +18,19 @@ public class PushResponse extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_push_response);
 		Intent intent = this.getIntent();
-		String message = intent.toURI();
-		TextView tv = (TextView)findViewById(R.id.pushedTextView);
-		tv.setText(message);
+		//String message = intent.toURI();
+		JSONObject json;
+		try {
+			json = new JSONObject(intent.getExtras().getString("com.parse.Data"));
+			String message = json.getString("alert");
+			TextView tv = (TextView)findViewById(R.id.pushedTextView);
+			tv.setText(message);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
 
 	}
 		@Override
