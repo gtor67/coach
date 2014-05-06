@@ -133,14 +133,14 @@ public final class R {
         public static final int action_settings=0x7f0b006f;
         public static final int action_team=0x7f0b006b;
         public static final int add_favorites_button=0x7f0b001d;
-        public static final int button1Login=0x7f0b0037;
+        public static final int button1Login=0x7f0b0039;
         public static final int buttonLogout=0x7f0b0029;
         public static final int buttonRecover=0x7f0b0066;
         public static final int buttonUpdateEmail=0x7f0b0014;
         public static final int buttonUpdatePass=0x7f0b0015;
         public static final int buttoncoachcode=0x7f0b0052;
         public static final int buttonrequestcoach=0x7f0b004c;
-        public static final int chooseBaseball=0x7f0b0039;
+        public static final int chooseBaseball=0x7f0b0037;
         public static final int coach=0x7f0b004a;
         public static final int coachCode=0x7f0b004b;
         public static final int coachcontents=0x7f0b0048;

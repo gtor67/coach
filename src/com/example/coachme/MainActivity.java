@@ -7,13 +7,16 @@ import com.parse.GetCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseException;
+import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.parse.PushService;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -408,12 +411,52 @@ public class MainActivity extends Activity {
     }
     
     public void logOut(View view){
+		ParseQuery<ParseObject> query =ParseQuery.getQuery("coaches");
+		query.orderByAscending("createdAt");
+		query.findInBackground(new FindCallback<ParseObject>() {
+			@Override
+			public void done(List<ParseObject> coach, ParseException e) {
+				if (coach == null) {
+				} else {
+					for(int i= 0; i < coach.size(); i++){
+					final String teamTitle = coach.get(i).getString("name");
+//					ParseInstallation pi = ParseInstallation.getCurrentInstallation();
+//			        
+//			        pi.saveEventually();
+			       
+					//check if player is already part of the team
+					ParseRelation<ParseObject> relation = coach.get(i).getRelation("players");
+					ParseQuery<ParseObject>playersearch = relation.getQuery();
+					playersearch.whereEqualTo("email",ParseUser.getCurrentUser().get("email") );
+					playersearch.getFirstInBackground(new GetCallback<ParseObject>() {
+					public void done(ParseObject player, ParseException e) {
+						    if (player == null) {
+						      Log.d("add", "not a part of team yet");
+						    } else {
+						      Log.d("add", "already part of team");
+						    //Register a channel to test push channels
+						      Context ctx = MainActivity.this.getApplicationContext();  
+						      PushService.unsubscribe(ctx, teamTitle);
+						    }
+						  }
+						});
+					
+				}//end forloop
+					
+			    	ParseUser.logOut();
+			    	finish();
+			    	startActivity(getIntent()); 
+				}
+			}
+		});
+    	
+    	/*
     	ParseUser.logOut();
     	finish();
-    	startActivity(getIntent());
+    	startActivity(getIntent()); */
     	
     }
-    
+ 
     public void chooseSettings(View view){
     	Intent intent = new Intent(this, AccSettings.class);
     	startActivity(intent);
