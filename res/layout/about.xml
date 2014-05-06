@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/aboutcontainer"
-    android:layout_width="475px"
-    android:layout_height="700px"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="#ffffff" >
 
     <LinearLayout
         android:id="@+id/linearlay"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:background="#ffffff"
         android:orientation="vertical" >
 
@@ -21,47 +21,46 @@
             android:src="@drawable/coachme_about_logo" />
          
          <TextView
-            android:id="@+id/about_intro1"
-            android:layout_width="475px"
-            android:layout_height="300px"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
-            android:text="Coaches now a days encounter young players that either have beginner, intermediate, or advanced experience of a sport. How is a coach suppose to instruct each player to improve on their existing sport skill level, as well as, help those players with little experience catch up with the other players with higher sport skill level within their team?"
-            android:textColor="#000000"
-            android:textSize="10px" />
+             android:id="@+id/about_intro1"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10px"
+             android:layout_marginRight="10px"
+             android:layout_marginTop="10px"
+             android:text="Coaches now a days encounter young players that either have beginner, intermediate, or advanced experience of a sport. How is a coach suppose to instruct each player to improve on their existing sport skill level, as well as, help those players with little experience catch up with the other players with higher sport skill level within their team?"
+             android:textColor="#000000"
+             android:textSize="10px" />
         
          <TextView
              android:id="@+id/about_intro2"
-            android:layout_width="475px"
-            android:layout_height="300px"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10px"
+             android:layout_marginRight="10px"
+             android:layout_marginTop="10px"
              android:text="That question is now solved with CoachMe v1.0. Our app will close that skill level gap by “connecting coaches with players”, that is, when a user accesses our app, it will provide the user a set of drills, or exercises, that are sorted into different categories based on the sport of choice and the players skill level."
              android:textColor="#000000"
              android:textSize="10px" />
-
          
          <TextView
-	       android:id="@+id/phone_header"
-            android:layout_width="475px"
-            android:layout_height="300px"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
-	       android:text="Team"
-	       android:textColor="#000000"
-	       android:textStyle="bold"
-	       android:textSize="12px" />
+             android:id="@+id/phone_header"
+             android:layout_width="475px"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10px"
+             android:layout_marginRight="10px"
+             android:layout_marginTop="10px"
+             android:text="Team"
+             android:textColor="#000000"
+             android:textSize="12px"
+             android:textStyle="bold" />
          
          <TextView
              android:id="@+id/about_created_by"
-            android:layout_width="475px"
-            android:layout_height="300px"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10px"
+             android:layout_marginRight="10px"
+             android:layout_marginTop="10px"
              android:text="CoachMe v1.0 was created by Team #3:"
              android:textColor="#000000"
              android:textSize="12px" />
@@ -69,7 +68,7 @@
          <TextView
              android:id="@+id/about_gilbert"
              android:layout_width="238px"
-             android:layout_height="238px"
+             android:layout_height="wrap_content"
              android:layout_marginLeft="10px"
              android:layout_marginRight="10px"
              android:layout_marginTop="2px"
@@ -79,36 +78,37 @@
          
          <TextView
              android:id="@+id/about_roberto"
-            android:layout_width="475px"
-            android:layout_height="300px"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
+             android:layout_width="475px"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10px"
+             android:layout_marginRight="10px"
+             android:layout_marginTop="10px"
              android:text="* Roberto A. Moreno III"
              android:textColor="#000000"
              android:textSize="14px" />
          
          <TextView
              android:id="@+id/about_juan"
-            android:layout_width="475px"
-            android:layout_height="300px"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
+             android:layout_width="475px"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10px"
+             android:layout_marginRight="10px"
+             android:layout_marginTop="10px"
              android:text="* Juan C. Zepeda"
              android:textColor="#000000"
              android:textSize="14px" />
          
          <TextView
              android:id="@+id/about_nazmul"
-                       android:layout_width="475px"
-            android:layout_height="300px"
-            android:layout_marginTop="10px"
-            android:layout_marginLeft="10px"
-            android:layout_marginRight="10px"
+             android:layout_width="475px"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="10px"
+             android:layout_marginRight="10px"
+             android:layout_marginTop="10px"
              android:text="* Nazmul Hussain"
              android:textColor="#000000"
              android:textSize="14px" />
+
     </LinearLayout>
     
    
