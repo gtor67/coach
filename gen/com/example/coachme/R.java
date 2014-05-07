@@ -130,7 +130,8 @@ public final class R {
         public static final int action_favorites=0x7f0b006a;
         public static final int action_forgot_password=0x7f0b0069;
         public static final int action_help=0x7f0b006c;
-        public static final int action_settings=0x7f0b006f;
+        public static final int action_push=0x7f0b006f;
+        public static final int action_settings=0x7f0b0070;
         public static final int action_team=0x7f0b006b;
         public static final int add_favorites_button=0x7f0b001d;
         public static final int button1Login=0x7f0b0039;
@@ -196,9 +197,7 @@ public final class R {
         public static final int phone_header=0x7f0b0005;
         public static final int phone_info=0x7f0b005d;
         public static final int progressBar1=0x7f0b0017;
-        public static final int pushContent=0x7f0b003b;
-        public static final int pushFrame=0x7f0b003a;
-        public static final int pushedTextView=0x7f0b003c;
+        public static final int pushContent=0x7f0b003a;
         public static final int scrollView1=0x7f0b0020;
         public static final int sendMessEditText=0x7f0b004e;
         public static final int sendbutton=0x7f0b0053;
@@ -212,11 +211,13 @@ public final class R {
         public static final int team=0x7f0b0050;
         public static final int teamCode=0x7f0b0051;
         public static final int teamcode=0x7f0b004f;
+        public static final int textView1=0x7f0b003b;
         public static final int textView2=0x7f0b0013;
         public static final int textView3=0x7f0b0016;
         public static final int textViewEmail=0x7f0b000d;
         public static final int textViewEmailHead=0x7f0b000e;
         public static final int textViewEnterPass=0x7f0b000f;
+        public static final int textViewMessages=0x7f0b003c;
         public static final int textViewTitle=0x7f0b001a;
         public static final int videoView1=0x7f0b0045;
         public static final int viewVideobutton=0x7f0b001e;

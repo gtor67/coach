@@ -1,11 +1,26 @@
 package com.example.coachme;
 
+import java.util.List;
+import java.util.Set;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.parse.FindCallback;
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseInstallation;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseRelation;
+import com.parse.ParseUser;
+import com.parse.PushService;
+
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,23 +28,100 @@ import android.widget.TextView;
 
 public class PushResponse extends Activity {
 	private boolean scalingComplete = false;
+	private TextView messView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_push_response);
-		Intent intent = this.getIntent();
-		//String message = intent.toURI();
+		//Intent intent = this.getIntent();
+		/*
 		JSONObject json;
 		try {
 			json = new JSONObject(intent.getExtras().getString("com.parse.Data"));
 			String message = json.getString("alert");
-			TextView tv = (TextView)findViewById(R.id.pushedTextView);
-			tv.setText(message);
+			//TextView tv = (TextView)findViewById(R.id.pushedTextView);
+			//tv.setText(message);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		} */
+		messView = (TextView) findViewById(R.id.textViewMessages);
+		final Set<String> set = PushService.getSubscriptions(PushResponse.this.getApplicationContext());
+		Log.d("All Channels",set.toString());
+		if(set.contains("halos"))
+			Log.d("Halos?", "Yes");
+		ParseQuery<ParseObject> query =ParseQuery.getQuery("coaches");
+		query.orderByAscending("createdAt");
+		query.findInBackground(new FindCallback<ParseObject>() {
+			@Override
+			public void done(List<ParseObject> coach, ParseException e) {
+				if (coach == null) {
+				} else {
+					Log.d("PUSHRESPONSE", "Found coach table");
+					for(int i= 0; i < coach.size(); i++){
+					final String teamTitle = coach.get(i).getString("name");
+//					ParseInstallation pi = ParseInstallation.getCurrentInstallation();
+//			        
+//			        pi.saveEventually();
+			       
+					//check if player is already part of the team
+					Log.d("Does set have ", "" + teamTitle);
+					if(set.contains(teamTitle)){
+						ParseRelation<ParseObject> relation = coach.get(i).getRelation("Messages");
+						ParseQuery<ParseObject> messageSearch = relation.getQuery();
+						messageSearch.orderByDescending("createdAt");
+						messageSearch.findInBackground(new FindCallback<ParseObject>() 
+								{
+							  		@Override
+							  		public void done(List<ParseObject> messList, ParseException e) 
+							  		{
+							  			if(e == null)
+							  			{
+							  				Log.d("PUSHRESPONSE", "Found messages");
+							  				String current = "";
+							  				if(messList.isEmpty())
+							  					Log.d("PUSHRESPONSE", "There are no messages.");
+											for(ParseObject pMessage:messList)
+											{
+												Log.d("Message", "" + pMessage.get("Message"));
+												
+												current = messView.getText().toString();
+												String addedText = "Team: " + pMessage.get("Team") + "\nMessage: " + pMessage.get("Message") + "\n\n";
+												String newText = current + addedText;
+												messView.setText(newText);
+												//messView.append("" + "Team: " + pMessage.get("Team") + "\nMessage: " + pMessage.get("Message") + "\n\n");
+											}
+							  			}
+							  		}
+								});
+						/*
+						try {
+							List<ParseObject> messList = messageSearch.find();
+							Log.d("PUSHRESPONSE", "Found messages");
+							String current = "";
+							for(ParseObject pMessage:messList)
+							{
+								Log.d("Message", "" + pMessage.get("Message"));
+								
+								current = messView.getText().toString();
+								String addedText = "Team: " + pMessage.get("Team") + "\nMessage: " + pMessage.get("Message") + "\n\n";
+								String newText = current + addedText;
+								messView.setText(newText);
+								//messView.append("" + "Team: " + pMessage.get("Team") + "\nMessage: " + pMessage.get("Message") + "\n\n");
+							}
+							
+						} catch (ParseException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}*/
+						
+					}
+			
+					
+				}//end forloop
+				}
+			}
+		});
 
 
 	}
@@ -37,7 +129,7 @@ public class PushResponse extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.pushContent), findViewById(R.id.pushFrame));
+		scaleContents(findViewById(R.id.pushContent), findViewById(R.id.scrollView1));
         scalingComplete = true;
 	}
 	     

@@ -13,6 +13,8 @@ import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.PushService;
+import com.parse.RefreshCallback;
+import com.parse.SaveCallback;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -188,10 +190,40 @@ public class Coach extends Activity {
 		ParseQuery<ParseObject> query =ParseQuery.getQuery("coaches");
 		query.whereEqualTo("email",ParseUser.getCurrentUser().getEmail());
 		query.getFirstInBackground(new GetCallback<ParseObject>() {
-			public void done(ParseObject object, ParseException e) {
+			public void done(final ParseObject object, ParseException e) {
 				if (object == null) {
 					Log.d("SENDMESSAGE", "User does not have a team.");
 				} else {
+					//Save to table
+					//ParseQuery<ParseObject> query = ParseQuery.getQuery("coaches");
+					ParseObject message = new ParseObject("PushMessages");
+					message.put("Team", object.get("name"));
+					message.put("Email", ParseUser.getCurrentUser().getEmail());
+					message.put("Message", messToSend);
+					try {
+						message.save();
+						object.getRelation("Messages").add(message);
+						object.saveInBackground();
+						/*
+						message.refreshInBackground(new RefreshCallback()
+						{
+
+							@Override
+							public void done(ParseObject arg0, ParseException arg1) {
+								
+								object.getRelation("Messages").add(arg0);
+								object.saveInBackground();
+							}
+							
+						}
+								);*/
+					} catch (ParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					//message.saveInBackground(); 
+					//Now need to add relation to team table? 
+	
 					//Team found(found team where user is coach)
 					ParsePush push = new ParsePush();
 					push.setChannel(object.getString("name"));

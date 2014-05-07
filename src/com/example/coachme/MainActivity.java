@@ -365,7 +365,11 @@ public class MainActivity extends Activity {
 		case R.id.action_about:
 		startActivity(new Intent(this, About.class));
 		return true;
-
+		
+		// 7, From overflow menu, goes to the About page
+				case R.id.action_push:
+				startActivity(new Intent(this, PushResponse.class));
+				return true;
 		case android.R.id.home:
 	    // This ID represents the Home or Up button. In the case of this
 		// activity, the Up button is shown. Use NavUtils to allow users
