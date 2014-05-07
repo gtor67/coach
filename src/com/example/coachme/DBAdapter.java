@@ -171,69 +171,69 @@ public class DBAdapter {
   return c;
  }
  public List<String> listdata(String levelb ,String typeb){
-	 String s;
-	 if(typeb == "All"){
-		  s="SELECT * FROM mainTable  WHERE level='"+levelb+"' ";
-	 }else{
-	  //String s="SELECT * FROM mainTable WHERE level='"+levelb+"'";
-	     s="SELECT * FROM mainTable WHERE level='"+levelb+"' and type='"+typeb+"'";
-	 }
-	  List<String> data = new ArrayList<String>();
-	  String where = KEY_ROWID + "=" + KEY_TYPE;
-	  //
-	  //Cursor c = db.rawQuery("SELECT * FROM mainTable",null);
-	  
-	  //try to change the search
-	  Cursor c =db.rawQuery(s, null);
-	         
-	  while (c.moveToNext()) {  
-	     //int is the column number from table
-	   if(typeb=="All"){
-	    data.add(c.getString(0)+" "+ c.getString(2)+" "+c.getString(5));   
-	   }else{
-	    data.add(c.getString(0)+" "+c.getString(5));  
-	   }
-	    
-	    }  
-	    c.close();  
-	    db.close();     
-	 return data; 
-	 }
+   String s;
+   if(typeb == "All"){
+      s="SELECT * FROM mainTable  WHERE level='"+levelb+"' ";
+   }else{
+    //String s="SELECT * FROM mainTable WHERE level='"+levelb+"'";
+       s="SELECT * FROM mainTable WHERE level='"+levelb+"' and type='"+typeb+"'";
+   }
+    List<String> data = new ArrayList<String>();
+    String where = KEY_ROWID + "=" + KEY_TYPE;
+    //
+    //Cursor c = db.rawQuery("SELECT * FROM mainTable",null);
+    
+    //try to change the search
+    Cursor c =db.rawQuery(s, null);
+           
+    while (c.moveToNext()) {  
+       //int is the column number from table
+     if(typeb=="All"){
+      data.add(c.getString(0)+" "+ c.getString(2)+" "+c.getString(5));   
+     }else{
+      data.add(c.getString(0)+" "+c.getString(5));  
+     }
+      
+      }  
+      c.close();  
+      db.close();     
+   return data; 
+   }
 
  public List<String> listBeginner(String level){
-	 List<String> data = new ArrayList<String>();
-	 String where = KEY_ROWID + "=" + KEY_TYPE;
-	//
-	 Cursor c = db.rawQuery("SELECT * FROM mainTable",null);
-//	 Cursor c = db.query(DATABASE_TABLE, new String[]{KEY_LEVEL,KEY_TYPE,KEY_URL}, KEY_ROWID + "=?",
-	//		 new String[]{String.valueOf(KEY_LEVEL)},null,null,null,null);
-					 
-	 
-	 
-	 
-	 while (c.moveToNext())
-	 {  
-		   //int is the column number from table
-		 if( (c.getString(1)).equals(level) )
-		   data.add(c.getString(0)+" "+ c.getString(1) + " " + c.getString(2));  
-	 }  
-		  c.close();  
-		  db.close();  	  
-	return data; 
+   List<String> data = new ArrayList<String>();
+   String where = KEY_ROWID + "=" + KEY_TYPE;
+  //
+   Cursor c = db.rawQuery("SELECT * FROM mainTable",null);
+//   Cursor c = db.query(DATABASE_TABLE, new String[]{KEY_LEVEL,KEY_TYPE,KEY_URL}, KEY_ROWID + "=?",
+  //     new String[]{String.valueOf(KEY_LEVEL)},null,null,null,null);
+           
+   
+   
+   
+   while (c.moveToNext())
+   {  
+       //int is the column number from table
+     if( (c.getString(1)).equals(level) )
+       data.add(c.getString(0)+" "+ c.getString(1) + " " + c.getString(2));  
+   }  
+      c.close();  
+      db.close();     
+  return data; 
  }
  
  /*
  public String getColumns(long id)
  {
-	 Cursor c = db.rawQuery("SELECT * FROM mainTable",null);
-	 while (c.moveToNext())
-	 {  
-		   //int is the column number from table
-		 if( (c.getString(1)).equals(level) )
-		   data.add(c.getString(0)+" "+ c.getString(1) + " " + c.getString(2));  
-	 }  
-		  c.close();  
-		  db.close(); 
+   Cursor c = db.rawQuery("SELECT * FROM mainTable",null);
+   while (c.moveToNext())
+   {  
+       //int is the column number from table
+     if( (c.getString(1)).equals(level) )
+       data.add(c.getString(0)+" "+ c.getString(1) + " " + c.getString(2));  
+   }  
+      c.close();  
+      db.close(); 
  }
  */
  
@@ -243,11 +243,11 @@ public class DBAdapter {
 //  Cursor c =  db.query(true, DATABASE_TABLE, ALL_KEYS, 
 //      where, null, null, null, null, null);
 //  
-	 String s;
-	
-		  s="SELECT * FROM mainTable  WHERE title='"+title+"' ";
-	 Cursor c =db.rawQuery(s, null);
-	
+   String s;
+  
+      s="SELECT * FROM mainTable  WHERE title='"+title+"' ";
+   Cursor c =db.rawQuery(s, null);
+  
   if (c != null) {
    c.moveToFirst();
   }
@@ -255,16 +255,16 @@ public class DBAdapter {
  }
 
  public Cursor getRow(long id) {
-	 String s;
-		
-	  s="SELECT * FROM mainTable  WHERE _id='"+id+"' ";
+   String s;
+    
+    s="SELECT * FROM mainTable  WHERE _id='"+id+"' ";
 Cursor c =db.rawQuery(s, null);
 
 if (c != null) {
 c.moveToFirst();
 }
 return c;
-	 }
+   }
  // Change an existing row to be equal to new data.
 // public boolean updateRow(long rowId, String name, int studentNum, String favColour) {
    

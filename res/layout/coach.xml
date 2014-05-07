@@ -6,7 +6,7 @@
     android:background="#ffffff" >
 
     <RelativeLayout
-        android:id="@+id/coachcontents"
+        android:id="@+id/coachcontent"
         style="@style/LoginFormContainer"
         android:layout_width="475px"
         android:layout_height="700px"

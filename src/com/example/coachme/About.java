@@ -28,7 +28,7 @@ public class About extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.linearlay), findViewById(R.id.aboutcontainer));
+		scaleContents(findViewById(R.id.aboutcontent), findViewById(R.id.aboutcontainer));
        scalingComplete = true;
 	}
 	     
@@ -218,7 +218,7 @@ public class About extends Activity {
 		// If the root view is a TextView, scale the size of its text
 		if (root instanceof TextView) {
 			TextView textView = (TextView) root;
-			textView.setTextSize((float) (textView.getTextSize() * scale*1.5));
+			textView.setTextSize((float) (textView.getTextSize() * scale));
 		}
 
 		// If the root view is a ViewGroup, scale all of its children

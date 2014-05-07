@@ -53,7 +53,7 @@ public class Coach extends Activity {
 		public void onWindowFocusChanged(boolean hasFocus) {
 		if (!scalingComplete) // only do this once
 		{
-			scaleContents(findViewById(R.id.coachcontents), findViewById(R.id.coachframe));
+			scaleContents(findViewById(R.id.coachcontent), findViewById(R.id.coachframe));
 	        scalingComplete = true;
 		}
 		     

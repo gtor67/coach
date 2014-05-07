@@ -403,7 +403,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		// If the root view is a TextView, scale the size of its text
 		if (root instanceof TextView) {
 			TextView textView = (TextView) root;
-			textView.setTextSize(textView.getTextSize() * (scale/2));
+			textView.setTextSize(textView.getTextSize() * (scale));
 		}
 
 		// If the root view is a ViewGroup, scale all of its children

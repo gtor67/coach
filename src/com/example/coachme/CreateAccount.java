@@ -36,7 +36,7 @@ public class CreateAccount extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.LinearLayout1), findViewById(R.id.FrameLayout1));
+		scaleContents(findViewById(R.id.createcontent), findViewById(R.id.createcontainer));
         scalingComplete = true;
 	}
 	     

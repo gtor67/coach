@@ -240,7 +240,7 @@ public class Content extends Activity {
 		public void onWindowFocusChanged(boolean hasFocus) {
 		if (!scalingComplete) // only do this once
 		{
-			scaleContents(findViewById(R.id.contentcontainer), findViewById(R.id.contentframe));
+			scaleContents(findViewById(R.id.contentcontent), findViewById(R.id.contentcontainer));
 	        scalingComplete = true;
 		}
 		     
@@ -640,7 +640,7 @@ public class Content extends Activity {
 
         // Load the high-resolution "zoomed-in" image.
         final ImageView expandedImageView = (ImageView) findViewById(
-                R.id.expanded_image);
+                R.id.imageView1);
         expandedImageView.setImageResource(imageResId);
 
         // Calculate the starting and ending bounds for the zoomed-in image.
@@ -655,7 +655,7 @@ public class Content extends Activity {
         // bounds, since that's the origin for the positioning animation
         // properties (X, Y).
         thumbView.getGlobalVisibleRect(startBounds);
-        findViewById(R.id.contentframe)
+        findViewById(R.id.recoverframe)
                 .getGlobalVisibleRect(finalBounds, globalOffset);
         startBounds.offset(-globalOffset.x, -globalOffset.y);
         finalBounds.offset(-globalOffset.x, -globalOffset.y);

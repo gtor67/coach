@@ -40,7 +40,7 @@ public class Video extends YouTubeBaseActivity implements YouTubePlayer.OnInitia
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.coachcontents), findViewById(R.id.coachframe));
+//		scaleContents(findViewById(R.id.coachcontents), findViewById(R.id.coachframe));
         scalingComplete = true;
 	}
 	     

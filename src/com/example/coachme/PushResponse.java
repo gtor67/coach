@@ -129,7 +129,7 @@ public class PushResponse extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.pushContent), findViewById(R.id.scrollView1));
+		scaleContents(findViewById(R.id.pushContent), findViewById(R.id.pushFrame));
         scalingComplete = true;
 	}
 	     

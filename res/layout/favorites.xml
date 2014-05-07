@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/favFrame"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
     <RelativeLayout
         android:id="@+id/favContent"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="475px"
+        android:layout_height="700px"
         android:background="#414141"
         android:orientation="vertical" >
+
+        <!-- ScrollView is needed when adding views, or only the last view will show up -->
 
         <TextView
             android:id="@+id/empty_textview"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:text=" "
             android:textColor="#ffffff"
             android:textSize="14sp" />
-
-        <!-- ScrollView is needed when adding views, or only the last view will show up -->
-
-
-        
 
         <ListView
             android:id="@+id/listViewFavs"
@@ -37,4 +32,4 @@
         </ListView>
     </RelativeLayout>
 
-</FrameLayout>
+</ScrollView>

@@ -30,7 +30,7 @@ public void onCreate(Bundle savedInstanceState){
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.maincontents), findViewById(R.id.frame));
+		scaleContents(findViewById(R.id.recoverframe), findViewById(R.id.recovercontainer));
         scalingComplete = true;
 	}
 	     
