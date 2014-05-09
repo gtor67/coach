@@ -267,7 +267,18 @@ public class Coach extends Activity {
 							ParseObject coachdb =new ParseObject("coaches");
 							coachdb.put("email", me.get("email"));
 							coachdb.put("name", named.getText().toString());
-							coachdb.saveInBackground();
+							//coachdb.saveInBackground();
+							try {
+								coachdb.save();
+								int duration = Toast.LENGTH_LONG;
+								CharSequence text = "You have created the team. Please give the code below to team members.";
+							    Toast toast = Toast.makeText(Coach.this, text, duration);
+								toast.show();
+								
+							} catch (ParseException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}
 							Log.d("after save","team created ");
 							// to get the coach team id for coach to give to
 							// players in order to add
@@ -276,12 +287,14 @@ public class Coach extends Activity {
 							query2.getFirstInBackground(new GetCallback<ParseObject>() {
 								public void done(ParseObject object, ParseException e) {
 									// if query does not find the object make one
+									// if null, that means save didn't work
 									if (object == null) {
 										Log.d("score2", "dint find team");
 									} else {
 										// query found a object already exists
 										Log.d("score2", "found team");
 										teamcode.setText(object.getObjectId());
+										
 									}
 // SeS2Gszpf7
 								}
@@ -289,8 +302,13 @@ public class Coach extends Activity {
 
 						} else {
 							// query found a object already exists
+							//this is the case when team already exists
 							Log.d("score", "found team");
-							teamcode.setText(object.getObjectId());
+							//teamcode.setText(object.getObjectId());
+							int duration = Toast.LENGTH_LONG;
+							CharSequence text = "You already have a team.";
+						    Toast toast = Toast.makeText(Coach.this, text, duration);
+							toast.show();
 						}
 					}
 				});
@@ -318,6 +336,10 @@ public class Coach extends Activity {
 					public void done(ParseObject object, ParseException e) {
 						if (object == null) {
 							Log.d("score", "sorry team code not correct");
+							int duration = Toast.LENGTH_LONG;
+							CharSequence text = "Incorrect code.";
+						    Toast toast = Toast.makeText(Coach.this, text, duration);
+							toast.show();
 						} else {
 							Log.d("team create", "already joined team");
 							//So this else probably means that team exists? So then here I will also set up push stuff
@@ -340,16 +362,25 @@ public class Coach extends Activity {
 							playersearch.whereEqualTo("email",me.get("email") );
 							playersearch.getFirstInBackground(new GetCallback<ParseObject>() {
 							public void done(ParseObject object, ParseException e) {
+									int duration = Toast.LENGTH_SHORT;
 								    if (object == null) {
 								      Log.d("add", "not a part of team yet");
+								      CharSequence text = "You have joined the team.";
+									    Toast toast = Toast.makeText(Coach.this, text, duration);
+										toast.show();
 								    } else {
 								      Log.d("add", "already part of team");
+								  	
+								    CharSequence text = "You already belong to this team.";
+								    Toast toast = Toast.makeText(Coach.this, text, duration);
+									toast.show();
 								    }
 								  }
 								});
 							//So below means that not part of team?
 							relation.add(me);
 							object.saveInBackground();
+							
 							/* Commented out since moved to upper part for customization
 							//Manually join halos team
 							ParseInstallation pi = ParseInstallation.getCurrentInstallation();
