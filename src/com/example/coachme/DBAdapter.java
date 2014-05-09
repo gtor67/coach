@@ -194,9 +194,9 @@ public class DBAdapter {
     while (c.moveToNext()) {  
        //int is the column number from table
      if(typeb=="All"){
-      data.add(c.getString(0)+" "+ c.getString(2)+" "+c.getString(5));   
+      data.add(c.getString(0)+". "+ c.getString(2)+": "+c.getString(5));   
      }else{
-      data.add(c.getString(0)+" "+c.getString(5));  
+      data.add(c.getString(0)+". "+c.getString(5));  
      }
       
       }  

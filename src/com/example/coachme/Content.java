@@ -74,11 +74,13 @@ public class Content extends Activity {
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		Button fb = (Button)findViewById(R.id.add_favorites_button);
 		
+		/*
         if (currentUser != null) {
         	fb.setVisibility(View.VISIBLE);
         } else {
+   
         	fb.setVisibility(View.INVISIBLE);
-        }
+        }*/
 		// for the View Video Button
 		viewVideo();
 	
@@ -393,14 +395,18 @@ public class Content extends Activity {
     	}
 	 
 	public void viewVideo() {
- 
+
 		button = (Button) findViewById(R.id.viewVideobutton);
  
 		button.setOnClickListener(new OnClickListener() {
  
 			@Override
 			public void onClick(View arg0) {
-				
+				if(ParseUser.getCurrentUser() == null)
+				{
+					pleaseLogin();
+					return;
+				}
 				//Uri address = Uri.parse("https://www.youtube.com/watch?v=_UTxTzRzpVg");
 				/*
 				Uri address = Uri.parse(link);
@@ -425,7 +431,20 @@ public class Content extends Activity {
 		});
 		
 	}
+	
+	public void pleaseLogin()
+	{
+		int duration = Toast.LENGTH_SHORT;
+	    CharSequence text = "Please login for this feature.";
+	    Toast toast = Toast.makeText(Content.this, text, duration);
+		toast.show();
+	}
 	public void addToFavorites(View view){
+		if(ParseUser.getCurrentUser() == null)
+		{
+			pleaseLogin();
+			return;
+		}
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<ParseObject>() {
