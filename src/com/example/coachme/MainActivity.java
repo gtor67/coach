@@ -21,6 +21,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
 import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -166,11 +167,24 @@ public class MainActivity extends Activity {
 			public void done(List<ParseObject> Beginner1, ParseException e) {
 			    if (e == null) {
 			    	int tableSize= Beginner1.size();
+			    	//Need to check if parse size matches with local
+			    	int localSize = myDb.getSize();
+			    	int diff = tableSize - localSize;
+			    	if(diff > 0)
+			    	{
+			    		for(int i = 0; i < diff; i++)
+			    		{
+			    			myDb.insertRow("", "", "", "", "" + i , "");
+			    		}
+			    	}
+			    	Log.d("Local Size", ""+ localSize);
+
 			    	//tableSize = 4; //we only have 4 rows to update
 			    	//Cursor c = myDb.getAllRows();
 			    	boolean test = true;
 			    	//String title = "Fingers up thumbs down";
 			       
+			    	//Changing tableSize to localSize
 			    	for(int i= 0; i < tableSize; i++){
 			    		int c=i+1;
 			    		 Cursor exercise = myDb.getRow(c);

@@ -118,6 +118,11 @@ public class DBAdapter {
   myDBHelper.close();
  }
  
+ public int getSize()
+ {
+	 Cursor c = db.rawQuery("select * from mainTable",null);
+	 return c.getCount();
+ }
  // Add a new set of values to the database.
  public long insertRow(String level, String type,String focus, String procedure,String title ,String url) {
   /*

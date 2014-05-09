@@ -134,7 +134,7 @@ public final class R {
         public static final int action_push=0x7f0b0077;
         public static final int action_settings=0x7f0b0078;
         public static final int action_team=0x7f0b0073;
-        public static final int add_favorites_button=0x7f0b001e;
+        public static final int add_favorites_button=0x7f0b001f;
         public static final int button1Login=0x7f0b003c;
         public static final int buttonLogout=0x7f0b002c;
         public static final int buttonRecover=0x7f0b006e;
@@ -228,7 +228,7 @@ public final class R {
         public static final int textViewMessages=0x7f0b0040;
         public static final int textViewTitle=0x7f0b001b;
         public static final int videoView1=0x7f0b0049;
-        public static final int viewVideobutton=0x7f0b001f;
+        public static final int viewVideobutton=0x7f0b001e;
         public static final int view_video_header=0x7f0b004a;
     }
     public static final class layout {
