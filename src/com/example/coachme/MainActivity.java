@@ -88,6 +88,13 @@ public class MainActivity extends Activity {
         	
         }
     }
+		@Override
+		public void onResume()
+		{  // After a pause OR at startup
+		    super.onResume();
+		    //Refresh your stuff here
+		    
+		}
     	@Override
 		public void onWindowFocusChanged(boolean hasFocus) {
 		if (!scalingComplete) // only do this once
