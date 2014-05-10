@@ -202,20 +202,22 @@ public class Content extends Activity {
 		  		    	int tableSize = favs.size();
 		  		    	if (e == null) {
 		  		    		Button buttonF = (Button) findViewById(R.id.add_favorites_button);
+		  		    		Button buttonRF = (Button) findViewById(R.id.buttonRemoverFav);
 		  		    	    for(int i = 0; i < tableSize; i++)
 			    		    {
 		  		    	    	if(favs.get(i).hasSameId(favRow))
 		  		    	    		{
 		  		    	    			relHasRow = true;
 		  		    	    			
-		  		    	    			buttonF.setText("Remove");
-		  		    	    			buttonF.setBackgroundColor(Color.RED);
+		  		    	    			buttonF.setVisibility(View.INVISIBLE);
+		  		    	    			buttonRF.setVisibility(View.VISIBLE);
 		  		    	    			break;
 		  		    	    		}
 			    		    }
 		  		    	    if(!relHasRow)
 		  		    	    {
-		  		    	    	buttonF.setBackgroundResource(R.drawable.button_favorites_change);
+		  		    	    	buttonF.setVisibility(View.VISIBLE);
+  		    	    			buttonRF.setVisibility(View.INVISIBLE);
 		  		    	    }
 		    		    	Log.d("Hasrow?", "" + relHasRow);
 				    	
@@ -336,8 +338,17 @@ public class Content extends Activity {
 	 	case R.id.action_forgot_password:
 	    startActivity(new Intent(this, RecoverLostPassword.class));
 	    return true;
+	    // 3, From overflow menu, goes to the About page
+	 	case R.id.action_push:
+	 			if(ParseUser.getCurrentUser()==null){
+	 				displayAlert();
+	 			}  
+	 			else{ 
+	 				startActivity(new Intent(this, PushResponse.class));
+	 				}
+	 		return true;
 				
-	    // 3, From overflow menu, goes to the Favorites page
+	    // 4, From overflow menu, goes to the Favorites page
 		case R.id.action_favorites:
 			if(ParseUser.getCurrentUser()==null){
 				displayAlert();
@@ -349,7 +360,7 @@ public class Content extends Activity {
 	    
 	    return true;
 	    
-	    // 4, From overflow menu, goes to the Team Settings page
+	    // 5, From overflow menu, goes to the Team Settings page
         case R.id.action_team:
 
         	if(ParseUser.getCurrentUser()==null){
@@ -361,15 +372,16 @@ public class Content extends Activity {
 		    	}
     	return true;
 	    
-	    // 5, From overflow menu, goes to the Help page
+	    // 6, From overflow menu, goes to the Help page
     	case R.id.action_help:
 	    startActivity(new Intent(this, Help.class));
 	    return true;
 		    	
-		// 6, From overflow menu, goes to the About page
+		// 7, From overflow menu, goes to the About page
 		case R.id.action_about:
 		startActivity(new Intent(this, About.class));
 		return true;
+		
 
 		case android.R.id.home:
 	    // This ID represents the Home or Up button. In the case of this
@@ -382,7 +394,7 @@ public class Content extends Activity {
 		NavUtils.navigateUpFromSameTask(this);
 		return true;
 	    
-	    // 7, From overflow menu, Exits program
+	    // 8, From overflow menu, Exits program
     	case R.id.action_exit:
     	this.finish();
     	Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -482,13 +494,14 @@ public class Content extends Activity {
 		    		    	Log.d("Hasrow?", "" + relHasRow);
 		    		    	
 		    		    	Button buttonF = (Button) findViewById(R.id.add_favorites_button);
+		    		    	Button buttonRF = (Button) findViewById(R.id.buttonRemoverFav);
 		    		    	if(relHasRow)
 				    		{
 				    			ParseUser.getCurrentUser().getRelation("Favs").remove(favRow);
 				    			
 				    			text = "Successful remove!";
-				    			buttonF.setBackgroundResource(R.drawable.button_favorites_change);
-				    			buttonF.setText("");
+				    			buttonF.setVisibility(View.VISIBLE);
+				    			buttonRF.setVisibility(View.INVISIBLE);
 				    			Toast toast = Toast.makeText(Content.this, text, duration);
 						    	toast.show();
 				    		}
@@ -496,8 +509,8 @@ public class Content extends Activity {
 				    		{
 				    			ParseUser.getCurrentUser().getRelation("Favs").add(favRow);
 				    			text = "Successful add";
-				    			buttonF.setText("Remove");
-  		    	    			buttonF.setBackgroundColor(Color.RED);
+				    			buttonF.setVisibility(View.INVISIBLE);
+				    			buttonRF.setVisibility(View.VISIBLE);
 				    			Toast toast = Toast.makeText(Content.this, text, duration);
 				    			toast.show();
 				    		}

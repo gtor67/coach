@@ -110,8 +110,17 @@ public void onCreate(Bundle savedInstanceState){
 	 	case R.id.action_forgot_password:
 	    startActivity(new Intent(this, RecoverLostPassword.class));
 	    return true;
+	    // 3, From overflow menu, goes to the messages page
+	 	case R.id.action_push:
+	 			if(ParseUser.getCurrentUser()==null){
+	 				displayAlert();
+	 			}  
+	 			else{ 
+	 				startActivity(new Intent(this, PushResponse.class));
+	 				}
+	 		return true;
 				
-	    // 3, From overflow menu, goes to the Favorites page
+	    // 4, From overflow menu, goes to the Favorites page
 		case R.id.action_favorites:
 			if(ParseUser.getCurrentUser()==null){
 				displayAlert();
@@ -123,7 +132,7 @@ public void onCreate(Bundle savedInstanceState){
 	    
 	    return true;
 	    
-	    // 4, From overflow menu, goes to the Team Settings page
+	    // 5, From overflow menu, goes to the Team Settings page
        case R.id.action_team:
 
        	if(ParseUser.getCurrentUser()==null){
@@ -135,12 +144,12 @@ public void onCreate(Bundle savedInstanceState){
 		    	}
    	return true;
 	    
-	    // 5, From overflow menu, goes to the Help page
+	    // 6, From overflow menu, goes to the Help page
    	case R.id.action_help:
 	    startActivity(new Intent(this, Help.class));
 	    return true;
 		    	
-		// 6, From overflow menu, goes to the About page
+		// 7, From overflow menu, goes to the About page
 		case R.id.action_about:
 		startActivity(new Intent(this, About.class));
 		return true;
@@ -156,7 +165,7 @@ public void onCreate(Bundle savedInstanceState){
 		NavUtils.navigateUpFromSameTask(this);
 		return true;
 	    
-	    // 7, From overflow menu, Exits program
+	    // 8, From overflow menu, Exits program
    	case R.id.action_exit:
    	this.finish();
    	Intent intent = new Intent(Intent.ACTION_MAIN);

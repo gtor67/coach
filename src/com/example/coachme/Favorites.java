@@ -127,22 +127,6 @@ public void onCreate(Bundle savedInstanceState){
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.favorites, menu);
 		
-		if(ParseUser.getCurrentUser()==null){
-		    MenuItem   item1 = menu.findItem(R.id.action_create_account);
-		    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
-		    
-		    item1.setVisible(true);
-		    item2.setVisible(true);
-		    invalidateOptionsMenu();} /// CALL to reinsert items,restart action bar with correct items 
-		
-		    else{ 
-		    	MenuItem   item1 = menu.findItem(R.id.action_create_account);
-			    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
-			    
-			    item1.setVisible(false);
-			    item2.setVisible(false);
-			    invalidateOptionsMenu();}
-		
 		return true;
 	}
 
@@ -154,18 +138,18 @@ public void onCreate(Bundle savedInstanceState){
 		// Handle item selection
 		switch (item.getItemId()) {
 
-	    // 1, From overflow menu, goes to the Create an Account page
-		case R.id.action_create_account:
-	    startActivity(new Intent(this, CreateAccount.class));
-	    return true;
-	    
-	    // 2, From overflow menu, goes to Recover Lost Password page
-	 	case R.id.action_forgot_password:
-	    startActivity(new Intent(this, RecoverLostPassword.class));
-	    return true;
+	    // 1, From overflow menu, goes to the messages page
+	 	case R.id.action_push:
+	 			if(ParseUser.getCurrentUser()==null){
+	 				displayAlert();
+	 			}  
+	 			else{ 
+	 				startActivity(new Intent(this, PushResponse.class));
+	 				}
+	 		return true;
 				
 	    
-	    // 3, From overflow menu, goes to the Team Settings page
+	    // 2, From overflow menu, goes to the Team Settings page
        case R.id.action_team:
 
        	if(ParseUser.getCurrentUser()==null){
@@ -177,12 +161,12 @@ public void onCreate(Bundle savedInstanceState){
 		    	}
    	return true;
 	    
-	    // 4, From overflow menu, goes to the Help page
+	    // 3, From overflow menu, goes to the Help page
    	case R.id.action_help:
 	    startActivity(new Intent(this, Help.class));
 	    return true;
 		    	
-		// 5, From overflow menu, goes to the About page
+		// 4, From overflow menu, goes to the About page
 		case R.id.action_about:
 		startActivity(new Intent(this, About.class));
 		return true;
@@ -198,7 +182,7 @@ public void onCreate(Bundle savedInstanceState){
 		NavUtils.navigateUpFromSameTask(this);
 		return true;
 	    
-	    // 6, From overflow menu, Exits program
+	    // 5, From overflow menu, Exits program
    	case R.id.action_exit:
    	this.finish();
    	Intent intent = new Intent(Intent.ACTION_MAIN);

@@ -20,8 +20,10 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -142,6 +144,58 @@ public class PushResponse extends Activity {
 		getMenuInflater().inflate(R.menu.push_response, menu);
 		return true;
 	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+	   			
+	    // 1, From overflow menu, goes to the Favorites page
+		case R.id.action_favorites:
+		    startActivity(new Intent(this, Favorites.class));
+		 
+	    return true;
+	    
+	    // 2, From overflow menu, goes to the Team Settings page
+       case R.id.action_team:
+    	   startActivity(new Intent(this, Coach.class));
+		    	
+   	return true;
+	    
+	    // 3, From overflow menu, goes to the Help page
+   	case R.id.action_help:
+	    startActivity(new Intent(this, Help.class));
+	    return true;
+		    	
+		// 4, From overflow menu, goes to the About page
+		case R.id.action_about:
+		startActivity(new Intent(this, About.class));
+		return true;
+		
+
+		case android.R.id.home:
+	    // This ID represents the Home or Up button. In the case of this
+		// activity, the Up button is shown. Use NavUtils to allow users
+		// to navigate up one level in the application structure. For
+		// more details, see the Navigation pattern on Android Design:
+		//
+		// http://developer.android.com/design/patterns/navigation.html#up-vs-back
+		//
+		NavUtils.navigateUpFromSameTask(this);
+		return true;
+	    
+	    // 5, From overflow menu, Exits program
+   	case R.id.action_exit:
+   	this.finish();
+   	Intent intent = new Intent(Intent.ACTION_MAIN);
+   	intent.addCategory(Intent.CATEGORY_HOME);
+   	intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+   	startActivity(intent);
+   	default:
+   	return super.onOptionsItemSelected(item);
+   	}
+   	}
+	
+	
 	// Scales the contents of the given view so that it completely fills the
 	// given
 	// container on one axis (that is, we're scaling isotropically).

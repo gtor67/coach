@@ -32,5 +32,6 @@
     <string name="error_email_taken">Email address already taken.</string>
     <string name="action_exit">Exit</string>
     <string name="title_activity_push_response">PushResponse</string>
+    <string name="messages">Messages</string>
 
 </resources>

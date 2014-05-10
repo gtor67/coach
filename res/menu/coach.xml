@@ -6,26 +6,18 @@
     android:showAsAction="always">
 
     <menu>
-    <!-- Create Account -->
-    <item
-        android:id="@+id/action_create_account"
+    <!-- Push -->
+        <item
+        android:id="@+id/action_push"
         android:orderInCategory="1"
-        android:icon="@drawable/ic_action_add_person"
-        android:title="@string/action_create_account"
-        android:showAsAction="never"/>
-    
-    <!-- Recover Lost Password -->
-    <item
-        android:id="@+id/action_forgot_password"
-        android:orderInCategory="2"
-        android:icon="@drawable/ic_action_accounts"
-        android:title="@string/action_forgot_password"
+        android:icon="@drawable/ic_action_message"
+        android:title="@string/messages"
         android:showAsAction="never"/>
     
     <!-- Favorites -->
     <item
         android:id="@+id/action_favorites"
-        android:orderInCategory="3"
+        android:orderInCategory="2"
         android:icon="@drawable/ic_action_important"
         android:title="@string/action_favorites"
         android:showAsAction="never"/>
@@ -33,14 +25,14 @@
    <!-- Help -->
     <item
         android:id="@+id/action_help"
-        android:orderInCategory="4"
+        android:orderInCategory="3"
         android:icon="@drawable/ic_action_help"
         android:title="@string/action_settings"
         android:showAsAction="never"/>
     
     <!-- About -->
     <item android:id="@+id/action_about"
-          android:orderInCategory="5"
+          android:orderInCategory="4"
           android:icon="@drawable/ic_action_about"
           android:title="@string/action_about"
           android:showAsAction="never"/>
@@ -48,7 +40,7 @@
     <!-- Exit -->
     <item
         android:id="@+id/action_exit"
-        android:orderInCategory="6"
+        android:orderInCategory="5"
         android:icon="@drawable/ic_action_cancel"
         android:title="@string/action_exit"
         android:showAsAction="never"/>
