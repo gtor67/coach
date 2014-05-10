@@ -368,8 +368,8 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	// container on one axis (that is, we're scaling isotropically).
 	private void scaleContents(View rootView, View container) {
 		// Compute the scaling ratio
-		float xScale = (float) container.getWidth() / rootView.getWidth();
-		float yScale = (float) container.getHeight() / rootView.getHeight();
+		float xScale = (float) (container.getWidth() / (rootView.getWidth()*.70));
+		float yScale = (float) ( container.getHeight() / (rootView.getHeight()*.70));
 		float scale = Math.min(xScale, yScale);
 
 		// Scale our contents
@@ -413,7 +413,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		// If the root view is a TextView, scale the size of its text
 		if (root instanceof TextView) {
 			TextView textView = (TextView) root;
-			textView.setTextSize(textView.getTextSize() * (scale));
+			textView.setTextSize((float) (textView.getTextSize() * (scale/1.75)));
 		}
 
 		// If the root view is a ViewGroup, scale all of its children

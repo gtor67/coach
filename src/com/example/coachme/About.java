@@ -184,8 +184,8 @@ public class About extends Activity {
 		
 		
 		// Compute the scaling ratio
-		float xScale = (float) container.getWidth() / rootView.getWidth();
-		float yScale = (float) container.getHeight() / rootView.getHeight();
+		float xScale = (float) (container.getWidth() / (rootView.getWidth()*.70));
+		float yScale = (float) ( container.getHeight() / (rootView.getHeight()*.70));
 		float scale = Math.min(xScale, yScale);
       Log.d("xscale"," "+ xScale);
       Log.d("yscale", " " +yScale);
