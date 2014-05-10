@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/coachcontent"
         style="@style/LoginFormContainer"
-        android:layout_width="475px"
+        android:layout_width="480px"
         android:layout_height="700px"
         android:background="#ffffff"
         android:orientation="vertical" >
@@ -30,7 +30,7 @@
             android:layout_below="@+id/imageJoinTeam"
             android:text="Enter the Team name you wish to register"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="15px" />
+            android:textSize="10sp" />
 
         <EditText
             android:id="@+id/coachCode"
@@ -40,7 +40,7 @@
             android:layout_below="@+id/coach"
             android:hint="Enter Team Name"
             android:inputType="text"
-            android:textSize="10px" />
+            android:textSize="6sp" />
 
         <Button
             android:id="@+id/buttonrequestcoach"
@@ -60,7 +60,7 @@
             android:layout_below="@+id/buttonrequestcoach"
             android:text="Below is your Team Code:"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="16px" />
+            android:textSize="10sp" />
            
         <EditText
          android:id="@+id/sendMessEditText"
@@ -68,7 +68,7 @@
             android:layout_height="120px"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/entCoach"
-                     android:hint="Send Messege to Team"
+            android:hint="Send Messege to Team"
          	android:inputType="textMultiLine" >
 
          <requestFocus />
@@ -82,7 +82,7 @@
             android:layout_below="@+id/sendMessEditText"
             android:hint="Team Code"
             android:textColor="#1900ff"
-            android:textSize="10px" />
+            android:textSize="6sp" />
 
         <TextView
             android:id="@+id/team"
@@ -92,7 +92,7 @@
             android:layout_below="@+id/teamcode"
             android:text="Enter the team code you wish to join "
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="10px" />
+            android:textSize="10sp" />
 
         <EditText
             android:id="@+id/teamCode"
@@ -102,7 +102,7 @@
             android:layout_below="@+id/team"
             android:hint="Enter Team Code"
             android:inputType="text"
-            android:textSize="10px" />
+            android:textSize="10sp" />
 
         <Button
             android:id="@+id/buttoncoachcode"
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_alignRight="@+id/teamcode"
             android:layout_alignTop="@+id/teamcode"
-            android:layout_marginRight="26dp"
+            android:layout_marginRight="26sp"
             android:onClick="sendMessage"
             android:text="Send" />
 

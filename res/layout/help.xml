@@ -7,12 +7,12 @@
 
     <ScrollView
         android:id="@+id/helpcontent"
-    android:layout_width="475px"
-            android:layout_height="700px">
+    	android:layout_width="480px"
+        android:layout_height="700px">
 
         <LinearLayout
            
-            android:layout_width="475px"
+            android:layout_width="480px"
             android:layout_height="700px"
             android:background="#ffffff"
             android:orientation="vertical" >
@@ -28,67 +28,67 @@
             <TextView
                 android:id="@+id/get_in_touch_header"
                 android:layout_width="fill_parent"
-                android:layout_height="60px"
+                android:layout_height="80px"
                 android:layout_marginLeft="10px"
                 android:layout_marginRight="10px"
                 android:layout_marginTop="10px"
                 android:text="Get in touch!"
                 android:textColor="#000000"
-                android:textSize="18px"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/get_in_touch_intro"
                 android:layout_width="fill_parent"
-                android:layout_height="100px"
+                android:layout_height="150px"
                 android:layout_marginLeft="10px"
                 android:layout_marginRight="10px"
                 android:layout_marginTop="10px"
                 android:text="Having a bit of trouble with our app, or not quite sure why something doesn&apos;t seem to be working right? Not to worry, our friendly customer service support team is always readily available to help you along the way. For your convenience, we offer a variety of ways for you to get in touch with us."
                 android:textColor="#000000"
-                android:textSize="5px" />
+                android:textSize="5sp" />
 
             <TextView
                 android:id="@+id/email_header"
                 android:layout_width="fill_parent"
-                android:layout_height="60px"
+                android:layout_height="80px"
                 android:layout_marginLeft="10px"
                 android:layout_marginRight="10px"
                 android:text="Email"
                 android:textColor="#000000"
-                android:textSize="18px"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/email_info"
                 android:layout_width="fill_parent"
-                android:layout_height="80px"
+                android:layout_height="150px"
                 android:layout_marginLeft="10px"
                 android:layout_marginRight="10px"
                 android:layout_marginTop="10px"
                 android:text="Need questions answered right away? Not to worry, Our customer service agents are here for you 24/7, and are eager to respond to your email questions right away. You can send us an email message with app questions at coachme@emailsupport.com"
                 android:textColor="#000000"
-                android:textSize="5px" />
+                android:textSize="5sp" />
 
             <TextView
                 android:id="@+id/phone_header"
                 android:layout_width="fill_parent"
-                android:layout_height="60px"
+                android:layout_height="80px"
                 android:layout_marginLeft="10px"
                 android:text="Phone"
                 android:textColor="#000000"
-                android:textSize="18px"
+                android:textSize="13sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/phone_info"
                 android:layout_width="fill_parent"
-                android:layout_height="90px"
+                android:layout_height="165px"
                 android:layout_marginLeft="10px"
                 android:layout_marginRight="10px"
                 android:text="Need to go analog and get in touch with us by phone? Our customer service agents look forward helping you. Speak one-on-one with any of our friendly customer service agents, for overall app questions, to offer some feedback, or to just say hi! Our agents are available 24/7 to take your call. Call us at (1-877-345-6689)"
                 android:textColor="#000000"
-                android:textSize="5px" />
+                android:textSize="5sp" />
 
             <TextView
                 android:id="@+id/mail_header"
@@ -99,18 +99,18 @@
                 android:layout_marginTop="10px"
                 android:text="Mail"
                 android:textColor="#000000"
-                android:textSize="18px"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/mail_info"
                 android:layout_width="fill_parent"
-                android:layout_height="50px"
+                android:layout_height="70px"
                 android:layout_marginLeft="10px"
                 android:layout_marginRight="10px"
                 android:text="Send us any questions that you may have via snail mail:"
                 android:textColor="#000000"
-                android:textSize="5px" />
+                android:textSize="5sp" />
 
             <TextView
                 android:id="@+id/mail_address1"
@@ -120,7 +120,7 @@
                 android:layout_marginRight="10px"
                 android:text="CoachMe.com"
                 android:textColor="#000000"
-                android:textSize="15px" />
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/mail_address2"
@@ -130,7 +130,7 @@
                 android:layout_marginRight="10px"
                 android:text="P.O. Box 456"
                 android:textColor="#000000"
-                android:textSize="15px" />
+                android:textSize="11sp" />
 
             <TextView
                 android:id="@+id/mail_address3"
@@ -140,7 +140,7 @@
                 android:layout_marginRight="10px"
                 android:text="Long Beach, CA 90840"
                 android:textColor="#000000"
-                android:textSize="15px" />
+                android:textSize="11sp" />
         </LinearLayout>
 
     </ScrollView>

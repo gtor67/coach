@@ -4,10 +4,13 @@ import com.parse.ParseUser;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -173,14 +176,20 @@ public class About extends Activity {
    	return super.onOptionsItemSelected(item);
    	}
    	}
-   	// Scales the contents of the given view so that it completely fills the
+  	// Scales the contents of the given view so that it completely fills the
 	// given
 	// container on one axis (that is, we're scaling isotropically).
 	private void scaleContents(View rootView, View container) {
+	
+		
+		
 		// Compute the scaling ratio
 		float xScale = (float) container.getWidth() / rootView.getWidth();
 		float yScale = (float) container.getHeight() / rootView.getHeight();
 		float scale = Math.min(xScale, yScale);
+      Log.d("xscale"," "+ xScale);
+      Log.d("yscale", " " +yScale);
+      Log.d("scale", " "+scale);
 
 		// Scale our contents
 		scaleViewAndChildren(rootView, scale);
@@ -188,9 +197,14 @@ public class About extends Activity {
 
 	// Scale the given view, its contents, and all of its children by the given
 	// factor.
-	public static void scaleViewAndChildren(View root, float scale) {
+	public  void scaleViewAndChildren(View root, float scale) {
 		// Retrieve the view's layout information
 		ViewGroup.LayoutParams layoutParams = root.getLayoutParams();
+		DisplayMetrics metrics = getResources().getDisplayMetrics();
+		float x= metrics.xdpi;
+		float y= metrics.ydpi;
+		 Log.d("xdensity"," "+ x);
+	      Log.d("ydensity", " " +y);
 
 		// Scale the view itself
 		if (layoutParams.width != ViewGroup.LayoutParams.FILL_PARENT
@@ -222,8 +236,13 @@ public class About extends Activity {
 
 		// If the root view is a TextView, scale the size of its text
 		if (root instanceof TextView) {
+			if(x>400){
 			TextView textView = (TextView) root;
-			textView.setTextSize((float) (textView.getTextSize() * scale));
+			textView.setTextSize((float) (textView.getTextSize() * scale*.4));
+			}else{
+				TextView textView = (TextView) root;
+				textView.setTextSize((float) (textView.getTextSize() * scale));
+			}
 		}
 
 		// If the root view is a ViewGroup, scale all of its children
@@ -233,5 +252,26 @@ public class About extends Activity {
 			for (int cnt = 0; cnt < groupView.getChildCount(); ++cnt)
 				scaleViewAndChildren(groupView.getChildAt(cnt), scale);
 		}
+	}
+	public static String getDensity(Context context) {
+	    String r;
+	    DisplayMetrics metrics = new DisplayMetrics();
+
+	    if (!(context instanceof Activity)) {
+	        r = "hdpi";
+	    } else {
+	        Activity activity = (Activity) context;
+	        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+	        if (metrics.densityDpi <= DisplayMetrics.DENSITY_LOW) {
+	            r = "ldpi";
+	        } else if (metrics.densityDpi <= DisplayMetrics.DENSITY_MEDIUM) {
+	            r = "mdpi";
+	        } else {
+	            r = "hdpi";
+	        }
+	    }
+
+	    return r;
 	}
 }

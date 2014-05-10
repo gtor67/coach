@@ -1,15 +1,15 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="475px"
-    android:layout_height="700px"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     tools:context=".LoginActivity" >
 
     <!-- Login progress -->
     <LinearLayout
         android:id="@+id/login_status"
         android:background="#ffffff"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="480px"
+        android:layout_height="700px"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -19,13 +19,13 @@
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp" />
+            android:layout_marginBottom="8px" />
         
         <TextView
             android:id="@+id/login_status_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="16px"
             android:fontFamily="sans-serif-light"
             android:text="@string/login_progress_signing_in"
             android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -35,7 +35,7 @@
 
     <ScrollView
         android:id="@+id/login_form"
-        android:layout_width="475px"
+        android:layout_width="480px"
         android:layout_height="700px"
         android:background="#ffffff" >
 
@@ -60,7 +60,7 @@
                 android:layout_height="120px"
                 android:layout_marginTop="10px"
                 android:text="Please Enter Your Account Details:"
-                android:textSize="18px"
+                android:textSize="12sp"
                 android:textStyle="bold" />
 
             <EditText
@@ -70,6 +70,7 @@
                 android:hint="@string/prompt_email"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+				android:textSize="8sp"
                 android:singleLine="true" />
 
             <EditText

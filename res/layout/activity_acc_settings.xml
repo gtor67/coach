@@ -24,7 +24,7 @@
             android:layout_height="65px"
             android:text="Change Email Address"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="18px" />
+            android:textSize="8sp" />
 
         <TextView
             android:id="@+id/textViewEmail"
@@ -33,7 +33,7 @@
             android:layout_marginTop="5px"
             android:text="email"
             android:textColor="#1900ff"
-            android:textSize="8px" />
+            android:textSize="6sp" />
 
         <TextView
             android:id="@+id/textViewEmailHead"
@@ -41,7 +41,7 @@
             android:layout_height="40px"
             android:layout_marginTop="5px"
             android:text="Current Email Address:"
-            android:textSize="8px" />
+            android:textSize="6sp" />
 
         <TextView
             android:id="@+id/textViewEnterPass"
@@ -49,13 +49,13 @@
             android:layout_height="40px"
             android:layout_marginTop="5px"
             android:text="Enter New Email Address"
-            android:textSize="8px" />
+            android:textSize="6sp" />
 
         <EditText
             android:id="@+id/editTextSettingEmail"
             android:layout_width="fill_parent"
             android:layout_height="80px"
-            android:textSize="8px"
+            android:textSize="6sp"
             android:inputType="textEmailAddress" />
 
         <Button
@@ -73,7 +73,7 @@
             android:layout_marginTop="5px"
             android:text="Update Password"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="18px" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/textView2"
@@ -81,14 +81,14 @@
             android:layout_height="40px"
             android:layout_marginTop="12px"
             android:text="Enter New Password"
-            android:textSize="8px" />
+            android:textSize="6sp" />
 
         <EditText
             android:id="@+id/editTextNewPass"
             android:layout_width="fill_parent"
             android:layout_height="80px"
             android:inputType="textPassword"
-            android:textSize="8px" />
+            android:textSize="6sp" />
 
         <ProgressBar
             android:id="@+id/progressBar1"
