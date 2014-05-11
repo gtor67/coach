@@ -31,6 +31,7 @@ import android.os.Build;
 public class TrainingFilterActivity extends Activity implements OnTabChangeListener {
 	TabHost tabH;
 	Spinner exerciseFilter;
+	
 	ListView listViewBeginner ;
 	String type ="All";
 	String level="Beginner";
@@ -47,6 +48,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
             "Running",
             "Batting"
     };
+	
 	
 
 	//Testing to see if I can pass list item text to next screen
@@ -96,7 +98,8 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	        exerciseFilter = (Spinner) findViewById(R.id.spinner1Filter);  
 
 	        ArrayAdapter<String> adapterTabs = new ArrayAdapter<String>(
-	                this, android.R.layout.simple_spinner_item, exrcises);
+	                this, R.layout.spinnerlayout, exrcises);
+	        adapterTabs.setDropDownViewResource(R.layout.spinnerlayout);
 	        exerciseFilter.setAdapter(adapterTabs);
 	        exerciseFilter.setOnItemSelectedListener(
 	                new AdapterView.OnItemSelectedListener() {
@@ -146,9 +149,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
       	  }
       	}); 
         
-	        
-	   // this.loadMylist("level","All");
-	    tabH.setOnTabChangedListener(this);
+	        	    tabH.setOnTabChangedListener(this);
 
 	}
 
@@ -353,7 +354,8 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		  // TODO Auto-generated method stub
 		  List<String> list = myDb.listdata(level,type);
 		  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-		    android.R.layout.simple_list_item_1, list);
+		    R.layout.listlayout, list);
+		  adapter.setDropDownViewResource(R.layout.listlayout);
 		  	listViewBeginner.setAdapter(adapter);
 		  
 		 }
@@ -363,6 +365,9 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
      super.onDestroy(); 
      myDb.close();
     }
+	
+	
+	
     // Scales the contents of the given view so that it completely fills the
 	// given
 	// container on one axis (that is, we're scaling isotropically).
@@ -372,6 +377,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		float yScale = (float) ( container.getHeight() / (rootView.getHeight()*.70));
 		float scale = Math.min(xScale, yScale);
 
+		
 		// Scale our contents
 		scaleViewAndChildren(rootView, scale);
 	}
@@ -414,6 +420,9 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		if (root instanceof TextView) {
 			TextView textView = (TextView) root;
 			textView.setTextSize((float) (textView.getTextSize() * (scale/1.75)));
+			
+			
+			
 		}
 
 		// If the root view is a ViewGroup, scale all of its children
