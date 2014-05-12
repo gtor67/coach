@@ -42,10 +42,10 @@ import android.graphics.Rect;
 import android.os.Build;
 
 public class Content extends Activity {
-	
+
 	// for the View Video Button
 	Button button;
-	
+
 	private DBAdapter myDb;
 	private String link;
 	private int rowNum;
@@ -59,7 +59,7 @@ public class Content extends Activity {
     // very frequently.
     private int mShortAnimationDuration;
 	private int resourceId ;
-	
+
 	public final static String VIDEO_MESSAGE = "com.example.coach.VideoURL";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,17 +73,15 @@ public class Content extends Activity {
         
 		ParseUser currentUser = ParseUser.getCurrentUser();
 		Button fb = (Button)findViewById(R.id.add_favorites_button);
-		
-		/*
+
         if (currentUser != null) {
         	fb.setVisibility(View.VISIBLE);
         } else {
-   
         	fb.setVisibility(View.INVISIBLE);
-        }*/
+        }
 		// for the View Video Button
 		viewVideo();
-	
+
 		Intent intent = getIntent();
 		Log.d("Content Page","Made it into content.");
 		String title = "";
@@ -103,7 +101,7 @@ public class Content extends Activity {
 		
 		setContentView(textView);
 		*/
-		
+
 		//Obtain title only
 /*		
 		Pattern stopWords = Pattern.compile("\\b(?:Beginner|Intermedite|Advanced|Catching|Bunting|Fielding|Pitching|Sliding|Running|Batting)\\b\\s*");
@@ -140,40 +138,40 @@ public class Content extends Activity {
 		Log.d("exersice 3", exersice.getString(3));
 		Log.d("exersice 4", exersice.getString(4));
 		Log.d("exersice 5", exersice.getString(5));
-		
-	
+
+
 		//fileName.append(exersice.getString(0));
 		Log.d("pic id",""+fileName);
-		
-		
+
+
 		TextView titleTV = (TextView) findViewById (R.id.textViewTitle);
 		titleTV.setText(exersice.getString(5));
-		
+
 		TextView focusTV = (TextView) findViewById (R.id.TextView01);
 		focusTV.setText(exersice.getString(3));
 		focusTV.setMovementMethod(new ScrollingMovementMethod());
 		TextView proTV = (TextView) findViewById (R.id.TextView02);
 		proTV.setMovementMethod(new ScrollingMovementMethod());
 		proTV.setText(exersice.getString(4));
-		
+
 		ImageView image = (ImageView) findViewById (R.id.imageView1);
 		resourceId = this.getResources().getIdentifier(fileName.toString(), "drawable", "com.example.coachme");
 		Log.d("resourcce id",""+resourceId);
 		image.setImageResource(resourceId);
-		
+
 		link = exersice.getString(6);
 		Log.d("link id",""+link);
-		
-		
+
+
 		//String imageLoc = "p1";
 		//int resourceId = this.getResources().getIdentifier(fileName.toString(), "drawable", "com.example.coachme");
 		//image.setImageResource(resourceId);
 		//String imageLoc = "android.resource://your.pack.name" + "";
 		//Uri myUri = Uri.parse(imageLoc);
 		//image.setImageURI("" + "");
-		
-		
-		
+
+
+
 		//Need to know if row is with user here to change button. possibly remove things from add to favs
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.orderByAscending("createdAt");
@@ -183,9 +181,9 @@ public class Content extends Activity {
 			  //// BUG FIX IF USER NOT LOGGED IN AUTOMATIC CRASH IN CONTENT
 		    if (e == null && ParseUser.getCurrentUser() !=null) {
 		    	Log.d("go thru??",""+"went thru without a user, crash");
-		    	
-		    	
-		    	
+
+
+
 		    	//Note: Local DB is 1 index ahead
 		    	int parseRowNum = rowNum - 1;
 		    	favRow = beginner1.get(parseRowNum);
@@ -220,15 +218,15 @@ public class Content extends Activity {
   		    	    			buttonRF.setVisibility(View.INVISIBLE);
 		  		    	    }
 		    		    	Log.d("Hasrow?", "" + relHasRow);
-				    	
+
 		    		    } else {
 		    		    	Log.d("ERROR", "Error: " + e.getMessage());
 		    		      // something went wrong
 		    		    		}
 		    		  	}
 		    			});
-		
-		    	
+
+
 
 		    } else {
 		//    	Log.d("ERROR", "Error: " + e.getMessage());
@@ -236,9 +234,9 @@ public class Content extends Activity {
 		    		}
 		  	}
 			});
-		
-		
-		
+
+
+
 	}
 	@Override
 		public void onWindowFocusChanged(boolean hasFocus) {
@@ -247,7 +245,7 @@ public class Content extends Activity {
 			scaleContents(findViewById(R.id.contentcontent), findViewById(R.id.contentcontainer));
 	        scalingComplete = true;
 		}
-		     
+
 			super.onWindowFocusChanged(hasFocus);
 		}
 
@@ -260,8 +258,8 @@ public class Content extends Activity {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 	}
-	
-	
+
+
 	/////When clicking user related field
 	public  void displayAlert()
     {
@@ -294,36 +292,36 @@ public class Content extends Activity {
      
      
     }
-	
-	
+
+
 /////HIDE SHOW MENU STUFF IN CONTENT PAGE
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.content, menu);
-		
+
 		if(ParseUser.getCurrentUser()==null){
 		    MenuItem   item1 = menu.findItem(R.id.action_create_account);
 		    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
-		    
+
 		    item1.setVisible(true);
 		    item2.setVisible(true);
 		    invalidateOptionsMenu();} /// CALL to reinsert items,restart action bar with correct items 
-		
+
 		    else{ 
 		    	MenuItem   item1 = menu.findItem(R.id.action_create_account);
 			    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
-			    
+
 			    item1.setVisible(false);
 			    item2.setVisible(false);
 			    invalidateOptionsMenu();}
-		
+
 		return true;
 	}
 
-	
-	
-	
+
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle item selection
@@ -333,55 +331,45 @@ public class Content extends Activity {
 		case R.id.action_create_account:
 	    startActivity(new Intent(this, CreateAccount.class));
 	    return true;
-	    
+
 	    // 2, From overflow menu, goes to Recover Lost Password page
 	 	case R.id.action_forgot_password:
 	    startActivity(new Intent(this, RecoverLostPassword.class));
 	    return true;
-	    // 3, From overflow menu, goes to the About page
-	 	case R.id.action_push:
-	 			if(ParseUser.getCurrentUser()==null){
-	 				displayAlert();
-	 			}  
-	 			else{ 
-	 				startActivity(new Intent(this, PushResponse.class));
-	 				}
-	 		return true;
-				
-	    // 4, From overflow menu, goes to the Favorites page
+
+	    // 3, From overflow menu, goes to the Favorites page
 		case R.id.action_favorites:
 			if(ParseUser.getCurrentUser()==null){
 				displayAlert();
 		   }  
-		
+
 		    else{ 
 		    	startActivity(new Intent(this, Favorites.class));
 		    	}
-	    
+
 	    return true;
-	    
-	    // 5, From overflow menu, goes to the Team Settings page
+
+	    // 4, From overflow menu, goes to the Team Settings page
         case R.id.action_team:
 
         	if(ParseUser.getCurrentUser()==null){
 				displayAlert();
 		   }  
-		
+
 		    else{ 
 		    	startActivity(new Intent(this, Coach.class));
 		    	}
     	return true;
-	    
-	    // 6, From overflow menu, goes to the Help page
+
+	    // 5, From overflow menu, goes to the Help page
     	case R.id.action_help:
 	    startActivity(new Intent(this, Help.class));
 	    return true;
-		    	
-		// 7, From overflow menu, goes to the About page
+
+		// 6, From overflow menu, goes to the About page
 		case R.id.action_about:
 		startActivity(new Intent(this, About.class));
 		return true;
-		
 
 		case android.R.id.home:
 	    // This ID represents the Home or Up button. In the case of this
@@ -393,8 +381,8 @@ public class Content extends Activity {
 		//
 		NavUtils.navigateUpFromSameTask(this);
 		return true;
-	    
-	    // 8, From overflow menu, Exits program
+
+	    // 7, From overflow menu, Exits program
     	case R.id.action_exit:
     	this.finish();
     	Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -405,20 +393,16 @@ public class Content extends Activity {
     	return super.onOptionsItemSelected(item);
     	}
     	}
-	 
-	public void viewVideo() {
 
+	public void viewVideo() {
+ 
 		button = (Button) findViewById(R.id.viewVideobutton);
  
 		button.setOnClickListener(new OnClickListener() {
  
 			@Override
 			public void onClick(View arg0) {
-				if(ParseUser.getCurrentUser() == null)
-				{
-					pleaseLogin();
-					return;
-				}
+
 				//Uri address = Uri.parse("https://www.youtube.com/watch?v=_UTxTzRzpVg");
 				/*
 				Uri address = Uri.parse(link);
@@ -430,33 +414,20 @@ public class Content extends Activity {
 //				Pattern stopWord = Pattern.compile("\\b(?:https://www.youtube.com/watch?v=|.|//|wwwyoutubecomwatch)\\b\\s*");
 //				Matcher matcher = stopWord.matcher(link);
 				String videoKey = link.substring(32, link.length());
-				
+
 				Log.d("Is this the title?", videoKey);
-				
-			
+
+
 				Intent intent = new Intent(Content.this, Video.class);
 				intent.putExtra(VIDEO_MESSAGE, videoKey);
 		    	startActivity(intent);
-		    	
+
 			}
  
 		});
-		
-	}
-	
-	public void pleaseLogin()
-	{
-		int duration = Toast.LENGTH_SHORT;
-	    CharSequence text = "Please login for this feature.";
-	    Toast toast = Toast.makeText(Content.this, text, duration);
-		toast.show();
+
 	}
 	public void addToFavorites(View view){
-		if(ParseUser.getCurrentUser() == null)
-		{
-			pleaseLogin();
-			return;
-		}
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 		query.orderByAscending("createdAt");
 		query.findInBackground(new FindCallback<ParseObject>() {
@@ -464,9 +435,9 @@ public class Content extends Activity {
 		public void done(List<ParseObject> beginner1, ParseException e) {
 			  /////BUG FIX AUTOMAIC CRASH IN CONTENT PAGE IF NO USER IS LOGGED IN
 		    if (e == null && ParseUser.getCurrentUser() !=null) {
-		    	
-		    	
-		    	
+
+
+
 		    	//Note: Local DB is 1 index ahead
 		    	int parseRowNum = rowNum - 1;
 		    	favRow = beginner1.get(parseRowNum);
@@ -490,9 +461,9 @@ public class Content extends Activity {
 		  		    	    			break;
 		  		    	    		}
 			    		    }
-		    		  
+
 		    		    	Log.d("Hasrow?", "" + relHasRow);
-		    		    	
+
 		    		    	Button buttonF = (Button) findViewById(R.id.add_favorites_button);
 		    		    	Button buttonRF = (Button) findViewById(R.id.buttonRemoverFav);
 		    		    	if(relHasRow)
@@ -521,8 +492,8 @@ public class Content extends Activity {
 		    		    		}
 		    		  	}
 		    			});
-		
-		    	
+
+
 
 		    } else {
 		    	Log.d("ERROR", "Error: " + e.getMessage());
@@ -534,7 +505,7 @@ public class Content extends Activity {
 
 	//assumes that the user table has the relation column    
 	private void testingRelation2(){
-	    	
+
 	    	ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
 	    	query.getInBackground("LM3gQPNPm8", new GetCallback<ParseObject>() {
 	    		  @Override
@@ -549,7 +520,7 @@ public class Content extends Activity {
 	    		    }
 	    		  }
 	    		});
-	    	
+
 	    	//now try to see if i can see what user has
 	    	// first we will create a query on the Book object
 	    	//ParseQuery<ParseObject> query2 = ParseQuery.getQuery("User");
@@ -560,15 +531,15 @@ public class Content extends Activity {
 				public void done(List<ParseObject> favs, ParseException e) {
 				    if (e == null) {
 				    	int tableSize= favs.size();
-				    	
-				       
+
+
 				    	for(int i= 0; i < tableSize; i++){
-				    		
-				    		
+
+
 				    		//Cursor exercise = myDb.getRow(Beginner1.get(i).getString("Title"));
 				    		Log.d("Routine:", favs.get(i).getString("Title"));
-				
-				    		
+
+
 				    ////////////TO REFRESH WITH PARSE		
 				    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
 				    			  @Override
@@ -581,10 +552,10 @@ public class Content extends Activity {
 				    			  }
 				    			});
 				    /////////////END REFRESH		
-				    		
-				    		
-				    		
-				    		
+
+
+
+
 				    		}//for loop
 
 				    } else {
@@ -594,7 +565,7 @@ public class Content extends Activity {
 				  	}
 					});
 	    }
-	
+
     private void testingRelation(){
     	
     	ParseQuery<ParseObject> query = ParseQuery.getQuery("Beginner");
@@ -624,15 +595,15 @@ public class Content extends Activity {
 			public void done(List<ParseObject> favs, ParseException e) {
 			    if (e == null) {
 			    	int tableSize= favs.size();
-			    	
-			       
+
+
 			    	for(int i= 0; i < tableSize; i++){
 			    		int c=i+1;
-			    		
+
 			    		//Cursor exercise = myDb.getRow(Beginner1.get(i).getString("Title"));
 			    		Log.d("Routine:", favs.get(i).getString("Title"));
-			
-			    		
+
+
 			    ////////////TO REFRESH WITH PARSE		
 			    		favs.get(i).fetchIfNeededInBackground(new GetCallback<ParseObject>() {
 			    			  @Override
@@ -645,10 +616,10 @@ public class Content extends Activity {
 			    			  }
 			    			});
 			    /////////////END REFRESH		
-			    		
-			    		
-			    		
-			    		
+
+
+
+
 			    		}//for loop
 
 			    } else {
@@ -672,7 +643,7 @@ public class Content extends Activity {
 
         // Load the high-resolution "zoomed-in" image.
         final ImageView expandedImageView = (ImageView) findViewById(
-                R.id.imageView1);
+                R.id.expanded_image);
         expandedImageView.setImageResource(imageResId);
 
         // Calculate the starting and ending bounds for the zoomed-in image.
@@ -687,7 +658,7 @@ public class Content extends Activity {
         // bounds, since that's the origin for the positioning animation
         // properties (X, Y).
         thumbView.getGlobalVisibleRect(startBounds);
-        findViewById(R.id.recoverframe)
+        findViewById(R.id.contentcontainer)
                 .getGlobalVisibleRect(finalBounds, globalOffset);
         startBounds.offset(-globalOffset.x, -globalOffset.y);
         finalBounds.offset(-globalOffset.x, -globalOffset.y);

@@ -32,10 +32,17 @@
                 android:layout_height="fill_parent"
                 android:orientation="horizontal" >
 
-                <ImageView
+                <ImageButton
                     android:id="@+id/imageView1"
                     android:layout_width="225px"
-                    android:layout_height="225px" />
+                    android:layout_height="225px" 
+					android:layout_alignParentLeft="true"
+					android:layout_below="@+id/textViewTitle" 
+					android:scaleType="centerCrop"
+					android:contentDescription="Click to zoom."
+					android:onClick="zoomImage"/>
+
+					
 
                 <LinearLayout
                     android:layout_width="250px"
