@@ -31,7 +31,6 @@ import android.os.Build;
 public class TrainingFilterActivity extends Activity implements OnTabChangeListener {
 	TabHost tabH;
 	Spinner exerciseFilter;
-	
 	ListView listViewBeginner ;
 	String type ="All";
 	String level="Beginner";
@@ -48,8 +47,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
             "Running",
             "Batting"
     };
-	
-	
+
 
 	//Testing to see if I can pass list item text to next screen
 	public final static String EXTRA_MESSAGE = "com.example.coach.RName";
@@ -60,11 +58,11 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		setContentView(R.layout.activity_training_filter);
 		// Show the Up button in the action bar.
 		setupActionBar();
-		
+
 		//get intent
 		Intent intent = getIntent();
 		setContentView(R.layout.activity_training_filter);
-		
+
 		//open database
 		 myDb = new DBAdapter(this);
 	     myDb.open();
@@ -72,7 +70,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		//// youtube vids from user "TheNewBoston " android vids 84-87?
 		tabH = (TabHost) findViewById (R.id.tabhost);
 		tabH.setup();
-		
+
 		 TabSpec spec1Beginner=tabH.newTabSpec("TAB 1");
 	        spec1Beginner.setContent(R.id.listView1Beginner);
 	        spec1Beginner.setIndicator("Beginner");//text on tab
@@ -82,24 +80,23 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	        spec2Intermediate.setIndicator("Intermediate"); //text on tab
 	        spec2Intermediate.setContent(R.id.listView1Beginner);
 	        tabH.addTab(spec2Intermediate);
-	      
+
 	        TabSpec spec3Advance=tabH.newTabSpec("TAB 3");
 	        spec3Advance.setContent(R.id.listView1Beginner);
 	        spec3Advance.setIndicator("Advance"); //text on tab
 	        tabH.addTab(spec3Advance);
-	        
+
 	        tabH.setCurrentTab(1);
 	        tabH.setCurrentTab(0);
-	
+
 	     ///////// END TAB CODE  //////////////////////////////////   
-	        
+
 	        ///////////SPINNER FILTER/////////////
 	        ///// http://www.learn2crack.com/2013/12/android-spinner-dropdown-example.html   //////
 	        exerciseFilter = (Spinner) findViewById(R.id.spinner1Filter);  
 
 	        ArrayAdapter<String> adapterTabs = new ArrayAdapter<String>(
-	                this, R.layout.spinnerlayout, exrcises);
-	        adapterTabs.setDropDownViewResource(R.layout.spinnerlayout);
+	                this, android.R.layout.simple_spinner_item, exrcises);
 	        exerciseFilter.setAdapter(adapterTabs);
 	        exerciseFilter.setOnItemSelectedListener(
 	                new AdapterView.OnItemSelectedListener() {
@@ -124,7 +121,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	                }
 	            );
 	        /////////////END SPINNER FILTER CODE  /////////////////
-	        
+
 	        ////////////////LIST VIEW BEGINNER  /////////////////////
 	        ////// http://www.vogella.com/tutorials/AndroidListView/article.html /////
         listViewBeginner = (ListView) findViewById(R.id.listView1Beginner);
@@ -149,7 +146,9 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
       	  }
       	}); 
         
-	        	    tabH.setOnTabChangedListener(this);
+
+	   // this.loadMylist("level","All");
+	    tabH.setOnTabChangedListener(this);
 
 	}
 
@@ -157,14 +156,14 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-	scaleContents(findViewById(R.id.tabhost), findViewById(R.id.experienceContainer));
+//	scaleContents(findViewById(R.id.tabhost), findViewById(R.id.experienceContainer));
         scalingComplete = true;
 	}
-	     
-		super.onWindowFocusChanged(hasFocus);
+
+//		super.onWindowFocusChanged(hasFocus);
 	}
 
-	
+
 //////////////////////////////////////////////////////////
 
 	/**
@@ -209,36 +208,36 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
      
      
     }
-	
-	
+
+
 /////HIDE SHOW MENU STUFF IN CONTENT PAGE
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.training_filter, menu);
-		
+
 		if(ParseUser.getCurrentUser()==null){
 		    MenuItem   item1 = menu.findItem(R.id.action_create_account);
 		    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
-		    
+
 		    item1.setVisible(true);
 		    item2.setVisible(true);
 		    invalidateOptionsMenu();} /// CALL to reinsert items,restart action bar with correct items 
-		
+
 		    else{ 
 		    	MenuItem   item1 = menu.findItem(R.id.action_create_account);
 			    MenuItem   item2 = menu.findItem(R.id.action_forgot_password);
-			    
+
 			    item1.setVisible(false);
 			    item2.setVisible(false);
 			    invalidateOptionsMenu();}
-		
+
 		return true;
 	}
 
-	
-	
-	
+
+
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle item selection
@@ -248,7 +247,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		case R.id.action_create_account:
 	    startActivity(new Intent(this, CreateAccount.class));
 	    return true;
-	    
+
 	    // 2, From overflow menu, goes to Recover Lost Password page
 	 	case R.id.action_forgot_password:
 	    startActivity(new Intent(this, RecoverLostPassword.class));
@@ -262,36 +261,36 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 				startActivity(new Intent(this, PushResponse.class));
 				}
 		return true;
-				
+
 	    // 4, From overflow menu, goes to the Favorites page
 		case R.id.action_favorites:
 			if(ParseUser.getCurrentUser()==null){
 				displayAlert();
 		   }  
-		
+
 		    else{ 
 		    	startActivity(new Intent(this, Favorites.class));
 		    	}
-	    
+
 	    return true;
-	    
+
 	    // 5, From overflow menu, goes to the Team Settings page
         case R.id.action_team:
 
         	if(ParseUser.getCurrentUser()==null){
 				displayAlert();
 		   }  
-		
+
 		    else{ 
 		    	startActivity(new Intent(this, Coach.class));
 		    	}
     	return true;
-	    
+
 	    // 6, From overflow menu, goes to the Help page
     	case R.id.action_help:
 	    startActivity(new Intent(this, Help.class));
 	    return true;
-		    	
+
 		// 7, From overflow menu, goes to the About page
 		case R.id.action_about:
 		startActivity(new Intent(this, About.class));
@@ -308,7 +307,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		//
 		NavUtils.navigateUpFromSameTask(this);
 		return true;
-	    
+
 	    // 8, From overflow menu, Exits program
     	case R.id.action_exit:
     	this.finish();
@@ -354,30 +353,25 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		  // TODO Auto-generated method stub
 		  List<String> list = myDb.listdata(level,type);
 		  ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-		    R.layout.listlayout, list);
-		  adapter.setDropDownViewResource(R.layout.listlayout);
+		    android.R.layout.simple_list_item_1, list);
 		  	listViewBeginner.setAdapter(adapter);
-		  
+
 		 }
-	
+
 	@Override
     protected void onDestroy() {
      super.onDestroy(); 
      myDb.close();
     }
-	
-	
-	
     // Scales the contents of the given view so that it completely fills the
 	// given
 	// container on one axis (that is, we're scaling isotropically).
 	private void scaleContents(View rootView, View container) {
 		// Compute the scaling ratio
-		float xScale = (float) (container.getWidth() / (rootView.getWidth()*.70));
-		float yScale = (float) ( container.getHeight() / (rootView.getHeight()*.70));
+		float xScale = (float) container.getWidth() / rootView.getWidth();
+		float yScale = (float) container.getHeight() / rootView.getHeight();
 		float scale = Math.min(xScale, yScale);
 
-		
 		// Scale our contents
 		scaleViewAndChildren(rootView, scale);
 	}
@@ -419,10 +413,7 @@ public class TrainingFilterActivity extends Activity implements OnTabChangeListe
 		// If the root view is a TextView, scale the size of its text
 		if (root instanceof TextView) {
 			TextView textView = (TextView) root;
-			textView.setTextSize((float) (textView.getTextSize() * (scale/1.75)));
-			
-			
-			
+			textView.setTextSize(textView.getTextSize() * (scale));
 		}
 
 		// If the root view is a ViewGroup, scale all of its children

@@ -1,17 +1,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/experienceContainer"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="center|top"
     android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical" >
 
     <TabHost
         android:id="@+id/tabhost"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center|top" >
+        android:layout_height="match_parent" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,30 +19,28 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="100px" >
+                android:layout_height="wrap_content" >
             </TabWidget>
 
             <LinearLayout
                 android:id="@+id/filterContainer"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="39dp"
                 android:gravity="center" >
 
                 <TextView
                     android:id="@+id/textViewTitle"
                     android:layout_width="wrap_content"
-                    android:layout_height="50px"
-                    android:gravity="center|left"
+                    android:layout_height="wrap_content"
                     android:text="Select Filter: "
-                   
-                    android:textSize="18dp" />
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
 
                 <Spinner
                     android:id="@+id/spinner1Filter"
-                    android:layout_width="250px"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scrollbars="vertical" />
-
+                    android:scrollbars="vertical"  
+     				 />
             </LinearLayout>
 
             <FrameLayout
@@ -59,10 +55,9 @@
 
                     <ListView
                         android:id="@+id/listView1Beginner"
-                        android:layout_width="0dip"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" 
-                        >
+                        android:layout_weight="1" >
                     </ListView>
 
                 </LinearLayout>
@@ -76,8 +71,8 @@
                         android:id="@id/listView1Beginner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" >
-
+                        android:layout_weight="1"
+                    >
                     </ListView>
 
                 </LinearLayout>
@@ -91,8 +86,8 @@
                         android:id="@id/listView1Beginner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1" >
-
+                        android:layout_weight="1"
+                    >
                     </ListView>
 
                 </LinearLayout>

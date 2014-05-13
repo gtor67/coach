@@ -242,6 +242,10 @@ public void onCreate(Bundle savedInstanceState){
 			if(x>400){
 			TextView textView = (TextView) root;
 			textView.setTextSize((float) (textView.getTextSize() * scale*.4));
+			}
+			else if(x<300){
+				TextView textView = (TextView) root;
+				textView.setTextSize((float) (textView.getTextSize() * scale*1.5));
 			}else{
 				TextView textView = (TextView) root;
 				textView.setTextSize((float) (textView.getTextSize() * scale));

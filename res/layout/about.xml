@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
  <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
      android:id="@+id/aboutcontainer"
-     android:layout_width="fill_parent"
-     android:layout_height="fill_parent"
-     android:layout_gravity="center|top" >
-
- <RelativeLayout
-     android:id="@+id/aboutcontent"
-     android:layout_width="match_parent"
-     android:layout_height="match_parent"
-     android:layout_gravity="center|top"
-     android:background="#ffffff" >
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+ <RelativeLayout  
+    android:id="@+id/aboutcontent"
+    android:layout_width="480px"
+    android:layout_height="700px"
+    android:background="#ffffff" >
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+    	android:layout_width="480px"
+        android:layout_height="700px">
 
     <LinearLayout
         android:id="@+id/linearlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center|top"
+        android:layout_width="480px"
+        android:layout_height="700px"
         android:background="#ffffff"
         android:orientation="vertical" >
 

@@ -26,11 +26,10 @@
         <ListView
             android:id="@+id/listViewFavs"
             android:layout_width="match_parent"
-            android:layout_height="700px"
+            android:layout_height="600px"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true" >
+            android:layout_below="@+id/empty_textview" >
         </ListView>
-
     </RelativeLayout>
 
 </ScrollView>

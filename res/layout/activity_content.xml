@@ -2,19 +2,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contentcontainer"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="center|top" >
+    android:layout_height="fill_parent" >
 
     <ScrollView
         android:id="@+id/contentcontent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="475px"
+        android:layout_height="700px"
         android:scrollbarStyle="outsideOverlay" >
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center|top"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:orientation="vertical" >
 
             <TextView
@@ -24,7 +22,7 @@
                 android:gravity="center"
                 android:text="title"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="8px"
+                android:textSize="8sp"
                 android:textStyle="bold" />
 
             <LinearLayout
@@ -35,14 +33,9 @@
                 <ImageButton
                     android:id="@+id/imageView1"
                     android:layout_width="225px"
-                    android:layout_height="225px" 
-					android:layout_alignParentLeft="true"
-					android:layout_below="@+id/textViewTitle" 
-					android:scaleType="centerCrop"
-					android:contentDescription="Click to zoom."
-					android:onClick="zoomImage"/>
-
-					
+                    android:layout_height="225px"
+                    android:onClick="zoomImage"
+                    android:scaleType="centerCrop" />
 
                 <LinearLayout
                     android:layout_width="250px"
@@ -57,7 +50,7 @@
                         android:gravity="center"
                         android:text="Focus"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textSize="8px"
+                        android:textSize="8sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -69,7 +62,7 @@
                         android:scrollbarAlwaysDrawVerticalTrack="true"
                         android:scrollbars="vertical"
                         android:text="focus"
-                        android:textSize="5px" />
+                        android:textSize="5sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -117,7 +110,7 @@
                 android:gravity="center"
                 android:text="Procedure"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="8px"
+                android:textSize="8sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -128,7 +121,7 @@
                 android:scrollbarAlwaysDrawVerticalTrack="true"
                 android:scrollbars="vertical"
                 android:text="procedure"
-                android:textSize="8px" />
+                android:textSize="8sp" />
 
             <ScrollView
                 android:id="@+id/scrollView1"

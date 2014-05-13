@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:id="@+id/createcontent"
-        android:layout_width="475px"
+        android:layout_width="480px"
         android:layout_height="700px"
         android:orientation="vertical" >
 
@@ -32,7 +32,7 @@
             android:layout_marginTop="10px"
             android:gravity="center_horizontal"
             android:text="Account Registration"
-            android:textSize="12px"
+            android:textSize="8sp"
             android:textStyle="bold" />
 
         <TextView
@@ -40,25 +40,25 @@
             android:layout_width="fill_parent"
             android:layout_height="80px"
             android:text="Sign up by entering your email address and password."
-            android:textSize="8px" />
+            android:textSize="6sp" />
 
         <TextView
             android:id="@+id/emailTextView"
             android:layout_width="fill_parent"
             android:layout_height="50px"
             android:text="@string/enter_Email"
-            android:textSize="8px" />
+            android:textSize="6sp" />
 
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="fill_parent"
             android:layout_height="50px"
             android:inputType="textEmailAddress"
-            android:textSize="10px" />
+            android:textSize="6sp" />
 
         <TextView
             android:id="@+id/passTextView"
-            android:textSize="8px"       
+            android:textSize="6sp"       
             android:layout_width="fill_parent"
             android:layout_height="50px"
             android:text="@string/enter_Pass" />

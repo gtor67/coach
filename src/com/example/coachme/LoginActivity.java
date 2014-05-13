@@ -141,7 +141,7 @@ public class LoginActivity extends Activity {
 	public void onWindowFocusChanged(boolean hasFocus) {
 	if (!scalingComplete) // only do this once
 	{
-		scaleContents(findViewById(R.id.logincontent), findViewById(R.id.login_form));
+//		scaleContents(findViewById(R.id.login_status), findViewById(R.id.loginframe));
         scalingComplete = true;
 	}
 	     
@@ -405,7 +405,27 @@ public class LoginActivity extends Activity {
 					    	if(user.getBoolean("emailVerified")){
 					    		
 				////////////////////////FIX SUBCRIBE BUG
-	    			
+					    		
+					    		
+//					    		ParseQuery<ParseObject> innerQuery = ParseQuery.getQuery("players");
+//					    		innerQuery.whereExists(user.getEmail());
+//					    		ParseQuery<ParseObject> query = ParseQuery.getQuery("coaches");
+//					    		query.whereMatchesQuery("player", innerQuery);
+//					    		query.findInBackground(new FindCallback<ParseObject>() {
+//					    		  public void done(List<ParseObject> playerList, ParseException e) {
+//					    		    // list of players 
+//					    			  if(playerList !=null){
+//					    				  Log.d("add", "already part of team");
+//										    //Register a channel to test push channels
+//										      Context ctx = LoginActivity.this.getApplicationContext();
+//										        PushService.subscribe(ctx, teamTitle, PushResponse.class);
+//					    				  
+//					    			  }
+//					    		  }
+//					    		});
+					    		
+					    		
+					    		
 					    		ParseQuery<ParseObject> query =ParseQuery.getQuery("coaches");
 					    		query.orderByAscending("createdAt");
 								query.findInBackground(new FindCallback<ParseObject>() {
@@ -414,7 +434,10 @@ public class LoginActivity extends Activity {
 										if (coach == null) {
 										} else {
 											for(int i= 0; i < coach.size(); i++){
-											final String teamTitle = coach.get(i).getString("name");											
+											final String teamTitle = coach.get(i).getString("name");
+//											ParseInstallation pi = ParseInstallation.getCurrentInstallation();
+//									        
+//									        pi.saveEventually();
 									       
 											//check if player is already part of the team
 											ParseRelation<ParseObject> relation = coach.get(i).getRelation("players");
@@ -437,8 +460,17 @@ public class LoginActivity extends Activity {
 										}
 									}
 								});
-				  
-				/////////////////////////END SUBSCRIBE BUG FIX  		
+//					    		
+					    		
+					    		
+					  
+				/////////////////////////END SUBSCRIBE BUG FIX
+					    		
+					    		
+					    		
+					    		
+					    		
+					    		
 					    		
 					    		test = true; 
 					    	}
@@ -458,7 +490,29 @@ public class LoginActivity extends Activity {
 			} catch (InterruptedException e) {
 				return false;
 			}
-
+/////// testing parse log in ///////////////////////////
+		/**	
+			ParseUser user = new ParseUser();
+			user.setUsername("Jerry@jerry.com");
+			user.setPassword("showmethemoney");
+			user.setEmail("email@example.com");
+			 
+			// other fields can be set just like with ParseObject
+			//user.put("phone", "650-253-0000");
+			 
+			user.signUpInBackground(new SignUpCallback() {
+			  public void done(ParseException e) {
+			    if (e == null) {
+			      // Hooray! Let them use the app now.
+			    } else {
+			      // Sign up didn't succeed. Look at the ParseException
+			      // to figure out what went wrong
+			    }
+			  }
+			});
+			*/
+			
+	////////////////end parse login test  ///////////////////////
 			return test;
 		}
 

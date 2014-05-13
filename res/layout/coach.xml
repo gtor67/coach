@@ -22,27 +22,38 @@
             android:layout_gravity="center"
             android:src="@drawable/join_a_team" />
 
-        <TextView
-            android:id="@+id/coach"
+          <TextView
+            android:id="@+id/team"
             android:layout_width="fill_parent"
             android:layout_height="120px"
             android:layout_alignParentLeft="true"
             android:layout_below="@+id/imageJoinTeam"
-            android:text="Enter the Team name you wish to register"
+            android:text="Enter the team code you wish to join "
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="10sp" />
+                       
+          <EditText
+            android:id="@+id/teamCode"
+            android:layout_width="match_parent"
+            android:layout_height="120px"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/team"
+            android:ems="10"
+            android:hint="Enter Team Code"
+            android:inputType="text"
+            android:textSize="10sp" />
 
-        <EditText
+          <EditText
             android:id="@+id/coachCode"
             android:layout_width="fill_parent"
             android:layout_height="120px"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/coach"
+            android:layout_below="@+id/teamCode"
             android:hint="Enter Team Name"
             android:inputType="text"
             android:textSize="6sp" />
-
-        <Button
+          
+         <Button
             android:id="@+id/buttonrequestcoach"
             android:layout_width="120px"
             android:layout_height="40px"
@@ -51,8 +62,8 @@
             android:layout_gravity="right"
             android:background="@drawable/button_register_team_change"
             android:onClick="request" />
-
-        <TextView
+        
+             <TextView
             android:id="@+id/entCoach"
             android:layout_width="fill_parent"
             android:layout_height="120px"
@@ -61,66 +72,55 @@
             android:text="Below is your Team Code:"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textSize="10sp" />
-           
+          
+                     
+           <TextView
+            android:id="@+id/teamcode"
+            android:layout_width="fill_parent"
+            android:layout_height="120px"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/entCoach"
+            android:hint="Team Code"
+            android:textColor="#1900ff"
+            android:textSize="6sp" />
+   
+                       <TextView
+            android:id="@+id/coach"
+            android:layout_width="fill_parent"
+            android:layout_height="120px"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/teamcode"
+            android:text="Enter the Team name you wish to register"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="10sp" />
+      
+            <Button
+                android:id="@+id/buttoncoachcode"
+                android:layout_width="120px"
+                android:layout_height="40px"
+                android:layout_alignBottom="@+id/coach"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/button_join_team_change"
+                android:onClick="register" />
+               
+     
         <EditText
          android:id="@+id/sendMessEditText"
             android:layout_width="fill_parent"
             android:layout_height="120px"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/entCoach"
+            android:layout_below="@+id/buttoncoachcode"
             android:hint="Send Messege to Team"
-         	android:inputType="textMultiLine" >
-
-         <requestFocus />
-     </EditText>
-
-        <TextView
-            android:id="@+id/teamcode"
-            android:layout_width="fill_parent"
-            android:layout_height="120px"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/sendMessEditText"
-            android:hint="Team Code"
-            android:textColor="#1900ff"
-            android:textSize="6sp" />
-
-        <TextView
-            android:id="@+id/team"
-            android:layout_width="fill_parent"
-            android:layout_height="120px"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/teamcode"
-            android:text="Enter the team code you wish to join "
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textSize="10sp" />
-
-        <EditText
-            android:id="@+id/teamCode"
-            android:layout_width="match_parent"
-            android:layout_height="120px"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/team"
-            android:hint="Enter Team Code"
-            android:inputType="text"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/buttoncoachcode"
-            android:layout_width="120px"
-            android:layout_height="40px"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/teamCode"
-            android:layout_gravity="right"
-            android:background="@drawable/button_join_team_change"
-            android:onClick="register" />
-
+         	android:inputType="textMultiLine"
+         	android:textSize="10sp" /> 
+   
         <Button
             android:id="@+id/sendbutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/teamcode"
-            android:layout_alignTop="@+id/teamcode"
-            android:layout_marginRight="26sp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/sendMessEditText"
+            android:layout_marginRight="18sp"
             android:onClick="sendMessage"
             android:text="Send" />
 
